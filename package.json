@@ -53,7 +53,9 @@
     "@dcloudio/uni-mp-toutiao": "3.0.0-4000620240325001",
     "@dcloudio/uni-mp-weixin": "3.0.0-4000620240325001",
     "@dcloudio/uni-mp-xhs": "3.0.0-4000620240325001",
-    "@dcloudio/uni-quickapp-webview": "3.0.0-4000620240325001"
+    "@dcloudio/uni-quickapp-webview": "3.0.0-4000620240325001",
+    "@dcloudio/uni-ui": "^1.5.5",
+    "vant": "^4.8.10"
   },
   "devDependencies": {
     "@dcloudio/types": "^3.3.2",

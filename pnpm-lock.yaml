@@ -19,6 +19,7 @@ specifiers:
   '@dcloudio/uni-mp-xhs': 3.0.0-4000620240325001
   '@dcloudio/uni-quickapp-webview': 3.0.0-4000620240325001
   '@dcloudio/uni-stacktracey': 3.0.0-4000620240325001
+  '@dcloudio/uni-ui': ^1.5.5
   '@dcloudio/vite-plugin-uni': 3.0.0-4000620240325001
   '@vant/weapp': ^1.11.4
   '@vue/runtime-core': ^3.3.11
@@ -30,6 +31,7 @@ specifiers:
   sass-loader: ^14.1.1
   unocss: ^0.58.7
   unplugin-auto-import: ^0.17.5
+  vant: ^4.8.10
   vite: 4.3.5
   vue: ^3.3.11
   vue-i18n: ^9.1.9
@@ -49,6 +51,8 @@ dependencies:
   '@dcloudio/uni-mp-weixin': 3.0.0-4000620240325001_vue@3.4.21
   '@dcloudio/uni-mp-xhs': 3.0.0-4000620240325001_vue@3.4.21
   '@dcloudio/uni-quickapp-webview': 3.0.0-4000620240325001_vue@3.4.21
+  '@dcloudio/uni-ui': 1.5.5
+  vant: 4.8.10_vue@3.4.21
 
 devDependencies:
   '@dcloudio/types': 3.4.8
@@ -1884,6 +1888,10 @@ packages:
       - vue
     dev: false
 
+  /@dcloudio/uni-ui/1.5.5:
+    resolution: {integrity: sha512-DTr8o4lcRgu4JJclA2eT7UFVKtglK63OUtcDGysrSeZhgAJAC2gBYm/pYbv0BFxKqxfbdoAFGAFCigCVY9+NAQ==}
+    dev: false
+
   /@dcloudio/vite-plugin-uni/3.0.0-4000620240325001_vite@4.3.5+vue@3.4.21:
     resolution: {integrity: sha512-rRK4+egqTZkSMr7UPYidWJE8LWkXc1khIiPpKOn0R7WeLJSE+Olep2V3cewTNuTFK/4S0pG8q9UwgmVwRqBHeQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -2884,6 +2892,18 @@ packages:
     transitivePeerDependencies:
       - rollup
     dev: true
+
+  /@vant/popperjs/1.3.0:
+    resolution: {integrity: sha512-hB+czUG+aHtjhaEmCJDuXOep0YTZjdlRR+4MSmIFnkCQIxJaXLQdSsR90XWvAI2yvKUI7TCGqR8pQg2RtvkMHw==}
+    dev: false
+
+  /@vant/use/1.6.0_vue@3.4.21:
+    resolution: {integrity: sha512-PHHxeAASgiOpSmMjceweIrv2AxDZIkWXyaczksMoWvKV2YAYEhoizRuk/xFnKF+emUIi46TsQ+rvlm/t2BBCfA==}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      vue: 3.4.21
+    dev: false
 
   /@vant/weapp/1.11.4:
     resolution: {integrity: sha512-egOsWO4hVMP1SQSqQ46jy8UD3WysvlnUecRzPM21Y3ovkOFZ6wlaO7oHQmTXRpwr+V41Qri1qEbtNjhVxFqdyw==}
@@ -5084,6 +5104,17 @@ packages:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
     dev: true
+
+  /vant/4.8.10_vue@3.4.21:
+    resolution: {integrity: sha512-JKfywSAwxVrY6q2KbESdW9IyGMeOFKa8ub3DLluTaYV7ff4ECXFilkjMeRYVT4hdsNcNii6KCQF6mUYyI56SBA==}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      '@vant/popperjs': 1.3.0
+      '@vant/use': 1.6.0_vue@3.4.21
+      '@vue/shared': 3.4.21
+      vue: 3.4.21
+    dev: false
 
   /vary/1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}

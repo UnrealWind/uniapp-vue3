@@ -5,13 +5,22 @@
       <text class="title ml-2">{{ title }}</text>
       <text class="title ml-2">{{ user.userInfo.userName}}</text>
     </view>
-    <div>
+    <div>小程序
       <van-button type="default">默认按钮</van-button>
       <van-button type="primary">主要按钮</van-button>
       <van-button type="info">信息按钮</van-button>
       <van-button type="warning">警告按钮</van-button>
-      <van-button type="danger">危险按钮</van-button>
+      <van-button @click="current" type="danger">危险按钮</van-button>
     </div>
+
+      <swiper class="swiper-box" @change="change">
+        <swiper-item v-for="(item ,index) in info" :key="index">
+          <view class="swiper-item">
+            {{item.content}}123
+          </view>
+        </swiper-item>
+      </swiper>
+
   </view>
 </template>
 
@@ -19,6 +28,36 @@
   import { useUserStore } from '@/store/user.js'
   const user = useUserStore()
   const title = ref('test1111')
+  let current = ref(0)
+
+
+  const dotsStyles= ref({
+    backgroundColor: 'rgba(255, 90, 95,0.3)',
+    border: '1px rgba(0, 0, 0, .3) solid',
+    color: '#fff',
+    selectedBackgroundColor: 'rgba(0, 0, 0, .9)',
+    selectedBorder: '1px rgba(0, 0, 0, .9) solid'
+  })
+  const info = ref( [{
+    colorClass: 'uni-bg-red',
+    url: 'https://qiniu-web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg',
+    content: '内容 A'
+  },
+    {
+      colorClass: 'uni-bg-green',
+      url: 'https://qiniu-web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg',
+      content: '内容 B'
+    },
+    {
+      colorClass: 'uni-bg-blue',
+      url: 'https://qiniu-web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg',
+      content: '内容 C'
+    }
+  ])
+
+  function change(e){
+    current.value = e.detail.current;
+  }
 
   // 设置用户信息
   const data = { userName: 'test3' }
@@ -53,6 +92,19 @@
   }
 }
 
+.swiper-box {
+  height: 200px;
+  width: 100%;
+}
+
+.swiper-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: #ccc;
+}
 
 
 
