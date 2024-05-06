@@ -40,8 +40,11 @@
     "build:quickapp-webview-union": "uni build -p quickapp-webview-union"
   },
   "dependencies": {
+    "@dcloudio/types": "^3.3.2",
     "@dcloudio/uni-app": "3.0.0-4000620240325001",
     "@dcloudio/uni-app-plus": "3.0.0-4000620240325001",
+    "@dcloudio/uni-automator": "3.0.0-4000620240325001",
+    "@dcloudio/uni-cli-shared": "3.0.0-4000620240325001",
     "@dcloudio/uni-components": "3.0.0-4000620240325001",
     "@dcloudio/uni-h5": "3.0.0-4000620240325001",
     "@dcloudio/uni-mp-alipay": "3.0.0-4000620240325001",
@@ -54,15 +57,12 @@
     "@dcloudio/uni-mp-weixin": "3.0.0-4000620240325001",
     "@dcloudio/uni-mp-xhs": "3.0.0-4000620240325001",
     "@dcloudio/uni-quickapp-webview": "3.0.0-4000620240325001",
+    "@dcloudio/uni-stacktracey": "3.0.0-4000620240325001",
     "@dcloudio/uni-ui": "^1.5.5",
-    "vant": "^4.8.10"
+    "@dcloudio/vite-plugin-uni": "3.0.0-4000620240325001",
+    "uni-simple-router": "2.0.8-beta.4"
   },
   "devDependencies": {
-    "@dcloudio/types": "^3.3.2",
-    "@dcloudio/uni-automator": "3.0.0-4000620240325001",
-    "@dcloudio/uni-cli-shared": "3.0.0-4000620240325001",
-    "@dcloudio/uni-stacktracey": "3.0.0-4000620240325001",
-    "@dcloudio/vite-plugin-uni": "3.0.0-4000620240325001",
     "@vant/weapp": "^1.11.4",
     "@vue/runtime-core": "^3.3.11",
     "axios": "^1.6.8",
@@ -73,6 +73,7 @@
     "sass-loader": "^14.1.1",
     "unocss": "^0.58.7",
     "unplugin-auto-import": "^0.17.5",
+    "vant": "^4.8.10",
     "vite": "4.3.5",
     "vue": "^3.3.11",
     "vue-i18n": "^9.1.9"

@@ -6,6 +6,7 @@ import * as Pinia from 'pinia';
 import { createUnistorage } from 'pinia-plugin-unistorage'
 import 'uno.css'
 
+
 export function createApp() {
 	const app = createSSRApp(App);
 	const store = Pinia.createPinia();

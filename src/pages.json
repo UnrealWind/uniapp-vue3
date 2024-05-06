@@ -1,6 +1,18 @@
 {
 	"pages": [
 		{
+			"path": "pages/filter-h5/index",
+			"style": {
+				"navigationBarTitleText": "条件筛选"
+			}
+		},
+		{
+			"path": "pages/home/index",
+			"style": {
+				"navigationBarTitleText": "Cummins Products"
+			}
+		},
+		{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "uni-app"
@@ -13,7 +25,7 @@
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8",
 		"usingComponents": {
-			"van-button": "./wxcomponents/vant-weapp/button/index"
+			"van-button": "./wxcomponents/vant-weapp/button/index",
 		}
 	}
 }

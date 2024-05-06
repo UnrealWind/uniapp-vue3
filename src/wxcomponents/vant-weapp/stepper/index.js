@@ -102,7 +102,7 @@ VantComponent({
             this.emitChange(value);
             this.$emit('blur', Object.assign(Object.assign({}, event.detail), { value }));
         },
-        // filter illegal characters
+        // filter-h5 illegal characters
         filter(value) {
             value = String(value).replace(/[^0-9.-]/g, '');
             if (this.data.integer && value.indexOf('.') !== -1) {

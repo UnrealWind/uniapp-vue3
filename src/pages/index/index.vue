@@ -2,21 +2,14 @@
   <view class="content">
     <image class="logo" src="/static/logo.png"></image>
     <view class="text-area">
-      <text class="title ml-2">{{ title }}</text>
+      <text class="title ml-2">Cummins Products</text>
       <text class="title ml-2">{{ user.userInfo.userName}}</text>
     </view>
-    <div>小程序
-      <van-button type="default">默认按钮</van-button>
-      <van-button type="primary">主要按钮</van-button>
-      <van-button type="info">信息按钮</van-button>
-      <van-button type="warning">警告按钮</van-button>
-      <van-button @click="current" type="danger">危险按钮</van-button>
-    </div>
 
       <swiper class="swiper-box" @change="change">
         <swiper-item v-for="(item ,index) in info" :key="index">
           <view class="swiper-item">
-            {{item.content}}123
+            {{item.content}}
           </view>
         </swiper-item>
       </swiper>
