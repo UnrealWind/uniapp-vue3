@@ -1,6 +1,18 @@
 {
 	"pages": [
 		{
+			"path": "pages/detail/index",
+			"style": {
+				"navigationBarTitleText": "产品详情"
+			}
+		},
+		{
+			"path": "pages/list-h5/index",
+			"style": {
+				"navigationBarTitleText": "产品列表"
+			}
+		},
+		{
 			"path": "pages/filter-h5/index",
 			"style": {
 				"navigationBarTitleText": "条件筛选"
@@ -19,13 +31,13 @@
 			}
 		}
 	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"globalStyle": {
+		"navigationBarTextStyle": "rgba(255, 255, 255, 0.9)",
+		"navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#000",
 		"backgroundColor": "#F8F8F8",
 		"usingComponents": {
-			"van-button": "./wxcomponents/vant-weapp/button/index",
+			"van-button": "./wxcomponents/vant-weapp/button/index"
 		}
 	}
 }

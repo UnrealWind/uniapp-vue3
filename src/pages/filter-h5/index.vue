@@ -98,7 +98,9 @@
 
 <style lang="scss">
 .content {
-  background: #FFFFFF;
+  background: url("../../static/img/background.png") no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
   .uni-slider-handle {
     z-index: 999;
   }
