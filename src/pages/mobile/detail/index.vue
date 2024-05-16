@@ -16,25 +16,25 @@
       </h3>
       <div class="specs">
         <div >
-          <div class="specs-line1"><img src="../../static/img/power.png">额定功率</div>
+          <div class="specs-line1"><img src="../../../static/img/power.png">额定功率</div>
           <div class="specs-line2">321<span>hp</span></div>
           <div class="specs-line3">250<span>kw</span></div>
         </div>
         <div>
-          <div class="specs-line1"><img src="../../static/img/torque.png">扭矩</div>
+          <div class="specs-line1"><img src="../../../static/img/torque.png">扭矩</div>
           <div class="specs-line2">1400<span>n·m</span></div>
           <div class="specs-line3">1400-1500<span>rpm</span></div>
         </div>
         <div>
-          <div class="specs-line1"><img src="../../static/img/rotate.png">额定转速</div>
+          <div class="specs-line1"><img src="../../../static/img/rotate.png">额定转速</div>
           <div class="specs-line2">2100<span>rpm</span></div>
         </div>
       </div>
       <div class="detail-para">
         <h3>详细参数</h3>
-        <div><img src="../../static/img/size.png">尺寸（长*宽*高 mm）<span>1295*992*1000</span></div>
-        <div><img src="../../static/img/weight.png">重量<span>900kg</span></div>
-        <div><img src="../../static/img/way.png">技术路线<span>DOC+DPF+SCR</span></div>
+        <div><img src="../../../static/img/size.png">尺寸（长*宽*高 mm）<span>1295*992*1000</span></div>
+        <div><img src="../../../static/img/weight.png">重量<span>900kg</span></div>
+        <div><img src="../../../static/img/way.png">技术路线<span>DOC+DPF+SCR</span></div>
       </div>
       <div class="scenario">
         <h3>适用应用场景</h3>
@@ -48,8 +48,8 @@
       </div>
     </div>
     <div class="footer-btn">
-      <div @click="showMessage=true" class="btn-mid"><img src="../../static/img/consultation.png">留言咨询</div>
-      <div @click="showCall = true" class="btn-mid"><img src="../../static/img/phone.png">电话咨询</div>
+      <div @click="showMessage=true" class="btn-mid"><img src="../../../static/img/consultation.png">留言咨询</div>
+      <div @click="showCall = true" class="btn-mid"><img src="../../../static/img/phone.png">电话咨询</div>
     </div>
     <div v-show="showSpecification" class="specification">
       <div :class="showSpecification?'active':''" class="info-part">
@@ -58,36 +58,36 @@
           <h4>所有规格（共6款）</h4>
           <div class="specs active">
             <div >
-              <div class="specs-line1"><img src="../../static/img/power.png">额定功率</div>
+              <div class="specs-line1"><img src="../../../static/img/power.png">额定功率</div>
               <div class="specs-line2">321<span>hp</span></div>
               <div class="specs-line3">250<span>kw</span></div>
             </div>
             <div>
-              <div class="specs-line1"><img src="../../static/img/torque.png">扭矩</div>
+              <div class="specs-line1"><img src="../../../static/img/torque.png">扭矩</div>
               <div class="specs-line2">1400<span>n·m</span></div>
               <div class="specs-line3">1400-1500<span>rpm</span></div>
             </div>
             <div>
-              <div class="specs-line1"><img src="../../static/img/rotate.png">额定转速</div>
+              <div class="specs-line1"><img src="../../../static/img/rotate.png">额定转速</div>
               <div class="specs-line2">2100<span>rpm</span></div>
             </div>
             <span class="active-corner">
-              <img src="../../static/img/active-corner.png">
+              <img src="../../../static/img/active-corner.png">
             </span>
           </div>
           <div class="specs">
             <div >
-              <div class="specs-line1"><img src="../../static/img/power.png">额定功率</div>
+              <div class="specs-line1"><img src="../../../static/img/power.png">额定功率</div>
               <div class="specs-line2">321<span>hp</span></div>
               <div class="specs-line3">250<span>kw</span></div>
             </div>
             <div>
-              <div class="specs-line1"><img src="../../static/img/torque.png">扭矩</div>
+              <div class="specs-line1"><img src="../../../static/img/torque.png">扭矩</div>
               <div class="specs-line2">1400<span>n·m</span></div>
               <div class="specs-line3">1400-1500<span>rpm</span></div>
             </div>
             <div>
-              <div class="specs-line1"><img src="../../static/img/rotate.png">额定转速</div>
+              <div class="specs-line1"><img src="../../../static/img/rotate.png">额定转速</div>
               <div class="specs-line2">2100<span>rpm</span></div>
             </div>
           </div>
@@ -142,28 +142,28 @@
           <div class="contact-list">
             <div class="contact">
               <div class="img-box">
-                <img src="../../static/img/user.png">
+                <img src="../../../static/img/user.png">
               </div>
               <div class="contact-info">
                 <p>赵日天</p>
                 <p>AE</p>
               </div>
               <div class="contact-btn">
-                <img @click="showMessage = true,showCall=false" src="../../static/img/consultation-red.png">
-                <img style="margin-right: 0" @click="showCall = true,showCall=false" src="../../static/img/phone-red.png">
+                <img @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
+                <img style="margin-right: 0" @click="showCall = true,showCall=false" src="../../../static/img/phone-red.png">
               </div>
             </div>
             <div class="contact">
               <div class="img-box">
-                <img src="../../static/img/user.png">
+                <img src="../../../static/img/user.png">
               </div>
               <div class="contact-info">
                 <p>赵日天</p>
                 <p>AE</p>
               </div>
               <div class="contact-btn">
-                <img @click="showMessage = true,showCall=false" src="../../static/img/consultation-red.png">
-                <img style="margin-right: 0" @click="showCall = true,showCall=false" src="../../static/img/phone-red.png">
+                <img @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
+                <img style="margin-right: 0" @click="showCall = true,showCall=false" src="../../../static/img/phone-red.png">
               </div>
             </div>
           </div>
@@ -185,7 +185,7 @@
   let showCall = ref(false)
 
   const info = ref( [{
-      url: '../../static/img/swiper1.png',
+      url: '../../../static/img/swiper1.png',
       content: '内容 1'
     },
   ])
@@ -203,7 +203,7 @@
 
 <style lang="scss">
 .content {
-  background: url("../../static/img/background.png") no-repeat;
+  background: url("../../../static/img/background.png") no-repeat;
   background-size: 100% 100%;
   .swiper-box {
     height: 240px;

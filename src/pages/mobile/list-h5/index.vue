@@ -2,13 +2,13 @@
   <view class="content">
     <div class="bg">
       <div class="chose">
-        <div class="chose-item">挖掘机<img src="../../static/img/delete.png"></div>
-        <div class="chose-item">40-50T<img src="../../static/img/delete.png"></div>
-        <div class="clear"><img src="../../static/img/clear.png">清除</div>
+        <div class="chose-item">挖掘机<img src="../../../static/img/delete.png"></div>
+        <div class="chose-item">40-50T<img src="../../../static/img/delete.png"></div>
+        <div class="clear"><img src="../../../static/img/clear.png">清除</div>
       </div>
       <div class="describe">
         共 <span class="text-red-500">112</span> 个产品符合条件
-        <span class="right-fix text-red-500"><img src="../../static/img/more.png"> 更多条件</span>
+        <span class="right-fix text-red-500"><img src="../../../static/img/more.png"> 更多条件</span>
       </div>
       <List
           v-model:loading="loading"
@@ -18,12 +18,12 @@
       >
         <div class="list-item">
           <div class="img-box">
-            <img src="../../static/img/product.png">
+            <img src="../../../static/img/product.png">
             <div class="des">x15</div>
           </div>
           <div class="info">
-            <div class="scenarios"><span><img src="../../static/img/power.png"> 功率 300kw/400hp</span></div>
-            <div class="scenarios"><span><img src="../../static/img/torque.png"> 最大扭矩 2000Nm/1400-1500rpm</span></div>
+            <div class="scenarios"><span><img src="../../../static/img/power.png"> 功率 300kw/400hp</span></div>
+            <div class="scenarios"><span><img src="../../../static/img/torque.png"> 最大扭矩 2000Nm/1400-1500rpm</span></div>
             <div class="device-type">
               <span>履带挖掘机</span>
               <span>旋挖钻机</span>
@@ -39,12 +39,12 @@
 
         <div class="list-item">
           <div class="img-box">
-            <img src="../../static/img/product.png">
+            <img src="../../../static/img/product.png">
             <div class="des">x15</div>
           </div>
           <div class="info">
-            <div class="scenarios"><span><img src="../../static/img/power.png"> 功率 300kw/400hp</span></div>
-            <div class="scenarios"><span><img src="../../static/img/torque.png"> 最大扭矩 2000Nm/1400-1500rpm</span></div>
+            <div class="scenarios"><span><img src="../../../static/img/power.png"> 功率 300kw/400hp</span></div>
+            <div class="scenarios"><span><img src="../../../static/img/torque.png"> 最大扭矩 2000Nm/1400-1500rpm</span></div>
             <div class="device-type">
               <span>履带挖掘机</span>
               <span>旋挖钻机</span>
@@ -100,7 +100,7 @@
 .content {
   background:#efefef;
   .bg {
-    background: url("../../static/img/background.png") no-repeat;
+    background: url("../../../static/img/background.png") no-repeat;
     background-size: 100% 100%;
     height: 100vh;
   }
@@ -221,7 +221,7 @@
       }
     }
     .right-top {
-      background: url("../../static/img/top-right.png");
+      background: url("../../../static/img/top-right.png");
       background-size: 100% 100%;
       position: absolute;
       width: 100px;
@@ -233,7 +233,7 @@
       color: #ffffff;
     }
     .detail-btn {
-      background: url("../../static/img/detail-btn.png");
+      background: url("../../../static/img/detail-btn.png");
       background-size: 100% 100%;
       position: absolute;
       width: 93px;

@@ -5,19 +5,19 @@
     </h2>
     <div class="scenarios">
       <div class="device active">
-        <img src="../../static/img/device/device1.png">
+        <img src="../../../static/img/device/device1.png">
         <div>挖掘机
           <span class="active-corner">
-          <img src="../../static/img/active-corner.png">
+          <img src="../../../static/img/active-corner.png">
         </span>
         </div>
       </div>
       <div v-for="(item,index) in 20" class="device" v-show=" !showMore && index<2">
-        <img src="../../static/img/device/device1.png">
+        <img src="../../../static/img/device/device1.png">
         <div>挖掘机</div>
       </div>
       <div v-for="(item,index) in 20" class="device" v-show=" showMore">
-        <img src="../../static/img/device/device1.png">
+        <img src="../../../static/img/device/device1.png">
         <div>挖掘机</div>
       </div>
       <Button class="w-full" style="margin-top: 15px" v-show="!showMore" type="default" size="small" @click="changeScenarios">更多场景  <Icon name="arrow-down" /> </Button>
@@ -98,7 +98,7 @@
 
 <style lang="scss">
 .content {
-  background: url("../../static/img/background.png") no-repeat;
+  background: url("../../../static/img/background.png") no-repeat;
   background-size: 100% 100%;
   height: 100vh;
   .uni-slider-handle {

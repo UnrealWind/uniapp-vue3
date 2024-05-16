@@ -12,10 +12,10 @@
         <span class="more">更多应用场景 ></span>
       </h2>
       <div class="device">
-        <img mode="widthFix" src="../../static/img/jump1.png" />
-        <img mode="widthFix" src="../../static/img/jump2.png" />
-        <img mode="widthFix" src="../../static/img/jump3.png" />
-        <img mode="widthFix" src="../../static/img/jump4.png" />
+        <img mode="widthFix" src="../../../static/img/jump1.png" />
+        <img mode="widthFix" src="../../../static/img/jump2.png" />
+        <img mode="widthFix" src="../../../static/img/jump3.png" />
+        <img mode="widthFix" src="../../../static/img/jump4.png" />
       </div>
       <h2 class="w-full p-2 title-container">
         <span class="ml-3 font-bold title">推荐产品</span>
@@ -23,7 +23,7 @@
       </h2>
       <div class="product">
         <div class="prod-item">
-          <img mode="widthFix" src="../../static/img/product.png" />
+          <img mode="widthFix" src="../../../static/img/product.png" />
           <div class="prod-info">
             <div class="info">
               <div>L9 (STAGE V) </div>
@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="prod-item">
-          <img mode="widthFix" src="../../static/img/product.png" />
+          <img mode="widthFix" src="../../../static/img/product.png" />
           <div class="prod-info">
             <div class="info">
               <div>L9 (STAGE V) </div>
@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="prod-item">
-          <img mode="widthFix" src="../../static/img/product.png" />
+          <img mode="widthFix" src="../../../static/img/product.png" />
           <div class="prod-info">
             <div class="info">
               <div>L9 (STAGE V) </div>
@@ -66,11 +66,11 @@
   let current = ref(0)
 
   const info = ref( [{
-      url: '../../static/img/swiper1.png',
+      url: '../../../static/img/swiper1.png',
       content: '内容 1'
     },
     {
-      url: '../../static/img/swiper2.png',
+      url: '../../../static/img/swiper2.png',
       content: '内容 2'
     }
   ])
