@@ -59,7 +59,7 @@
   </view>
 </template>
 
-<script setup>
+<script setup scoped>
   import { useUserStore } from '@/store/user.js'
   const user = useUserStore()
 

@@ -96,7 +96,7 @@
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .content {
   background:#efefef;
   .bg {

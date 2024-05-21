@@ -96,7 +96,7 @@
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .content {
   background: url("../../../static/img/background.png") no-repeat;
   background-size: 100% 100%;

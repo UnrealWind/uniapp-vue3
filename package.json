@@ -60,6 +60,7 @@
     "@dcloudio/uni-stacktracey": "3.0.0-4000620240325001",
     "@dcloudio/uni-ui": "^1.5.5",
     "@dcloudio/vite-plugin-uni": "3.0.0-4000620240325001",
+    "@vant/touch-emulator": "^1.4.0",
     "uni-simple-router": "2.0.8-beta.4"
   },
   "devDependencies": {

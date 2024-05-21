@@ -136,7 +136,7 @@
     <div v-show="showCall" class="message">
       <div :class="showCall?'active':''" class="info-part">
         <div class="info">
-          <h3>留言咨询</h3>
+          <h3>电话咨询</h3>
           <h4>X15 Efficiency Series</h4>
           <div class="des">250Kw/1900rpm</div>
           <div class="contact-list">
@@ -201,7 +201,7 @@
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .content {
   background: url("../../../static/img/background.png") no-repeat;
   background-size: 100% 100%;
