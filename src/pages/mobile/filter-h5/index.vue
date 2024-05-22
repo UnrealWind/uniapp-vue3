@@ -12,13 +12,13 @@
         </span>
         </div>
       </div>
-      <div v-for="(item,index) in 20" class="device" v-show=" !showMore && index<2">
-        <img src="../../../static/img/device/device1.png">
-        <div>挖掘机</div>
+      <div v-for="(item,index) in deviceTypeList" class="device" v-show=" !showMore && index<2">
+        <img src="../../../static/img/device/ttj.png">
+        <div>{{item.label}}</div>
       </div>
-      <div v-for="(item,index) in 20" class="device" v-show=" showMore">
-        <img src="../../../static/img/device/device1.png">
-        <div>挖掘机</div>
+      <div v-for="(item,index) in deviceTypeList" class="device" v-show=" showMore">
+        <img src="../../../static/img/device/ttj.png">
+        <div>{{item.label}}</div>
       </div>
       <Button class="w-full" style="margin-top: 15px" v-show="!showMore" type="default" size="small" @click="changeScenarios">更多场景  <Icon name="arrow-down" /> </Button>
       <Button class="w-full" style="margin-top: 15px" v-show="showMore" type="default" size="small" @click="changeScenarios">收起  <Icon name="arrow-up" /> </Button>
@@ -56,7 +56,7 @@
       <div>高压共轨</div>
     </div>
     <div class="btn-box">
-      <Button class="w-full" style="margin-top: 15px"  type="danger" size="small" @click="changeScenarios">共有112个产品符合条件 进入</Button>
+      <Button class="w-full" style="margin-top: 15px"  type="danger" size="normal" @click="goList">共有112个产品符合条件 进入</Button>
     </div>
   </view>
 </template>
@@ -70,6 +70,34 @@
 
   const priceValue = ref([0,100])
   const showMore = ref(false)
+  const deviceTypeList = ref([
+    {label:'履带式挖机',value:'ldswj'},
+    {label:'轮式挖机',value:'lswj'},
+    {label:'装载机',value:'zzj'},
+    {label:'推土机',value:'ttj'},
+    {label:'旋挖钻机',value:'xwzj'},
+    {label:'水平定向钻',value:'spdxzj'},
+    {label:'单钢轮压路机',value:'dglylj'},
+    {label:'双钢轮压路机',value:'sglylj'},
+    {label:'平地机',value:'pdj'},
+    {label:'摊铺机',value:'tpj'},
+    {label:'铣刨机',value:'xpj'},
+    {label:'履带起重机',value:'ldqzj'},
+    {label:'高空作业平台',value:'gkzyj'},
+    {label:'地下铲运车',value:'dxcyc'},
+    {label:'地下矿卡',value:'dxkk'},
+    {label:'机场牵引车',value:'jcqyc'},
+    {label:'机场皮带传送车',value:'jcpdcsc'},
+    {label:'机场电源车',value:'jcdyc'},
+    {label:'机场平台车',value:'jcptc'},
+    {label:'采棉机-打包',value:'cmjdb'},
+    {label:'采棉机-箱式',value:'cmjxs'},
+    {label:'青储机',value:'qcj'},
+    {label:'空压机',value:'kyj'},
+    {label:'扫地车',value:'sdc'},
+    {label:'叉车',value:'cc'},
+    {label:'叉装车',value:'czc'},
+  ])
 
   function onChange(e){
     console.log(e)
@@ -78,6 +106,12 @@
 
   function changeScenarios(){
     showMore.value = !showMore.value
+  }
+
+  function goList(){
+    uni.navigateTo({
+      url:'/pages/mobile/list-h5/index'
+    })
   }
 
   onMounted(() => {
@@ -191,8 +225,8 @@
     }
     .active {
       border: 1px solid red;
+      position: relative;
       >div{
-        position: relative;
       }
       .active-corner {
         position: absolute;

@@ -8,7 +8,7 @@
       </div>
       <div class="describe">
         共 <span class="text-red-500">112</span> 个产品符合条件
-        <span class="right-fix text-red-500"><img src="../../../static/img/more.png"> 更多条件</span>
+        <span @click="backFilter" class="right-fix text-red-500"><img src="../../../static/img/more.png"> 更多条件</span>
       </div>
       <List
           v-model:loading="loading"
@@ -33,7 +33,7 @@
               <span>福田康明斯生产</span>
             </div>
             <div class="right-top"> &nbsp;&nbsp;&nbsp;EPA 2024</div>
-            <div class="detail-btn"></div>
+            <div @click="goDetail" class="detail-btn"></div>
           </div>
         </div>
 
@@ -54,7 +54,7 @@
               <span>福田康明斯生产</span>
             </div>
             <div class="right-top"> &nbsp;&nbsp;&nbsp;EPA 2024</div>
-            <div class="detail-btn"></div>
+            <div @click="goDetail" class="detail-btn"></div>
           </div>
         </div>
       </List>
@@ -72,6 +72,18 @@
   const loading = ref(false)
   const finished = ref(false)
   const list = ref([]);
+
+  function goDetail(){
+    uni.navigateTo({
+      url:'/pages/mobile/detail/index'
+    })
+  }
+
+  function backFilter(){
+    uni.redirectTo({
+      url:'/pages/mobile/filter-h5/index'
+    })
+  }
 
   function onLoad(){
     setTimeout(() => {

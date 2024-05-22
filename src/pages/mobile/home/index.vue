@@ -9,20 +9,32 @@
       </swiper>
       <h2 class="w-full p-2 fix-margin title-container">
         <span class="ml-3 font-bold title">适用于各种场景的动力系统</span>
-        <span class="more">更多应用场景 ></span>
+        <span @click="goFilter()" class="more">更多应用场景 ></span>
       </h2>
       <div class="device">
-        <img mode="widthFix" src="../../../static/img/jump1.png" />
-        <img mode="widthFix" src="../../../static/img/jump2.png" />
-        <img mode="widthFix" src="../../../static/img/jump3.png" />
-        <img mode="widthFix" src="../../../static/img/jump4.png" />
+        <div>
+          <img @click="goFilter('ldswj')" mode="widthFix" src="../../../static/img/jump2.png" />
+          <p>履带式挖机</p>
+        </div>
+        <div>
+          <img @click="goFilter('ttj')" mode="widthFix" src="../../../static/img/jump1.png" />
+          <p>推土机</p>
+        </div>
+        <div>
+          <img @click="goFilter('ldqzj')" mode="widthFix" src="../../../static/img/jump4.png" />
+          <p>履带起重机</p>
+        </div>
+        <div>
+          <img @click="goFilter('tpj')" mode="widthFix" src="../../../static/img/jump3.png" />
+          <p>摊铺机</p>
+        </div>
       </div>
       <h2 class="w-full p-2 title-container">
         <span class="ml-3 font-bold title">推荐产品</span>
-        <span class="more">更多产品 ></span>
+        <span @click="goFilter()" class="more">更多产品 ></span>
       </h2>
       <div class="product">
-        <div class="prod-item">
+        <div @click="goDetail" class="prod-item">
           <img mode="widthFix" src="../../../static/img/product.png" />
           <div class="prod-info">
             <div class="info">
@@ -31,7 +43,7 @@
             </div>
           </div>
         </div>
-        <div class="prod-item">
+        <div @click="goDetail" class="prod-item">
           <img mode="widthFix" src="../../../static/img/product.png" />
           <div class="prod-info">
             <div class="info">
@@ -40,7 +52,7 @@
             </div>
           </div>
         </div>
-        <div class="prod-item">
+        <div @click="goDetail" class="prod-item">
           <img mode="widthFix" src="../../../static/img/product.png" />
           <div class="prod-info">
             <div class="info">
@@ -77,7 +89,13 @@
 
   function goFilter(){
     uni.navigateTo({
-      url:'pages/filter/index'
+      url:'/pages/mobile/filter-h5/index'
+    })
+  }
+
+  function goDetail(){
+    uni.navigateTo({
+      url:'/pages/mobile/detail/index'
     })
   }
 
@@ -94,7 +112,7 @@
 
 <style lang="scss">
 .content {
-  background: rgba(239, 239, 239, 0.6);
+  background: #ffffff;
 
   .fix-margin {
     margin-top: 10px;
@@ -134,12 +152,24 @@
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
-    image,img {
+    >div {
       width: 45%;
+      position: relative;
+      p {
+        position: absolute;
+        top: 15px;
+        left: 10px;
+        font-size: 15px;
+        font-weight: 600;
+      }
+    }
+    image,img {
+      width: 100%;
       margin-bottom: 10px;
       margin-top: 5px;
       border-radius: 8px;
       overflow: hidden;
+      box-shadow: -3px -3px 8px #eee;
     }
   }
 
@@ -156,9 +186,10 @@
       position: relative;
       margin-left: 4%;
       background: #ffffff;
-      height: 160px;
+      height: 145px;
       border-radius: 5px;
       overflow: hidden;
+      box-shadow: -3px -3px 8px #eee;
     }
     .prod-info{
       width: 100%;

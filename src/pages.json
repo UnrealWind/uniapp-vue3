@@ -7,16 +7,58 @@
 			}
 		},
 		{
+			"path": "pages/mobile/filter-h5/index",
+			"style": {
+				"navigationBarTitleText": "条件筛选"
+			}
+		},
+		{
+			"path": "pages/mobile/list-h5/index",
+			"style": {
+				"navigationBarTitleText": "产品列表"
+			}
+		},
+		{
 			"path": "pages/mobile/detail/index",
 			"style": {
 				"navigationBarTitleText": "产品详情"
 			}
+		},
+		{
+			"path": "pages/mobile/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
 		}
 	],
-
+	"subPackages": [{
+		"root": "pages/web",
+		"pages": [
+			{
+				"path": "home/index",
+				"style": {
+					"app-plus":{
+						"titleNView": false
+					}
+				}
+			},
+			{
+				"path": "product/index",
+				"style": {
+					"navigationBarTitleText": "产品列表"
+				}
+			},
+			{
+				"path": "detail/index",
+				"style": {
+					"navigationBarTitleText": "产品详情"
+				}
+			}
+		]
+	}],
 	"globalStyle": {
-		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTextStyle": "rgba(255, 255, 255, 0.9)",
+		"navigationBarTitleText": "",
 		"navigationBarBackgroundColor": "#000",
 		"backgroundColor": "#F8F8F8",
 		"usingComponents": {

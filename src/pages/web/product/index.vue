@@ -81,7 +81,7 @@
               <span>采棉机</span>
             </div>
             <div class="hover">
-              <div>查看详情</div>
+              <div @click="goDetail">查看详情</div>
             </div>
           </div>
         </div>
@@ -112,6 +112,12 @@
 
   function changeScenarios(){
     showMore.value = !showMore.value
+  }
+
+  function goDetail(){
+    uni.navigateTo({
+      url:'/pages/web/detail/index'
+    })
   }
 
   onMounted(() => {

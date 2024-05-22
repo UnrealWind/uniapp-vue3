@@ -8,7 +8,7 @@
         <h2>x15 ( 2024 )</h2>
         <h3>
           <span>规格</span>
-          <span @click="showSpecification = true" class="right-fix text-red-500">选择规格 (共六款) > </span>
+          <span @click="showSpecification = true" style="cursor: pointer" class="right-fix text-red-500">选择规格 (共六款) > </span>
         </h3>
         <div class="specs">
           <div >
@@ -59,7 +59,7 @@
     <div v-show="showSpecification" class="specification">
       <div :class="showSpecification?'active':''" class="info-part">
         <div class="info">
-          <h3>选择规格</h3>
+          <h3>选择规格 <img @click="showSpecification = false" style="float: right" src="../../../static/img/close.png"></h3>
           <h4>所有规格（共6款）</h4>
           <div class="info-list">
             <div class="specs active">
@@ -266,7 +266,7 @@
     <div v-show="showMessage" class="message">
       <div :class="showMessage?'active':''" class="info-part">
         <div class="info">
-          <h3>留言咨询</h3>
+          <h3>留言咨询  <img @click="showMessage = false" style="float: right" src="../../../static/img/close.png"></h3>
           <h4>X15 Efficiency Series</h4>
           <div class="des">250Kw/1900rpm</div>
           <div class="form">
@@ -299,7 +299,7 @@
     <div v-show="showCall" class="message">
       <div :class="showCall?'active':''" class="info-part">
         <div class="info">
-          <h3>电话咨询</h3>
+          <h3>电话咨询  <img @click="showCall = false" style="float: right" src="../../../static/img/close.png"></h3>
           <h4>X15 Efficiency Series</h4>
           <div class="des">250Kw/1900rpm</div>
           <div class="contact-list">
@@ -490,6 +490,7 @@
       width: 30%;
       height: 30px;
       line-height: 30px;
+      padding: 0 20px 0 0;
       img {
         margin-right: 5px;
         position: relative;
@@ -521,6 +522,7 @@
       width: 30%;
       height: 30px;
       line-height: 30px;
+      padding: 0 20px 0 0;
       i {
         border: 1px solid #DA291CFF;
         color: rgba(218, 41, 28, 1);
@@ -557,6 +559,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
+    overflow: hidden;
     .info-part {
       height: 700px;
       width: 800px;
@@ -568,6 +571,9 @@
         text-align: center;
         font-size: 15px;
         margin-top: 20px;
+        img {
+          cursor: pointer;
+        }
       }
       h4 {
         font-size: 13px;
@@ -586,7 +592,7 @@
         }
       }
       .info {
-        width: 92%;
+        width: 95%;
         margin: 0 auto;
         .info-list {
           height: 550px;
@@ -608,7 +614,7 @@
     }
     @keyframes hide{
       to {
-        bottom: -100%;
+        bottom: -80%;
         opacity: 0;
       }
     }
@@ -651,6 +657,7 @@
               width: 44px;
               height: 44px;
               margin-right: 20px;
+              cursor: pointer;
             }
           }
         }
@@ -711,6 +718,7 @@
         width: 30px;
         position: relative;
         top: 10px;
+        cursor: pointer;
       }
       margin-top: 10px;
       width: 49.5%;
@@ -724,7 +732,7 @@
       border-left: 1px solid rgba(239, 239, 239, 0.38);
     }
     >div {
-      cursor: pointer;
+
     }
   }
 
@@ -786,6 +794,7 @@
     margin-top: 20px;
     .btn-large {
       border-radius: 20px;
+      cursor: pointer;
     }
   }
 }

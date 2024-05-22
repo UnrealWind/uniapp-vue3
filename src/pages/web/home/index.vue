@@ -12,23 +12,23 @@
         <span>从装载机到挖掘机和起重机，康明斯发动机几乎可以在所有可以想象到的应用场景中找到。</span>
       </h2>
       <div class="device">
-        <div class="device-item">
+        <div class="device-item" @click="goFilter">
           <img mode="widthFix" src="../../../static/img-web/device/device.png" />
           <p>挖掘机</p>
         </div>
-        <div class="device-item">
+        <div class="device-item" @click="goFilter">
           <img mode="widthFix" src="../../../static/img-web/device/device.png" />
           <p>挖掘机</p>
         </div>
-        <div class="device-item">
+        <div class="device-item" @click="goFilter">
           <img mode="widthFix" src="../../../static/img-web/device/device.png" />
           <p>挖掘机</p>
         </div>
-        <div class="device-item">
+        <div class="device-item" @click="goFilter">
           <img mode="widthFix" src="../../../static/img-web/device/device.png" />
           <p>挖掘机</p>
         </div>
-        <div class="more">查看应用场景 ></div>
+        <div  @click="goFilter" class="more">查看应用场景 ></div>
       </div>
 
       <h2 class="w-full p-2 title-container mt-16">
@@ -59,55 +59,8 @@
               <span>采棉机</span>
             </div>
           </div>
-        </div>
-        <div class="prod-item">
-          <img mode="widthFix" src="../../../static/img-web/product.png" />
-          <div class="prod-info">
-            <div class="info">
-              <div>X15 </div>
-            </div>
-            <div class="specs">
-              <div>
-                <div class="specs-line1"><img src="../../../static/img/power.png">功率</div>
-                <div class="specs-line2">321<span>hp</span></div>
-                <div class="specs-line3">250<span>kw</span></div>
-              </div>
-              <div>
-                <div class="specs-line1"><img src="../../../static/img/torque.png">最大扭矩</div>
-                <div class="specs-line2">1400<span>n·m</span></div>
-                <div class="specs-line3">1400-1500<span>rpm</span></div>
-              </div>
-            </div>
-            <div class="btn-des">
-              <span>履带挖掘机</span>
-              <span>旋挖钻机</span>
-              <span>采棉机</span>
-            </div>
-          </div>
-        </div>
-        <div class="prod-item">
-          <img mode="widthFix" src="../../../static/img-web/product.png" />
-          <div class="prod-info">
-            <div class="info">
-              <div>X15 </div>
-            </div>
-            <div class="specs">
-              <div>
-                <div class="specs-line1"><img src="../../../static/img/power.png">功率</div>
-                <div class="specs-line2">321<span>hp</span></div>
-                <div class="specs-line3">250<span>kw</span></div>
-              </div>
-              <div>
-                <div class="specs-line1"><img src="../../../static/img/torque.png">最大扭矩</div>
-                <div class="specs-line2">1400<span>n·m</span></div>
-                <div class="specs-line3">1400-1500<span>rpm</span></div>
-              </div>
-            </div>
-            <div class="btn-des">
-              <span>履带挖掘机</span>
-              <span>旋挖钻机</span>
-              <span>采棉机</span>
-            </div>
+          <div class="hover">
+            <div @click="goDetail">查看详情</div>
           </div>
         </div>
         <div class="prod-item">
@@ -135,11 +88,67 @@
             </div>
           </div>
           <div class="hover">
-            <div>查看详情</div>
+            <div @click="goDetail">查看详情</div>
+          </div>
+        </div>
+        <div class="prod-item">
+          <img mode="widthFix" src="../../../static/img-web/product.png" />
+          <div class="prod-info">
+            <div class="info">
+              <div>X15 </div>
+            </div>
+            <div class="specs">
+              <div>
+                <div class="specs-line1"><img src="../../../static/img/power.png">功率</div>
+                <div class="specs-line2">321<span>hp</span></div>
+                <div class="specs-line3">250<span>kw</span></div>
+              </div>
+              <div>
+                <div class="specs-line1"><img src="../../../static/img/torque.png">最大扭矩</div>
+                <div class="specs-line2">1400<span>n·m</span></div>
+                <div class="specs-line3">1400-1500<span>rpm</span></div>
+              </div>
+            </div>
+            <div class="btn-des">
+              <span>履带挖掘机</span>
+              <span>旋挖钻机</span>
+              <span>采棉机</span>
+            </div>
+          </div>
+          <div class="hover">
+            <div @click="goDetail">查看详情</div>
+          </div>
+        </div>
+        <div class="prod-item">
+          <img mode="widthFix" src="../../../static/img-web/product.png" />
+          <div class="prod-info">
+            <div class="info">
+              <div>X15 </div>
+            </div>
+            <div class="specs">
+              <div>
+                <div class="specs-line1"><img src="../../../static/img/power.png">功率</div>
+                <div class="specs-line2">321<span>hp</span></div>
+                <div class="specs-line3">250<span>kw</span></div>
+              </div>
+              <div>
+                <div class="specs-line1"><img src="../../../static/img/torque.png">最大扭矩</div>
+                <div class="specs-line2">1400<span>n·m</span></div>
+                <div class="specs-line3">1400-1500<span>rpm</span></div>
+              </div>
+            </div>
+            <div class="btn-des">
+              <span>履带挖掘机</span>
+              <span>旋挖钻机</span>
+              <span>采棉机</span>
+            </div>
+          </div>
+          <div class="hover">
+            <div @click="goDetail">查看详情</div>
           </div>
         </div>
         <div class="footer">
-          <div class="more">查看更多推荐 ></div>
+          <div @click="goFilter" class="more">查看更多推荐 ></div>
         </div>
 
       </div>
@@ -174,6 +183,12 @@
   function goFilter(){
     uni.navigateTo({
       url:'/pages/web/product/index'
+    })
+  }
+
+  function goDetail(){
+    uni.navigateTo({
+      url:'/pages/web/detail/index'
     })
   }
 
@@ -237,6 +252,7 @@ uni-page-head {
     .device-item {
       width: 25%;
       text-align: center;
+      cursor: pointer;
       image,img {
         margin-bottom: 10px;
         margin-top: 5px;

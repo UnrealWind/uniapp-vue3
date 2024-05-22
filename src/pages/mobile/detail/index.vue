@@ -54,7 +54,7 @@
     <div v-show="showSpecification" class="specification">
       <div :class="showSpecification?'active':''" class="info-part">
         <div class="info">
-          <h3>选择规格</h3>
+          <h3>选择规格 <img @click="showSpecification = false" style="float: right" src="../../../static/img/close.png"></h3>
           <h4>所有规格（共6款）</h4>
           <div class="specs active">
             <div >
@@ -103,7 +103,7 @@
     <div v-show="showMessage" class="message">
       <div :class="showMessage?'active':''" class="info-part">
         <div class="info">
-          <h3>留言咨询</h3>
+          <h3>留言咨询 <img @click="showMessage = false" style="float: right" src="../../../static/img/close.png"></h3>
           <h4>X15 Efficiency Series</h4>
           <div class="des">250Kw/1900rpm</div>
           <div class="form">
@@ -136,7 +136,7 @@
     <div v-show="showCall" class="message">
       <div :class="showCall?'active':''" class="info-part">
         <div class="info">
-          <h3>电话咨询</h3>
+          <h3>电话咨询 <img @click="showCall = false" style="float: right" src="../../../static/img/close.png"></h3>
           <h4>X15 Efficiency Series</h4>
           <div class="des">250Kw/1900rpm</div>
           <div class="contact-list">
