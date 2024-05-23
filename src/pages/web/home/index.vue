@@ -431,6 +431,7 @@ uni-page-head {
         width: 30px;
         position: relative;
         top: 10px;
+        cursor: pointer;
       }
       margin-top: 10px;
       width: 49.5%;
@@ -444,7 +445,7 @@ uni-page-head {
       border-left: 1px solid rgba(239, 239, 239, 0.38);
     }
     >div {
-      cursor: pointer;
+
     }
   }
 }
