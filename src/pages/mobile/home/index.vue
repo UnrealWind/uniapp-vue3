@@ -64,14 +64,14 @@
       </div>
 
       <div class="footer-btn">
-        <div class="btn-large">帮我推荐</div>
+        <div @click="goFilter()" class="btn-large">帮我推荐</div>
         <div class="btn-mid">留言咨询</div>
         <div class="btn-mid">电话咨询</div>
       </div>
   </view>
 </template>
 
-<script setup scoped>
+<script setup>
   import { useUserStore } from '@/store/user.js'
   const user = useUserStore()
 
@@ -110,7 +110,7 @@
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .content {
   background: #ffffff;
 

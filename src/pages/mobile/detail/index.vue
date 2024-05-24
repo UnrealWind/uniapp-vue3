@@ -1,53 +1,55 @@
 <template>
   <view class="content">
-    <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
-      <swiper-item v-for="(item ,index) in info" :key="index" @click="goFilter">
-        <view class="swiper-item">
-          <img class="w-full h-full" :src="item.url" />
-        </view>
-      </swiper-item>
-    </swiper>
+    <div  style="height: 85vh;overflow-y: scroll" >
+      <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
+        <swiper-item v-for="(item ,index) in info" :key="index" @click="goFilter">
+          <view class="swiper-item">
+            <img class="w-full h-full" :src="item.url" />
+          </view>
+        </swiper-item>
+      </swiper>
 
-    <div class="detail-info">
-      <h2>x15 ( 2024 )</h2>
-      <h3>
-        <span>规格</span>
-        <span @click="showSpecification = true" class="right-fix text-red-500">选择规格 (共六款) > </span>
-      </h3>
-      <div class="specs">
-        <div >
-          <div class="specs-line1"><img src="../../../static/img/power.png">额定功率</div>
-          <div class="specs-line2">321<span>hp</span></div>
-          <div class="specs-line3">250<span>kw</span></div>
+      <div class="detail-info">
+        <h2>x15 ( 2024 )</h2>
+        <h3>
+          <span>规格</span>
+          <span @click="showSpecification = true" class="right-fix text-red-500">选择规格 (共六款) > </span>
+        </h3>
+        <div class="specs">
+          <div >
+            <div class="specs-line1"><img src="../../../static/img/power.png">额定功率</div>
+            <div class="specs-line2">321<span>hp</span></div>
+            <div class="specs-line3">250<span>kw</span></div>
+          </div>
+          <div>
+            <div class="specs-line1"><img src="../../../static/img/torque.png">扭矩</div>
+            <div class="specs-line2">1400<span>n·m</span></div>
+            <div class="specs-line3">1400-1500<span>rpm</span></div>
+          </div>
+          <div>
+            <div class="specs-line1"><img src="../../../static/img/rotate.png">额定转速</div>
+            <div class="specs-line2">2100<span>rpm</span></div>
+          </div>
         </div>
-        <div>
-          <div class="specs-line1"><img src="../../../static/img/torque.png">扭矩</div>
-          <div class="specs-line2">1400<span>n·m</span></div>
-          <div class="specs-line3">1400-1500<span>rpm</span></div>
+        <div class="detail-para">
+          <h3>详细参数</h3>
+          <div><img src="../../../static/img/size.png">尺寸（长*宽*高 mm）<span>1295*992*1000</span></div>
+          <div><img src="../../../static/img/weight.png">重量<span>900kg</span></div>
+          <div><img src="../../../static/img/way.png">技术路线<span>DOC+DPF+SCR</span></div>
         </div>
-        <div>
-          <div class="specs-line1"><img src="../../../static/img/rotate.png">额定转速</div>
-          <div class="specs-line2">2100<span>rpm</span></div>
+        <div class="scenario">
+          <h3>适用应用场景</h3>
+          <div><i>履带挖掘机</i><span >45-49T</span><span class="text-gray-500">标准吨位：</span></div>
+          <div><i>旋挖钻机</i><span>360R</span><span class="text-gray-500">标称转矩：</span></div>
+          <div><i>采棉机</i><span>6</span><span class="text-gray-500">作业行数（行箱式）：</span></div>
         </div>
-      </div>
-      <div class="detail-para">
-        <h3>详细参数</h3>
-        <div><img src="../../../static/img/size.png">尺寸（长*宽*高 mm）<span>1295*992*1000</span></div>
-        <div><img src="../../../static/img/weight.png">重量<span>900kg</span></div>
-        <div><img src="../../../static/img/way.png">技术路线<span>DOC+DPF+SCR</span></div>
-      </div>
-      <div class="scenario">
-        <h3>适用应用场景</h3>
-        <div><i>履带挖掘机</i><span >45-49T</span><span class="text-gray-500">标准吨位：</span></div>
-        <div><i>旋挖钻机</i><span>360R</span><span class="text-gray-500">标称转矩：</span></div>
-        <div><i>采棉机</i><span>6</span><span class="text-gray-500">作业行数（行箱式）：</span></div>
-      </div>
-      <div class="tec">
-        <h3>技术特点</h3>
-        <rich-text :nodes="richText"></rich-text>
+        <div class="tec">
+          <h3>技术特点</h3>
+          <rich-text style="position:relative;top: 10px;" :nodes="richText"></rich-text>
+        </div>
       </div>
     </div>
-    <div class="footer-btn">
+    <div class="footer-btn fixed" style="width: 100%;">
       <div @click="showMessage=true" class="btn-mid"><img src="../../../static/img/consultation.png">留言咨询</div>
       <div @click="showCall = true" class="btn-mid"><img src="../../../static/img/phone.png">电话咨询</div>
     </div>
@@ -74,6 +76,70 @@
             <span class="active-corner">
               <img src="../../../static/img/active-corner.png">
             </span>
+          </div>
+          <div class="specs">
+            <div >
+              <div class="specs-line1"><img src="../../../static/img/power.png">额定功率</div>
+              <div class="specs-line2">321<span>hp</span></div>
+              <div class="specs-line3">250<span>kw</span></div>
+            </div>
+            <div>
+              <div class="specs-line1"><img src="../../../static/img/torque.png">扭矩</div>
+              <div class="specs-line2">1400<span>n·m</span></div>
+              <div class="specs-line3">1400-1500<span>rpm</span></div>
+            </div>
+            <div>
+              <div class="specs-line1"><img src="../../../static/img/rotate.png">额定转速</div>
+              <div class="specs-line2">2100<span>rpm</span></div>
+            </div>
+          </div>
+          <div class="specs">
+            <div >
+              <div class="specs-line1"><img src="../../../static/img/power.png">额定功率</div>
+              <div class="specs-line2">321<span>hp</span></div>
+              <div class="specs-line3">250<span>kw</span></div>
+            </div>
+            <div>
+              <div class="specs-line1"><img src="../../../static/img/torque.png">扭矩</div>
+              <div class="specs-line2">1400<span>n·m</span></div>
+              <div class="specs-line3">1400-1500<span>rpm</span></div>
+            </div>
+            <div>
+              <div class="specs-line1"><img src="../../../static/img/rotate.png">额定转速</div>
+              <div class="specs-line2">2100<span>rpm</span></div>
+            </div>
+          </div>
+          <div class="specs">
+            <div >
+              <div class="specs-line1"><img src="../../../static/img/power.png">额定功率</div>
+              <div class="specs-line2">321<span>hp</span></div>
+              <div class="specs-line3">250<span>kw</span></div>
+            </div>
+            <div>
+              <div class="specs-line1"><img src="../../../static/img/torque.png">扭矩</div>
+              <div class="specs-line2">1400<span>n·m</span></div>
+              <div class="specs-line3">1400-1500<span>rpm</span></div>
+            </div>
+            <div>
+              <div class="specs-line1"><img src="../../../static/img/rotate.png">额定转速</div>
+              <div class="specs-line2">2100<span>rpm</span></div>
+            </div>
+          </div>
+          <div class="specs">
+            <div >
+              <div class="specs-line1"><img src="../../../static/img/power.png">额定功率</div>
+              <div class="specs-line2">321<span>hp</span></div>
+              <div class="specs-line3">250<span>kw</span></div>
+            </div>
+            <div>
+              <div class="specs-line1"><img src="../../../static/img/torque.png">扭矩</div>
+              <div class="specs-line2">1400<span>n·m</span></div>
+              <div class="specs-line3">1400-1500<span>rpm</span></div>
+            </div>
+            <div>
+              <div class="specs-line1"><img src="../../../static/img/rotate.png">额定转速</div>
+              <div class="specs-line2">2100<span>rpm</span></div>
+            </div>
           </div>
           <div class="specs">
             <div >
@@ -150,7 +216,7 @@
               </div>
               <div class="contact-btn">
                 <img @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
-                <img style="margin-right: 0" @click="showCall = true,showCall=false" src="../../../static/img/phone-red.png">
+                <img style="margin-right: 0" @click="makePhoneCall" src="../../../static/img/phone-red.png">
               </div>
             </div>
             <div class="contact">
@@ -163,7 +229,7 @@
               </div>
               <div class="contact-btn">
                 <img @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
-                <img style="margin-right: 0" @click="showCall = true,showCall=false" src="../../../static/img/phone-red.png">
+                <img style="margin-right: 0" @click="makePhoneCall" src="../../../static/img/phone-red.png">
               </div>
             </div>
           </div>
@@ -179,7 +245,8 @@
   const user = useUserStore()
 
   let current = ref(0)
-  let richText = ref('')
+  let richText = ref('<p><span style="font-size: 13px;"><strong>可靠耐久</strong></span></p><p><span style="font-size: 13px;">通过近5000小时的可靠性路试验证，以及包括极端冷热冲击、工业循环、热箱试验和冷启动在内的近10000小时台架测试。</span></p><p><span style="font-size: 13px;"><strong>强劲高效</strong></span></p><p><span style="font-size: 13px;">新一代高效涡轮增压器，采用前言技术和工艺，全新优化的流道机叶轮型线设计，兼顾高、低速相应需求，显著提升节油和瞬态响应性，效率更高。</span></p><p><span style="font-size: 13px;"><strong>经济节省</strong></span></p><p><span style="font-size: 13px;">更广泛的经济油耗区，实现作业效率、效能和经济效益的最佳平衡；热管理能力更强，可靠性更高；采用康明斯超高压燃油系统XPI，采用先进的保压技术，实现超高压喷射，优化喷射角度，在提升燃油经济性的同时降低排放；高压缩比，全新活塞设计，燃烧效率更高，更节油。</span></p><p><span style="font-size: 13px;"><strong>高智能</strong></span></p><p><span style="font-size: 13px;">高端智能控制系统，与整机系统无缝链合，提供多达100项电控可选参数进行差异化定制，适配性更强，应用更广泛；康明斯数字化远程在线技术（OTA），能够实现工程设备在用期间的实时升级。</span></p><p><span style="font-size: 13px;"><strong>全面呵护</strong></span></p><p><span style="font-size: 13px;">根据中国油品使用现状，设置智能系统的提示功能，提示用户使用合格油品，保护发动机和整机系统正常运行，使用寿命更长；康明斯远程数字化诊断技术，自诊断、自维护能力更强，整机设备高效出勤更有保障。</span></p><p><span style="font-size: 13px;">高适应性</span></p><p><span style="font-size: 13px;">高寒适应性强，胜任零下40度工况作业，零下30度无需辅助加热器启动更轻松；高原适应性强，500米海拔无降扭，胜任4500米海拔作业。</span></p>')
+
   let showSpecification =ref(false)
   let showMessage = ref(false)
   let showCall = ref(false)
@@ -189,6 +256,10 @@
       content: '内容 1'
     },
   ])
+
+  function makePhoneCall(){
+    uni.makePhoneCall({phoneNumber:'12312312312'})
+  }
 
   function change(e){
     current.value = e.detail.current;

@@ -13,20 +13,20 @@
       </h2>
       <div class="device">
         <div class="device-item" @click="goFilter">
-          <img mode="widthFix" src="../../../static/img-web/device/device.png" />
+          <img mode="widthFix" src="../../../static/img-web/device/device1.png" />
           <p>挖掘机</p>
         </div>
         <div class="device-item" @click="goFilter">
-          <img mode="widthFix" src="../../../static/img-web/device/device.png" />
-          <p>挖掘机</p>
+          <img mode="widthFix" src="../../../static/img-web/device/device2.png" />
+          <p>压路机</p>
         </div>
         <div class="device-item" @click="goFilter">
-          <img mode="widthFix" src="../../../static/img-web/device/device.png" />
-          <p>挖掘机</p>
+          <img mode="widthFix" src="../../../static/img-web/device/device3.png" />
+          <p>收割机</p>
         </div>
         <div class="device-item" @click="goFilter">
-          <img mode="widthFix" src="../../../static/img-web/device/device.png" />
-          <p>挖掘机</p>
+          <img mode="widthFix" src="../../../static/img-web/device/device4.png" />
+          <p>喷雾机</p>
         </div>
         <div  @click="goFilter" class="more">查看应用场景 ></div>
       </div>

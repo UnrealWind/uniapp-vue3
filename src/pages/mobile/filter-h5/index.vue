@@ -4,22 +4,36 @@
       <span class="ml-3 font-bold title">应用场景</span>
     </h2>
     <div class="scenarios">
-      <div class="device active">
-        <img src="../../../static/img/device/device1.png">
-        <div>挖掘机
-          <span class="active-corner">
-          <img src="../../../static/img/active-corner.png">
-        </span>
-        </div>
+
+      <div v-for="(item,index) in deviceTypeList" class="device" :class="item.active?'active':''" @click="choseDevice(item)" v-show="!showMore && index<3">
+        <template v-if="!item.active">
+          <img :src="`../../../static/img/device/${item.value}.png`">
+          <div>{{item.label}}</div>
+        </template>
+        <template v-if="item.active">
+          <img :src="`../../../static/img/device/${item.value}A.png`">
+          <div>{{item.label}}
+            <span class="active-corner">
+              <img src="../../../static/img/active-corner.png">
+            </span>
+          </div>
+        </template>
       </div>
-      <div v-for="(item,index) in deviceTypeList" class="device" v-show=" !showMore && index<2">
-        <img src="../../../static/img/device/ttj.png">
-        <div>{{item.label}}</div>
+      <div v-for="(item,index) in deviceTypeList" class="device" :class="item.active?'active':''" @click="choseDevice(item)" v-show="showMore">
+        <template v-if="!item.active">
+          <img :src="`../../../static/img/device/${item.value}.png`">
+          <div>{{item.label}}</div>
+        </template>
+        <template v-if="item.active">
+          <img :src="`../../../static/img/device/${item.value}A.png`">
+          <div>{{item.label}}
+            <span class="active-corner">
+              <img src="../../../static/img/active-corner.png">
+            </span>
+          </div>
+        </template>
       </div>
-      <div v-for="(item,index) in deviceTypeList" class="device" v-show=" showMore">
-        <img src="../../../static/img/device/ttj.png">
-        <div>{{item.label}}</div>
-      </div>
+
       <Button class="w-full" style="margin-top: 15px" v-show="!showMore" type="default" size="small" @click="changeScenarios">更多场景  <Icon name="arrow-down" /> </Button>
       <Button class="w-full" style="margin-top: 15px" v-show="showMore" type="default" size="small" @click="changeScenarios">收起  <Icon name="arrow-up" /> </Button>
     </div>
@@ -71,33 +85,40 @@
   const priceValue = ref([0,100])
   const showMore = ref(false)
   const deviceTypeList = ref([
-    {label:'履带式挖机',value:'ldswj'},
-    {label:'轮式挖机',value:'lswj'},
-    {label:'装载机',value:'zzj'},
-    {label:'推土机',value:'ttj'},
-    {label:'旋挖钻机',value:'xwzj'},
-    {label:'水平定向钻',value:'spdxzj'},
-    {label:'单钢轮压路机',value:'dglylj'},
-    {label:'双钢轮压路机',value:'sglylj'},
-    {label:'平地机',value:'pdj'},
-    {label:'摊铺机',value:'tpj'},
-    {label:'铣刨机',value:'xpj'},
-    {label:'履带起重机',value:'ldqzj'},
-    {label:'高空作业平台',value:'gkzyj'},
-    {label:'地下铲运车',value:'dxcyc'},
-    {label:'地下矿卡',value:'dxkk'},
-    {label:'机场牵引车',value:'jcqyc'},
-    {label:'机场皮带传送车',value:'jcpdcsc'},
-    {label:'机场电源车',value:'jcdyc'},
-    {label:'机场平台车',value:'jcptc'},
-    {label:'采棉机-打包',value:'cmjdb'},
-    {label:'采棉机-箱式',value:'cmjxs'},
-    {label:'青储机',value:'qcj'},
-    {label:'空压机',value:'kyj'},
-    {label:'扫地车',value:'sdc'},
-    {label:'叉车',value:'cc'},
-    {label:'叉装车',value:'czc'},
+    {label:'履带式挖机',value:'ldswj',active:true},
+    {label:'轮式挖机',value:'lswj',active:false}, //
+    {label:'装载机',value:'zzj',active:false},
+    {label:'推土机',value:'ttj',active:false},
+    {label:'旋挖钻机',value:'xwzj',active:false},
+    {label:'水平定向钻机',value:'spdxzj',active:false},
+    {label:'单钢轮压路机',value:'dglylj',active:false},  //
+    {label:'双钢轮压路机',value:'sglylj',active:false},
+    {label:'平地机',value:'pdj',active:false},
+    {label:'摊铺机',value:'tpj',active:false},
+    {label:'铣刨机',value:'xpj',active:false},
+    {label:'履带起重机',value:'ldqzj',active:false},
+    {label:'高空作业平台',value:'gkzypt',active:false},
+    {label:'地下铲运车',value:'dxcyc',active:false},
+    {label:'地下矿卡',value:'dxkk',active:false},
+    {label:'机场牵引车',value:'jcqyc',active:false},
+    {label:'机场皮带传送车',value:'jcpdcsc',active:false},//
+    {label:'机场电源车',value:'jcdyc',active:false},//
+    {label:'机场平台车',value:'jcptc',active:false},//
+    {label:'采棉机-打包',value:'cmjdb',active:false},
+    {label:'采棉机-箱式',value:'cmjxs',active:false},//
+    {label:'青储机',value:'qcj',active:false},
+    {label:'空压机',value:'kyj',active:false},
+    {label:'扫地车',value:'sdc',active:false},//
+    {label:'叉车',value:'cc',active:false},
+    {label:'叉装车',value:'czc',active:false},
   ])
+
+  function choseDevice(item){
+    deviceTypeList.value.forEach((n,i)=>{
+      n.active = false
+    })
+    item.active = true
+  }
 
   function onChange(e){
     console.log(e)
@@ -199,12 +220,12 @@
   }
 
   .scenarios {
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: left;
     .device {
       width: 26%;
       border: 1px solid #efefef;
@@ -212,28 +233,32 @@
       text-align: center;
       padding: 10px 0 0px 0;
       margin-top: 10px;
+      margin-left: 5%;
+      overflow: hidden;
       >div {
         text-align: center;
         font-size: 11px;
         margin-top: 3px;
         padding-bottom: 8px;
+        width: 100%;
       }
       img {
         margin: 0 auto;
-        width: 66px;
+        height: 50px;
+        object-fit: contain;
       }
     }
     .active {
       border: 1px solid red;
       position: relative;
-      >div{
-      }
+      background: #ffffff;
       .active-corner {
         position: absolute;
         right: -1px;
         bottom: -3px;
         img {
           width: 20px;
+          height: 20px;
         }
       }
     }
