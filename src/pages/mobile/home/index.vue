@@ -1,9 +1,16 @@
 <template>
   <view class="content">
       <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
-        <swiper-item v-for="(item ,index) in info" :key="index" @click="goFilter">
+        <swiper-item  @click="goFilter">
           <view class="swiper-item">
-            <img class="w-full h-full" :src="item.url" />
+            <img class="w-full h-full" :src="info[0].url" />
+            <p>{{info[0].content}}</p>
+          </view>
+        </swiper-item>
+        <swiper-item  @click="goFilter">
+          <view class="swiper-item">
+            <img class="w-full h-full" :src="info[1].url" />
+            <p style="color: #c9c9c9">{{info[1].content}}</p>
           </view>
         </swiper-item>
       </swiper>
@@ -35,29 +42,29 @@
       </h2>
       <div class="product">
         <div @click="goDetail" class="prod-item">
-          <img mode="widthFix" src="../../../static/img/product.png" />
+          <img mode="widthFix" src="../../../static/img/B7-icon.png" />
           <div class="prod-info">
             <div class="info">
-              <div>L9 (STAGE V) </div>
-              <div>2024</div>
+              <div>B7 (169hp) </div>
+              <div>126kw</div>
             </div>
           </div>
         </div>
         <div @click="goDetail" class="prod-item">
-          <img mode="widthFix" src="../../../static/img/product.png" />
+          <img mode="widthFix" src="../../../static/img/B7-icon.png" />
           <div class="prod-info">
             <div class="info">
-              <div>L9 (STAGE V) </div>
-              <div>2024</div>
+              <div>B7 (241hp) </div>
+              <div>180kw</div>
             </div>
           </div>
         </div>
         <div @click="goDetail" class="prod-item">
-          <img mode="widthFix" src="../../../static/img/product.png" />
+          <img mode="widthFix" src="../../../static/img/L9-icon.png" />
           <div class="prod-info">
             <div class="info">
-              <div>L9 (STAGE V) </div>
-              <div>2024</div>
+              <div>L9 (217hp) </div>
+              <div>162kw</div>
             </div>
           </div>
         </div>
@@ -79,11 +86,11 @@
 
   const info = ref( [{
       url: '../../../static/img/swiper1.png',
-      content: '内容 1'
+      content: '传承经典，洞悉创编/打造面向燃油四阶段，全新系列发动机',
     },
     {
       url: '../../../static/img/swiper2.png',
-      content: '内容 2'
+      content: '凭借 100 多年的创新和为全球应用提供动力的经验，康明斯提供了运营商所期望的可靠性和耐用性'
     }
   ])
 
@@ -129,6 +136,15 @@
     align-items: center;
     color: #ccc;
     height: 100%;
+    position: relative;
+    p {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      color: #666;
+      width: 50%;
+      font-size: 12px;
+    }
   }
 
   .title-container {

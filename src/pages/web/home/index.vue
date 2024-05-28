@@ -1,166 +1,253 @@
 <template>
   <view class="content">
-      <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
-        <swiper-item v-for="(item ,index) in info" :key="index" @click="goFilter">
-          <view class="swiper-item">
-            <img class="w-full h-full" :src="item.url" />
-          </view>
-        </swiper-item>
-      </swiper>
-      <h2 class="w-full p-2 fix-margin title-container">
-        <p class="ml-3 font-bold title">适用于各种场景的动力系统</p>
-        <span>从装载机到挖掘机和起重机，康明斯发动机几乎可以在所有可以想象到的应用场景中找到。</span>
-      </h2>
-      <div class="device">
-        <div class="device-item" @click="goFilter">
-          <img mode="widthFix" src="../../../static/img-web/device/device1.png" />
-          <p>挖掘机</p>
+    <div class="header">
+      <img src="../../../static/img/cummins.png">
+      <span @click="goHome">经销商服务网 / 联系我们</span>
+    </div>
+      <div class="info-box" style="height: 76vh;overflow-y: scroll;">
+        <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
+          <swiper-item v-for="(item ,index) in info" :key="index" @click="goFilter">
+            <view class="swiper-item">
+              <img class="w-full h-full" :src="item.url" />
+            </view>
+          </swiper-item>
+        </swiper>
+        <div style="padding: 0 200px">
+          <h2 class="w-full fix-margin title-container">
+            <p class="ml-3 font-bold title">适用于各种场景的动力系统</p>
+            <span>从装载机到挖掘机和起重机，康明斯发动机几乎可以在所有可以想象到的应用场景中找到。</span>
+          </h2>
+          <div class="device">
+            <div class="device-item" @click="goFilter">
+              <img mode="widthFix" src="../../../static/img-web/device/device1.png" />
+              <p>挖掘机</p>
+            </div>
+            <div class="device-item" @click="goFilter">
+              <img mode="widthFix" src="../../../static/img-web/device/device2.png" />
+              <p>压路机</p>
+            </div>
+            <div class="device-item" @click="goFilter">
+              <img mode="widthFix" src="../../../static/img-web/device/device3.png" />
+              <p>收割机</p>
+            </div>
+            <div class="device-item" @click="goFilter">
+              <img mode="widthFix" src="../../../static/img-web/device/device4.png" />
+              <p>喷雾机</p>
+            </div>
+            <div  @click="goFilter" class="more">查看应用场景 ></div>
+          </div>
+
+          <h2 class="w-full title-container mt-16">
+            <p class="ml-3 font-bold title">热门产品</p>
+          </h2>
+          <div class="product">
+            <div class="prod-item">
+              <img mode="widthFix" src="../../../static/img-web/product.png" />
+              <div class="prod-info">
+                <div class="info">
+                  <div>B7 </div>
+                </div>
+                <div class="specs">
+                  <div>
+                    <div class="specs-line1"><img src="../../../static/img/power.png">功率</div>
+                    <div class="specs-line2">169<span>hp</span></div>
+                    <div class="specs-line3">126<span>kw</span></div>
+                  </div>
+                  <div>
+                    <div class="specs-line1"><img src="../../../static/img/torque.png">最大扭矩</div>
+                    <div class="specs-line2">746<span>n·m</span></div>
+                    <div class="specs-line3">1200<span>rpm</span></div>
+                  </div>
+                </div>
+                <div class="btn-des">
+                  <span>履带挖掘机</span>
+                </div>
+              </div>
+              <div class="hover">
+                <div @click="goDetail">查看详情</div>
+              </div>
+            </div>
+            <div class="prod-item">
+              <img mode="widthFix" src="../../../static/img-web/product.png" />
+              <div class="prod-info">
+                <div class="info">
+                  <div>B7 </div>
+                </div>
+                <div class="specs">
+                  <div>
+                    <div class="specs-line1"><img src="../../../static/img/power.png">功率</div>
+                    <div class="specs-line2">241<span>hp</span></div>
+                    <div class="specs-line3">180<span>kw</span></div>
+                  </div>
+                  <div>
+                    <div class="specs-line1"><img src="../../../static/img/torque.png">最大扭矩</div>
+                    <div class="specs-line2">949<span>n·m</span></div>
+                    <div class="specs-line3">1300<span>rpm</span></div>
+                  </div>
+                </div>
+                <div class="btn-des">
+                  <span>履带挖掘机</span>
+                </div>
+              </div>
+              <div class="hover">
+                <div @click="goDetail">查看详情</div>
+              </div>
+            </div>
+            <div class="prod-item">
+              <img mode="widthFix" src="../../../static/img-web/product.png" />
+              <div class="prod-info">
+                <div class="info">
+                  <div>L9 </div>
+                </div>
+                <div class="specs">
+                  <div>
+                    <div class="specs-line1"><img src="../../../static/img/power.png">功率</div>
+                    <div class="specs-line2">217<span>hp</span></div>
+                    <div class="specs-line3">162<span>kw</span></div>
+                  </div>
+                  <div>
+                    <div class="specs-line1"><img src="../../../static/img/torque.png">最大扭矩</div>
+                    <div class="specs-line2">1187<span>n·m</span></div>
+                    <div class="specs-line3">1100-1500<span>rpm</span></div>
+                  </div>
+                </div>
+                <div class="btn-des">
+                  <span>推土机</span>
+                </div>
+              </div>
+              <div class="hover">
+                <div @click="goDetail">查看详情</div>
+              </div>
+            </div>
+            <div class="prod-item">
+              <img mode="widthFix" src="../../../static/img-web/product.png" />
+              <div class="prod-info">
+                <div class="info">
+                  <div>L9 </div>
+                </div>
+                <div class="specs">
+                  <div>
+                    <div class="specs-line1"><img src="../../../static/img/power.png">功率</div>
+                    <div class="specs-line2">394<span>hp</span></div>
+                    <div class="specs-line3">294<span>kw</span></div>
+                  </div>
+                  <div>
+                    <div class="specs-line1"><img src="../../../static/img/torque.png">最大扭矩</div>
+                    <div class="specs-line2">1800<span>n·m</span></div>
+                    <div class="specs-line3">1200-1400<span>rpm</span></div>
+                  </div>
+                </div>
+                <div class="btn-des">
+                  <span>水平定向钻</span>
+                </div>
+              </div>
+              <div class="hover">
+                <div @click="goDetail">查看详情</div>
+              </div>
+            </div>
+            <div class="footer">
+              <div @click="goFilter" class="more">查看更多推荐 ></div>
+            </div>
+          </div>
         </div>
-        <div class="device-item" @click="goFilter">
-          <img mode="widthFix" src="../../../static/img-web/device/device2.png" />
-          <p>压路机</p>
+
+        <div v-show="showMessage" class="message">
+          <div :class="showMessage?'active':''" class="info-part">
+            <div class="info">
+              <h3>留言咨询  <img @click="showMessage = false" style="float: right" src="../../../static/img/close.png"></h3>
+              <h4>B7</h4>
+              <div class="des">126Kw/2000rpm</div>
+              <div class="form">
+                <div class="form-item">
+                  <div class="label"><span class="text-red-500">*</span> 姓名</div>
+                  <input class="uni-input input-item" placeholder="请输入您的姓名" />
+                </div>
+                <div class="form-item">
+                  <div class="label"><span class="text-red-500">*</span> 手机号码</div>
+                  <input class="uni-input input-item" placeholder="请留下您的手机号码" />
+                </div>
+                <div class="form-item">
+                  <div class="label"> 所在地区</div>
+                  <input class="uni-input input-item" placeholder="请留下您的所在地区" />
+                </div>
+                <div class="form-item">
+                  <div class="label"> 使用场景</div>
+                  <input class="uni-input input-item" placeholder="请留下您的使用场景" />
+                </div>
+                <div class="form-item">
+                  <div class="label"><span class="text-red-500">*</span> 留言</div>
+                  <textarea class="input-item text-area"  auto-height placeholder="请输入留言..." maxlength="-1" />
+                </div>
+              </div>
+              <div class="footer-btn fixed-circle" style="margin-top: 50px">
+                <checkbox-group class="checkPrivacy-box">
+                  <label>
+                    <checkbox class="check-box" value="checkPrivacy" color="#FFCC33" style="transform:scale(0.7)"/>同意为您提供产品咨询服务
+                  </label>
+                </checkbox-group>
+                <div @click="showMessage= false,showTips=true"  class="btn-large">提交</div>
+                <div class="privacy">Cummins将严格遵循<span>《隐私政策》</span>保证您的信息安全</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="device-item" @click="goFilter">
-          <img mode="widthFix" src="../../../static/img-web/device/device3.png" />
-          <p>收割机</p>
+
+        <div v-show="showCall" class="message">
+          <div :class="showCall?'active':''" class="info-part">
+            <div class="info">
+              <h3>电话咨询  <img @click="showCall = false" style="float: right" src="../../../static/img/close.png"></h3>
+              <h4>B7</h4>
+              <div class="des">126Kw/2000rpm</div>
+              <div class="contact-list">
+                <div class="contact">
+                  <div class="img-box">
+                    <img src="../../../static/img/user.png">
+                  </div>
+                  <div class="contact-info">
+                    <p>赵日天</p>
+                    <p>AE</p>
+                  </div>
+                  <div class="contact-btn">
+                    <img @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
+                    <img style="margin-right: 0" @click="showCall = true,showCall=false" src="../../../static/img/phone-red.png">
+                  </div>
+                </div>
+                <div class="contact">
+                  <div class="img-box">
+                    <img src="../../../static/img/user.png">
+                  </div>
+                  <div class="contact-info">
+                    <p>赵日天</p>
+                    <p>AE</p>
+                  </div>
+                  <div class="contact-btn">
+                    <img @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
+                    <img style="margin-right: 0" @click="showCall = true,showCall=false" src="../../../static/img/phone-red.png">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="device-item" @click="goFilter">
-          <img mode="widthFix" src="../../../static/img-web/device/device4.png" />
-          <p>喷雾机</p>
+        <div v-show="showTips" class="message" @click="showTips=false">
+          <div :class="showTips?'active':''" class="tips">
+            <h3>提交成功</h3>
+            <p>
+              您的康明斯专属客户经理将会第一时间联系您！
+            </p>
+            <div>确定</div>
+          </div>
         </div>
-        <div  @click="goFilter" class="more">查看应用场景 ></div>
       </div>
 
-      <h2 class="w-full p-2 title-container mt-16">
-        <p class="ml-3 font-bold title">热门产品</p>
-      </h2>
-      <div class="product">
-        <div class="prod-item">
-          <img mode="widthFix" src="../../../static/img-web/product.png" />
-          <div class="prod-info">
-            <div class="info">
-              <div>X15 </div>
-            </div>
-            <div class="specs">
-              <div>
-                <div class="specs-line1"><img src="../../../static/img/power.png">功率</div>
-                <div class="specs-line2">321<span>hp</span></div>
-                <div class="specs-line3">250<span>kw</span></div>
-              </div>
-              <div>
-                <div class="specs-line1"><img src="../../../static/img/torque.png">最大扭矩</div>
-                <div class="specs-line2">1400<span>n·m</span></div>
-                <div class="specs-line3">1400-1500<span>rpm</span></div>
-              </div>
-            </div>
-            <div class="btn-des">
-              <span>履带挖掘机</span>
-              <span>旋挖钻机</span>
-              <span>采棉机</span>
-            </div>
-          </div>
-          <div class="hover">
-            <div @click="goDetail">查看详情</div>
-          </div>
-        </div>
-        <div class="prod-item">
-          <img mode="widthFix" src="../../../static/img-web/product.png" />
-          <div class="prod-info">
-            <div class="info">
-              <div>X15 </div>
-            </div>
-            <div class="specs">
-              <div>
-                <div class="specs-line1"><img src="../../../static/img/power.png">功率</div>
-                <div class="specs-line2">321<span>hp</span></div>
-                <div class="specs-line3">250<span>kw</span></div>
-              </div>
-              <div>
-                <div class="specs-line1"><img src="../../../static/img/torque.png">最大扭矩</div>
-                <div class="specs-line2">1400<span>n·m</span></div>
-                <div class="specs-line3">1400-1500<span>rpm</span></div>
-              </div>
-            </div>
-            <div class="btn-des">
-              <span>履带挖掘机</span>
-              <span>旋挖钻机</span>
-              <span>采棉机</span>
-            </div>
-          </div>
-          <div class="hover">
-            <div @click="goDetail">查看详情</div>
-          </div>
-        </div>
-        <div class="prod-item">
-          <img mode="widthFix" src="../../../static/img-web/product.png" />
-          <div class="prod-info">
-            <div class="info">
-              <div>X15 </div>
-            </div>
-            <div class="specs">
-              <div>
-                <div class="specs-line1"><img src="../../../static/img/power.png">功率</div>
-                <div class="specs-line2">321<span>hp</span></div>
-                <div class="specs-line3">250<span>kw</span></div>
-              </div>
-              <div>
-                <div class="specs-line1"><img src="../../../static/img/torque.png">最大扭矩</div>
-                <div class="specs-line2">1400<span>n·m</span></div>
-                <div class="specs-line3">1400-1500<span>rpm</span></div>
-              </div>
-            </div>
-            <div class="btn-des">
-              <span>履带挖掘机</span>
-              <span>旋挖钻机</span>
-              <span>采棉机</span>
-            </div>
-          </div>
-          <div class="hover">
-            <div @click="goDetail">查看详情</div>
-          </div>
-        </div>
-        <div class="prod-item">
-          <img mode="widthFix" src="../../../static/img-web/product.png" />
-          <div class="prod-info">
-            <div class="info">
-              <div>X15 </div>
-            </div>
-            <div class="specs">
-              <div>
-                <div class="specs-line1"><img src="../../../static/img/power.png">功率</div>
-                <div class="specs-line2">321<span>hp</span></div>
-                <div class="specs-line3">250<span>kw</span></div>
-              </div>
-              <div>
-                <div class="specs-line1"><img src="../../../static/img/torque.png">最大扭矩</div>
-                <div class="specs-line2">1400<span>n·m</span></div>
-                <div class="specs-line3">1400-1500<span>rpm</span></div>
-              </div>
-            </div>
-            <div class="btn-des">
-              <span>履带挖掘机</span>
-              <span>旋挖钻机</span>
-              <span>采棉机</span>
-            </div>
-          </div>
-          <div class="hover">
-            <div @click="goDetail">查看详情</div>
-          </div>
-        </div>
-        <div class="footer">
-          <div @click="goFilter" class="more">查看更多推荐 ></div>
-        </div>
-
-      </div>
-
-      <div class="footer-btn">
-        <div class="btn-mid">
-          <div><img src="../../../static/img/consultation.png"></div>
-          留言咨询</div>
-        <div class="btn-mid">
-          <div><img src="../../../static/img/phone.png"></div>
-          电话咨询</div>
-      </div>
+    <div class="pos-footer-btn">
+      <div class="btn-mid">
+        <div @click="showMessage = true"><img src="../../../static/img/consultation.png"></div>
+        留言咨询</div>
+      <div class="btn-mid">
+        <div @click="showCall = true"><img src="../../../static/img/phone.png"></div>
+        电话咨询</div>
+    </div>
   </view>
 </template>
 
@@ -169,6 +256,9 @@
   const user = useUserStore()
 
   let current = ref(0)
+  let showMessage = ref(false)
+  let showCall = ref(false)
+  let showTips = ref(false)
 
   const info = ref( [{
       url: '../../../static/img-web/swiper1.png',
@@ -179,6 +269,12 @@
       content: '内容 2'
     }
   ])
+
+  function goHome(){
+    uni.reLaunch({
+      url:'/pages/web/home/index'
+    })
+  }
 
   function goFilter(){
     uni.navigateTo({
@@ -204,17 +300,29 @@
 
 
 <style lang="scss" scoped>
-uni-page-head {
-  display: none !important;
+.header {
+  background: #000000;
+  padding: 15px;
+  img {
+    cursor: pointer;
+  }
+  span {
+    color: #ffffff;
+    margin-left: 20px;
+    position: relative;
+    top: -8px;
+  }
 }
 .content {
-  background: #ffffff;
+  .info-box {
 
+  }
+  background: #ffffff;
   .fix-margin {
     margin-top: 30px;
   }
   .swiper-box {
-    height: 450px;
+    height: 400px;
     width: 100%;
   }
 
@@ -417,7 +525,193 @@ uni-page-head {
     }
   }
 
-  .footer-btn {
+  .specification,.message {
+    z-index:99;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    background: rgba(1, 12, 23, 0.57);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    overflow: hidden;
+    .info-part {
+      height: 700px;
+      width: 800px;
+      background: #ffffff;
+      position: absolute;
+      bottom: -100%;
+      border-radius: 20px;
+      h3 {
+        text-align: center;
+        font-size: 18px;
+        margin-top: 20px;
+        img {
+          cursor: pointer;
+        }
+      }
+      h4 {
+        font-size: 13px;
+        margin-top: 10px;
+      }
+      .specs.active {
+        border: 1px solid red;
+        background: rgba(218, 41, 28, 0.04);
+        .active-corner {
+          position: absolute;
+          right: -17px;
+          bottom: -16px;
+          img {
+            width: 20px;
+          }
+        }
+      }
+      .info {
+        width: 95%;
+        margin: 0 auto;
+        .info-list {
+          height: 550px;
+          overflow-y: scroll;
+        }
+      }
+    }
+    .active {
+      animation:show .5s forwards;
+    }
+    .hide {
+      animation:hide .5s forwards;
+    }
+    @keyframes show{
+      to {
+        bottom: 20%;
+        opacity: 1;
+      }
+    }
+    @keyframes hide{
+      to {
+        bottom: -80%;
+        opacity: 0;
+      }
+    }
+  }
+
+  .message {
+    .info-part {
+      background: #ffffff;
+      position: absolute;
+      bottom: -80%;
+      height: 700px;
+      .active {
+        animation:show .5s forwards;
+      }
+      .contact-list {
+        .contact {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: row;
+          justify-content: space-around;
+          height: 45px;
+          border-radius: 8px;
+          background: rgba(248, 248, 248, 1);
+          padding: 15px;
+          margin-top: 10px;
+          .img-box {
+            width: 20%;
+            .img {
+              height: 40px;
+              width: 40px;
+            }
+          }
+          .contact-info {
+            width: 30%;
+          }
+          .contact-btn {
+            width: 50%;
+            text-align: right;
+            img {
+              width: 44px;
+              height: 44px;
+              margin-right: 20px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      @keyframes show{
+        to {
+          bottom: 20%;
+          opacity: 1;
+        }
+      }
+      @keyframes hide{
+        to {
+          bottom: -80%;
+          opacity: 0;
+        }
+      }
+      .des {
+        font-size: 13px;
+        color: #999;
+        margin-top: 5px;
+      }
+
+      .form {
+        .form-item {
+          .label {
+            margin-top: 15px;
+          }
+          .input-item {
+            width: 90%;
+            margin-top: 10px;
+            background: rgba(239, 239, 239, 0.47);
+            padding: 10px;
+            border-radius: 3px;
+          }
+          .text-area {
+            width: 90%;
+          }
+        }
+      }
+    }
+    .tips {
+      width: 500px;
+      height: 200px;
+      background: #ffffff;
+      margin: 0 auto;
+      border-radius: 10px;
+      padding: 10px;
+      position: relative;
+      top: 20%;
+      h3 {
+        text-align: center;
+        font-size: 18px;
+        margin-top: 10px;
+      }
+      p {
+        font-size: 15px;
+        margin-top: 10px;
+        padding: 10px;
+      }
+      div {
+        width: 400px;
+        margin: 0 auto;
+        text-align: center;
+        height: 45px;
+        background: rgba(218, 41, 28, 1);
+        color: #ffffff;
+        line-height: 45px;
+        border-radius: 3px;
+        margin-top: 50px;
+      }
+    }
+  }
+
+  .pos-footer-btn {
     margin-top: 20px;
     display: flex;
     flex-direction: row;
@@ -426,6 +720,9 @@ uni-page-head {
     padding-bottom: 30px;
     padding-top: 20px;
     background: #000000;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     .btn-mid {
       img,image {
         width: 30px;
@@ -446,6 +743,68 @@ uni-page-head {
     }
     >div {
 
+    }
+  }
+
+  .footer-btn {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    .btn-large{
+      width: 93%;
+      margin: 0 auto;
+      text-align: center;
+      height: 45px;
+      background: rgba(218, 41, 28, 1);
+      color: #ffffff;
+      line-height: 45px;
+      border-radius: 3px;
+    }
+    .btn-mid {
+      margin-top: 10px;
+      width: 43%;
+      text-align: center;
+      border: 1px solid rgba(218, 41, 28, 1);
+      color: #fff;
+      line-height: 40px;
+      height: 40px;
+      border-radius: 3px;
+      background: rgba(218, 41, 28, 1);
+      img {
+        position: relative;
+        top: 6px;
+        margin-right: 5px;
+      }
+    }
+    .privacy {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #999999;
+      span {
+        color: #59a0ff;
+      }
+    }
+    .checkPrivacy-box {
+      text-align: left;
+      width: 90%;
+      font-size: 13px;
+      margin-bottom: 5px;
+      .check-box {
+        position: relative;
+        top: -1px;
+      }
+    }
+  }
+  .fixed-circle {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+    .btn-large {
+      border-radius: 20px;
+      cursor: pointer;
     }
   }
 }

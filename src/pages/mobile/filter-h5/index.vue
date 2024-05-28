@@ -41,9 +41,9 @@
       <span class="ml-3 font-bold title">生产工厂</span>
     </h2>
     <div class="radio">
-      <div class="active">BFCEC</div>
-      <div>DCEC</div>
-      <div>GCIC</div>
+      <div class="active">东风康明斯</div>
+      <div>西安康明斯</div>
+      <div>福田康明斯</div>
     </div>
     <h2 class="w-full p-2 title-container mt-2">
       <span class="ml-3 font-bold title">额定功率</span>

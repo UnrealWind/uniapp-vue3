@@ -3,7 +3,7 @@
     <div class="bg">
       <div class="chose">
         <div class="chose-item">挖掘机<img src="../../../static/img/delete.png"></div>
-        <div class="chose-item">40-50T<img src="../../../static/img/delete.png"></div>
+        <div class="chose-item">100-400KW<img src="../../../static/img/delete.png"></div>
         <div class="clear"><img src="../../../static/img/clear.png">清除</div>
       </div>
       <div class="describe">
@@ -18,42 +18,76 @@
       >
         <div class="list-item">
           <div class="img-box">
-            <img src="../../../static/img/product.png">
-            <div class="des">x15</div>
+            <img src="../../../static/img/B7-icon.png">
+            <div class="des">B7</div>
           </div>
           <div class="info">
-            <div class="scenarios"><span><img src="../../../static/img/power.png"> 功率 300kw/400hp</span></div>
-            <div class="scenarios"><span><img src="../../../static/img/torque.png"> 最大扭矩 2000Nm/1400-1500rpm</span></div>
+            <div class="scenarios"><span><img src="../../../static/img/power.png"> 功率 126kw/169hp</span></div>
+            <div class="scenarios"><span><img src="../../../static/img/torque.png"> 最大扭矩 746Nm/1200rpm</span></div>
             <div class="device-type">
               <span>履带挖掘机</span>
-              <span>旋挖钻机</span>
-              <span>采棉机</span>
             </div>
             <div class="produce">
-              <span>福田康明斯生产</span>
+              <span>广西康明斯生产</span>
             </div>
-            <div class="right-top"> &nbsp;&nbsp;&nbsp;EPA 2024</div>
+<!--            <div class="right-top"> &nbsp;&nbsp;&nbsp;EPA 2024</div>-->
             <div @click="goDetail" class="detail-btn"></div>
           </div>
         </div>
 
         <div class="list-item">
           <div class="img-box">
-            <img src="../../../static/img/product.png">
-            <div class="des">x15</div>
+            <img src="../../../static/img/B7-icon.png">
+            <div class="des">B7</div>
           </div>
           <div class="info">
-            <div class="scenarios"><span><img src="../../../static/img/power.png"> 功率 300kw/400hp</span></div>
-            <div class="scenarios"><span><img src="../../../static/img/torque.png"> 最大扭矩 2000Nm/1400-1500rpm</span></div>
+            <div class="scenarios"><span><img src="../../../static/img/power.png"> 功率 241kw/180hp</span></div>
+            <div class="scenarios"><span><img src="../../../static/img/torque.png"> 最大扭矩 949Nm/1300rpm</span></div>
             <div class="device-type">
               <span>履带挖掘机</span>
-              <span>旋挖钻机</span>
-              <span>采棉机</span>
             </div>
             <div class="produce">
-              <span>福田康明斯生产</span>
+              <span>广西康明斯生产</span>
             </div>
-            <div class="right-top"> &nbsp;&nbsp;&nbsp;EPA 2024</div>
+<!--            <div class="right-top"> &nbsp;&nbsp;&nbsp;EPA 2024</div>-->
+            <div @click="goDetail" class="detail-btn"></div>
+          </div>
+        </div>
+
+        <div class="list-item">
+          <div class="img-box">
+            <img src="../../../static/img/L9-icon.png">
+            <div class="des">L9</div>
+          </div>
+          <div class="info">
+            <div class="scenarios"><span><img src="../../../static/img/power.png"> 功率 217kw/162hp</span></div>
+            <div class="scenarios"><span><img src="../../../static/img/torque.png"> 最大扭矩 1187Nm/1100-1500rpm</span></div>
+            <div class="device-type">
+              <span>推土机</span>
+            </div>
+            <div class="produce">
+              <span>广西康明斯生产</span>
+            </div>
+            <!--            <div class="right-top"> &nbsp;&nbsp;&nbsp;EPA 2024</div>-->
+            <div @click="goDetail" class="detail-btn"></div>
+          </div>
+        </div>
+
+        <div class="list-item">
+          <div class="img-box">
+            <img src="../../../static/img/L9-icon.png">
+            <div class="des">L9</div>
+          </div>
+          <div class="info">
+            <div class="scenarios"><span><img src="../../../static/img/power.png"> 功率 394kw/294hp</span></div>
+            <div class="scenarios"><span><img src="../../../static/img/torque.png"> 最大扭矩 1800Nm/1200-1400rpm</span></div>
+            <div class="device-type">
+              <span>水平定向钻</span>
+            </div>
+            <div class="produce">
+              <span>广西康明斯生产</span>
+            </div>
+            <!--            <div class="right-top"> &nbsp;&nbsp;&nbsp;EPA 2024</div>-->
             <div @click="goDetail" class="detail-btn"></div>
           </div>
         </div>

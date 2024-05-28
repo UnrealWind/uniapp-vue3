@@ -45,13 +45,17 @@
 			{
 				"path": "product/index",
 				"style": {
-					"navigationBarTitleText": "产品列表"
+					"app-plus":{
+						"titleNView": false
+					}
 				}
 			},
 			{
 				"path": "detail/index",
 				"style": {
-					"navigationBarTitleText": "产品详情"
+					"app-plus":{
+						"titleNView": false
+					}
 				}
 			}
 		]

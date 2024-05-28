@@ -1,12 +1,16 @@
 <template>
   <view class="content">
-    <div style="height: 79vh;overflow-y: scroll">
+    <div class="header">
+      <img @click="goHome" src="../../../static/img/cummins.png">
+      <span>经销商服务网 / 联系我们</span>
+    </div>
+    <div style="height: 76vh;overflow-y: scroll;padding: 0 150px">
       <div class="detail-info">
         <div class="detail-left">
           <img mode="widthFix" src="../../../static/img-web/product.png" />
         </div>
         <div class="detail-right">
-          <h2>x15 ( 2024 )</h2>
+          <h2>B7 ( 126kw/169hp )</h2>
           <h3>
             <span>规格</span>
             <span @click="showSpecification = true" style="cursor: pointer" class="right-fix text-red-500">选择规格 (共六款) > </span>
@@ -16,16 +20,16 @@
               <div><img src="../../../static/img-web/power.png"></div>
               <div>
                 <div class="specs-line1">额定功率</div>
-                <div class="specs-line2">321<span>hp</span></div>
-                <div class="specs-line3">250<span>kw</span></div>
+                <div class="specs-line2">169<span>hp</span></div>
+                <div class="specs-line3">126<span>kw</span></div>
               </div>
             </div>
             <div>
               <div><img src="../../../static/img-web/torque.png"></div>
               <div>
                 <div class="specs-line1">扭矩</div>
-                <div class="specs-line2">1400<span>n·m</span></div>
-                <div class="specs-line3">1400-1500<span>rpm</span></div>
+                <div class="specs-line2">746<span>n·m</span></div>
+                <div class="specs-line3">1200<span>rpm</span></div>
               </div>
             </div>
             <div>
@@ -34,21 +38,21 @@
               </div>
               <div>
                 <div class="specs-line1">额定转速</div>
-                <div class="specs-line2">2100<span>rpm</span></div>
+                <div class="specs-line2">2000<span>rpm</span></div>
               </div>
             </div>
           </div>
           <div class="detail-para">
             <h3>详细参数</h3>
-            <div><img src="../../../static/img/size.png">尺寸（长*宽*高 mm）<span>1295*992*1000</span></div>
-            <div><img src="../../../static/img/weight.png">重量<span>900kg</span></div>
+            <div><img src="../../../static/img/size.png">尺寸（长*宽*高 mm）<span>1043*978*576</span></div>
+            <div><img src="../../../static/img/weight.png">重量<span>552kg</span></div>
             <div><img src="../../../static/img/way.png">技术路线<span>DOC+DPF+SCR</span></div>
           </div>
           <div class="scenario">
             <h3>适用应用场景</h3>
-            <div><i>履带挖掘机</i><span >45-49T</span><span class="text-gray-500">标准吨位：</span></div>
-            <div><i>旋挖钻机</i><span>360R</span><span class="text-gray-500">标称转矩：</span></div>
-            <div><i>采棉机</i><span>6</span><span class="text-gray-500">作业行数（行箱式）：</span></div>
+            <div><i>履带挖掘机</i><span >20-21T</span><span class="text-gray-500">标准吨位：</span></div>
+<!--            <div><i>旋挖钻机</i><span>360R</span><span class="text-gray-500">标称转矩：</span></div>-->
+<!--            <div><i>采棉机</i><span>6</span><span class="text-gray-500">作业行数（行箱式）：</span></div>-->
           </div>
         </div>
         <div class="tec">
@@ -69,16 +73,16 @@
                 <div><img src="../../../static/img-web/power.png"></div>
                 <div>
                   <div class="specs-line1">额定功率</div>
-                  <div class="specs-line2">321<span>hp</span></div>
-                  <div class="specs-line3">250<span>kw</span></div>
+                  <div class="specs-line2">169<span>hp</span></div>
+                  <div class="specs-line3">126<span>kw</span></div>
                 </div>
               </div>
               <div>
                 <div><img src="../../../static/img-web/torque.png"></div>
                 <div>
                   <div class="specs-line1">扭矩</div>
-                  <div class="specs-line2">1400<span>n·m</span></div>
-                  <div class="specs-line3">1400-1500<span>rpm</span></div>
+                  <div class="specs-line2">746<span>n·m</span></div>
+                  <div class="specs-line3">1200<span>rpm</span></div>
                 </div>
               </div>
               <div style="position:relative;">
@@ -87,7 +91,7 @@
                 </div>
                 <div>
                   <div class="specs-line1">额定转速</div>
-                  <div class="specs-line2">2100<span>rpm</span></div>
+                  <div class="specs-line2">2000<span>rpm</span></div>
                 </div>
                 <span class="active-corner">
                   <img src="../../../static/img/active-corner.png">
@@ -100,16 +104,16 @@
                 <div><img src="../../../static/img-web/power.png"></div>
                 <div>
                   <div class="specs-line1">额定功率</div>
-                  <div class="specs-line2">321<span>hp</span></div>
-                  <div class="specs-line3">250<span>kw</span></div>
+                  <div class="specs-line2">174<span>hp</span></div>
+                  <div class="specs-line3">130<span>kw</span></div>
                 </div>
               </div>
               <div>
                 <div><img src="../../../static/img-web/torque.png"></div>
                 <div>
                   <div class="specs-line1">扭矩</div>
-                  <div class="specs-line2">1400<span>n·m</span></div>
-                  <div class="specs-line3">1400-1500<span>rpm</span></div>
+                  <div class="specs-line2">850<span>n·m</span></div>
+                  <div class="specs-line3">1300<span>rpm</span></div>
                 </div>
               </div>
               <div>
@@ -118,7 +122,7 @@
                 </div>
                 <div>
                   <div class="specs-line1">额定转速</div>
-                  <div class="specs-line2">2100<span>rpm</span></div>
+                  <div class="specs-line2">2000<span>rpm</span></div>
                 </div>
               </div>
             </div>
@@ -127,16 +131,16 @@
                 <div><img src="../../../static/img-web/power.png"></div>
                 <div>
                   <div class="specs-line1">额定功率</div>
-                  <div class="specs-line2">321<span>hp</span></div>
-                  <div class="specs-line3">250<span>kw</span></div>
+                  <div class="specs-line2">194<span>hp</span></div>
+                  <div class="specs-line3">145<span>kw</span></div>
                 </div>
               </div>
               <div>
                 <div><img src="../../../static/img-web/torque.png"></div>
                 <div>
                   <div class="specs-line1">扭矩</div>
-                  <div class="specs-line2">1400<span>n·m</span></div>
-                  <div class="specs-line3">1400-1500<span>rpm</span></div>
+                  <div class="specs-line2">850<span>n·m</span></div>
+                  <div class="specs-line3">1200<span>rpm</span></div>
                 </div>
               </div>
               <div>
@@ -145,7 +149,7 @@
                 </div>
                 <div>
                   <div class="specs-line1">额定转速</div>
-                  <div class="specs-line2">2100<span>rpm</span></div>
+                  <div class="specs-line2">2000<span>rpm</span></div>
                 </div>
               </div>
             </div>
@@ -154,16 +158,16 @@
                 <div><img src="../../../static/img-web/power.png"></div>
                 <div>
                   <div class="specs-line1">额定功率</div>
-                  <div class="specs-line2">321<span>hp</span></div>
-                  <div class="specs-line3">250<span>kw</span></div>
+                  <div class="specs-line2">201<span>hp</span></div>
+                  <div class="specs-line3">150<span>kw</span></div>
                 </div>
               </div>
               <div>
                 <div><img src="../../../static/img-web/torque.png"></div>
                 <div>
                   <div class="specs-line1">扭矩</div>
-                  <div class="specs-line2">1400<span>n·m</span></div>
-                  <div class="specs-line3">1400-1500<span>rpm</span></div>
+                  <div class="specs-line2">890<span>n·m</span></div>
+                  <div class="specs-line3">1200<span>rpm</span></div>
                 </div>
               </div>
               <div>
@@ -172,7 +176,7 @@
                 </div>
                 <div>
                   <div class="specs-line1">额定转速</div>
-                  <div class="specs-line2">2100<span>rpm</span></div>
+                  <div class="specs-line2">2000<span>rpm</span></div>
                 </div>
               </div>
             </div>
@@ -181,16 +185,16 @@
                 <div><img src="../../../static/img-web/power.png"></div>
                 <div>
                   <div class="specs-line1">额定功率</div>
-                  <div class="specs-line2">321<span>hp</span></div>
-                  <div class="specs-line3">250<span>kw</span></div>
+                  <div class="specs-line2">232<span>hp</span></div>
+                  <div class="specs-line3">173<span>kw</span></div>
                 </div>
               </div>
               <div>
                 <div><img src="../../../static/img-web/torque.png"></div>
                 <div>
                   <div class="specs-line1">扭矩</div>
-                  <div class="specs-line2">1400<span>n·m</span></div>
-                  <div class="specs-line3">1400-1500<span>rpm</span></div>
+                  <div class="specs-line2">949<span>n·m</span></div>
+                  <div class="specs-line3">1200<span>rpm</span></div>
                 </div>
               </div>
               <div>
@@ -199,7 +203,7 @@
                 </div>
                 <div>
                   <div class="specs-line1">额定转速</div>
-                  <div class="specs-line2">2100<span>rpm</span></div>
+                  <div class="specs-line2">2000<span>rpm</span></div>
                 </div>
               </div>
             </div>
@@ -208,16 +212,16 @@
                 <div><img src="../../../static/img-web/power.png"></div>
                 <div>
                   <div class="specs-line1">额定功率</div>
-                  <div class="specs-line2">321<span>hp</span></div>
-                  <div class="specs-line3">250<span>kw</span></div>
+                  <div class="specs-line2">241<span>hp</span></div>
+                  <div class="specs-line3">180<span>kw</span></div>
                 </div>
               </div>
               <div>
                 <div><img src="../../../static/img-web/torque.png"></div>
                 <div>
                   <div class="specs-line1">扭矩</div>
-                  <div class="specs-line2">1400<span>n·m</span></div>
-                  <div class="specs-line3">1400-1500<span>rpm</span></div>
+                  <div class="specs-line2">949<span>n·m</span></div>
+                  <div class="specs-line3">1300<span>rpm</span></div>
                 </div>
               </div>
               <div>
@@ -226,7 +230,7 @@
                 </div>
                 <div>
                   <div class="specs-line1">额定转速</div>
-                  <div class="specs-line2">2100<span>rpm</span></div>
+                  <div class="specs-line2">2000<span>rpm</span></div>
                 </div>
               </div>
             </div>
@@ -242,8 +246,8 @@
       <div :class="showMessage?'active':''" class="info-part">
         <div class="info">
           <h3>留言咨询  <img @click="showMessage = false" style="float: right" src="../../../static/img/close.png"></h3>
-          <h4>X15 Efficiency Series</h4>
-          <div class="des">250Kw/1900rpm</div>
+          <h4>B7</h4>
+          <div class="des">126Kw/2000rpm</div>
           <div class="form">
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 姓名</div>
@@ -252,6 +256,14 @@
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 手机号码</div>
               <input class="uni-input input-item" placeholder="请留下您的手机号码" />
+            </div>
+            <div class="form-item">
+              <div class="label"> 所在地区</div>
+              <input class="uni-input input-item" placeholder="请留下您的所在地区" />
+            </div>
+            <div class="form-item">
+              <div class="label"> 使用场景</div>
+              <input class="uni-input input-item" placeholder="请留下您的使用场景" />
             </div>
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 留言</div>
@@ -264,7 +276,7 @@
                 <checkbox class="check-box" value="checkPrivacy" color="#FFCC33" style="transform:scale(0.7)"/>同意为您提供产品咨询服务
               </label>
             </checkbox-group>
-            <div @click="showMessage= false"  class="btn-large">提交</div>
+            <div @click="showMessage= false,showTips=true"  class="btn-large">提交</div>
             <div class="privacy">Cummins将严格遵循<span>《隐私政策》</span>保证您的信息安全</div>
           </div>
         </div>
@@ -275,8 +287,8 @@
       <div :class="showCall?'active':''" class="info-part">
         <div class="info">
           <h3>电话咨询  <img @click="showCall = false" style="float: right" src="../../../static/img/close.png"></h3>
-          <h4>X15 Efficiency Series</h4>
-          <div class="des">250Kw/1900rpm</div>
+          <h4>B7</h4>
+          <div class="des">126Kw/2000rpm</div>
           <div class="contact-list">
             <div class="contact">
               <div class="img-box">
@@ -308,6 +320,15 @@
         </div>
       </div>
     </div>
+    <div v-show="showTips" class="message" @click="showTips=false">
+      <div :class="showTips?'active':''" class="tips">
+        <h3>提交成功</h3>
+        <p>
+          您的康明斯专属客户经理将会第一时间联系您！
+        </p>
+        <div>确定</div>
+      </div>
+    </div>
     <div class="pos-footer-btn">
       <div class="btn-mid">
         <div @click="showMessage = true"><img src="../../../static/img/consultation.png"></div>
@@ -329,12 +350,19 @@
   let showSpecification =ref(false)
   let showMessage = ref(false)
   let showCall = ref(false)
+  let showTips = ref(false)
 
   const info = ref( [{
-      url: '../../../static/img/swiper1.png',
+      url: '../../../static/img/swiper.png',
       content: '内容 1'
     },
   ])
+
+  function goHome(){
+    uni.reLaunch({
+      url:'/pages/web/home/index'
+    })
+  }
 
   function change(e){
     current.value = e.detail.current;
@@ -348,8 +376,43 @@
 
 
 <style lang="scss" scoped>
+
+::-webkit-scrollbar{
+  width:10px;
+  height:10px;
+  /**/
+}
+::-webkit-scrollbar-track{
+  background: rgb(239, 239, 239);
+  border-radius:2px;
+}
+::-webkit-scrollbar-thumb{
+  background: #bfbfbf;
+  border-radius:10px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: #333;
+}
+::-webkit-scrollbar-corner{
+  background: #179a16;
+}
+
+
+.header {
+  background: #000000;
+  padding: 15px;
+  img {
+    cursor: pointer;
+  }
+  span {
+    color: #ffffff;
+    margin-left: 20px;
+    position: relative;
+    top: -8px;
+  }
+}
+
 .content {
-  background: url("../../../static/img/background.png") no-repeat;
   background-size: 100% 100%;
   .swiper-box {
     height: 240px;
@@ -414,7 +477,7 @@
       padding-left: 15px;
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: left;
       flex-wrap: wrap;
       >div {
         width: 33%;
@@ -483,7 +546,7 @@
     margin-top: 15px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: left;
     flex-wrap: wrap;
     h3 {
       border-top: 1px solid #efefef;
@@ -494,10 +557,11 @@
     div {
       margin-top: 10px;
       font-size: 13px;
-      width: 30%;
+      width: 20%;
       height: 30px;
       line-height: 30px;
       padding: 0 20px 0 0;
+      margin-left: 30px;
       i {
         border: 1px solid #DA291CFF;
         color: rgba(218, 41, 28, 1);
@@ -545,7 +609,7 @@
       border-radius: 20px;
       h3 {
         text-align: center;
-        font-size: 15px;
+        font-size: 18px;
         margin-top: 20px;
         img {
           cursor: pointer;
@@ -560,7 +624,7 @@
         background: rgba(218, 41, 28, 0.04);
         .active-corner {
           position: absolute;
-          right: -17px;
+          right: -13px;
           bottom: -16px;
           img {
             width: 20px;
@@ -573,6 +637,7 @@
         .info-list {
           height: 550px;
           overflow-y: scroll;
+          padding-right: 10px;
         }
       }
     }
@@ -601,7 +666,7 @@
       background: #ffffff;
       position: absolute;
       bottom: -80%;
-      height: 600px;
+      height: 700px;
       .active {
         animation:show .5s forwards;
       }
@@ -673,6 +738,37 @@
             width: 90%;
           }
         }
+      }
+    }
+    .tips {
+      width: 500px;
+      height: 200px;
+      background: #ffffff;
+      margin: 0 auto;
+      border-radius: 10px;
+      padding: 10px;
+      position: relative;
+      top: 20%;
+      h3 {
+        text-align: center;
+        font-size: 18px;
+        margin-top: 10px;
+      }
+      p {
+        font-size: 15px;
+        margin-top: 10px;
+        padding: 10px;
+      }
+      div {
+        width: 400px;
+        margin: 0 auto;
+        text-align: center;
+        height: 45px;
+        background: rgba(218, 41, 28, 1);
+        color: #ffffff;
+        line-height: 45px;
+        border-radius: 3px;
+        margin-top: 50px;
       }
     }
   }
