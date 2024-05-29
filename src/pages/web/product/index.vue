@@ -2,12 +2,15 @@
   <view class="content">
     <div class="header">
       <img @click="goHome" src="../../../static/img/cummins.png">
-      <span>经销商服务网 / 联系我们</span>
+      <span>
+        <span style="cursor: pointer" @click="goProtal">经销商服务网</span>
+        <span @click="showMessage = true" style="cursor: pointer">联系我们</span>
+      </span>
     </div>
     <div class="content-box">
       <div class="content-item">
         <h2 class="w-full p-2 title-container">
-          <span class="ml-3 font-bold title">应用场景 <span @click="changeScenarios"> > </span></span>
+          <span class="ml-3 font-bold title">应用场景</span>
         </h2>
         <div class="radio">
           <div  v-for="(item,index) in deviceTypeList" :class="item.active? 'active':''" @click="choseDevice(item)">{{item.label}}</div>
@@ -43,16 +46,6 @@
               <div class="custom-button">{{ priceValue[1] }}</div>
             </template>
           </Slider>
-        </div>
-        <h2 class="w-full p-2 title-container mt-2">
-          <span class="ml-3 font-bold title">排放控制技术路线</span>
-        </h2>
-        <div class="radio">
-          <div class="active">EGR</div>
-          <div>DOC</div>
-          <div>DPF</div>
-          <div>SCR</div>
-          <div>高压共轨</div>
         </div>
         <div class="btn-box">
           <Button class="w-full" style="margin-top: 15px"  type="danger" size="small" @click="changeScenarios">重置</Button>
@@ -279,17 +272,41 @@
 
 
 <style lang="scss" scoped>
+
+::-webkit-scrollbar{
+  width:10px;
+  height:10px;
+  /**/
+}
+::-webkit-scrollbar-track{
+  background: rgb(239, 239, 239);
+  border-radius:2px;
+}
+::-webkit-scrollbar-thumb{
+  background: #bfbfbf;
+  border-radius:10px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: #333;
+}
+::-webkit-scrollbar-corner{
+  background: #179a16;
+}
+
 .header {
   background: #000000;
-  padding: 15px;
+  padding: 15px 0 8px 15px;
   img {
     cursor: pointer;
+    width: 25px;
   }
   span {
     color: #ffffff;
     margin-left: 20px;
+    height: 20px;
+    line-height: 20px;
     position: relative;
-    top: -8px;
+    top: -3px;
   }
 }
 .content {
@@ -507,7 +524,7 @@
     justify-content: left;
     flex-wrap: wrap;
     >div {
-      margin-top: 5px;
+      margin-top: 10px;
       width: 28%;
       font-size: 12px;
       background: #ffffff;
@@ -518,7 +535,7 @@
       cursor: pointer;
     }
     .active {
-      border:1px solid rgba(218, 41, 28, 1);
+      box-shadow:0px 0px 0px 1px red inset;
       color: rgba(218, 41, 28, 1);
     }
   }

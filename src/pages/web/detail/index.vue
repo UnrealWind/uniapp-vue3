@@ -2,7 +2,10 @@
   <view class="content">
     <div class="header">
       <img @click="goHome" src="../../../static/img/cummins.png">
-      <span>经销商服务网 / 联系我们</span>
+      <span>
+        <span style="cursor: pointer" @click="goProtal">经销商服务网</span>
+        <span @click="showMessage = true" style="cursor: pointer">联系我们</span>
+      </span>
     </div>
     <div style="height: 76vh;overflow-y: scroll;padding: 0 150px">
       <div class="detail-info">
@@ -331,11 +334,21 @@
     </div>
     <div class="pos-footer-btn">
       <div class="btn-mid">
-        <div @click="showMessage = true"><img src="../../../static/img/consultation.png"></div>
-        留言咨询</div>
+        <div @click="showMessage = true">
+          <div>
+            <img src="../../../static/img-web/consultation.png">
+          </div>
+          留言咨询
+        </div>
+      </div>
       <div class="btn-mid">
-        <div @click="showCall = true"><img src="../../../static/img/phone.png"></div>
-        电话咨询</div>
+        <div @click="showCall = true">
+          <div>
+            <img src="../../../static/img-web/phone.png">
+          </div>
+          电话咨询
+        </div>
+      </div>
     </div>
   </view>
 </template>
@@ -397,18 +410,20 @@
   background: #179a16;
 }
 
-
 .header {
   background: #000000;
-  padding: 15px;
+  padding: 15px 0 8px 15px;
   img {
     cursor: pointer;
+    width: 25px;
   }
   span {
     color: #ffffff;
     margin-left: 20px;
+    height: 20px;
+    line-height: 20px;
     position: relative;
-    top: -8px;
+    top: -3px;
   }
 }
 
@@ -512,10 +527,7 @@
   }
   .detail-para {
     margin-top: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
+
     h3 {
       border-top: 1px solid #efefef;
       padding-top: 10px;
@@ -523,21 +535,24 @@
       font-size: 15px;
     }
     div {
+      display: inline-block;
       font-size: 13px;
       margin-top: 5px;
-      width: 30%;
       height: 30px;
       line-height: 30px;
-      padding: 0 20px 0 0;
+      padding: 0 30px 0 10px;
       img {
         margin-right: 5px;
         position: relative;
         top: 4px;
+        width: 16px;
+        height: 16px;
       }
       span {
         font-weight: 600;
         font-size: 13px;
         float: right;
+        margin-left: 20px;
       }
     }
   }
@@ -561,7 +576,6 @@
       height: 30px;
       line-height: 30px;
       padding: 0 20px 0 0;
-      margin-left: 10px;
       i {
         border: 1px solid #DA291CFF;
         color: rgba(218, 41, 28, 1);
@@ -616,7 +630,7 @@
         }
       }
       h4 {
-        font-size: 13px;
+        font-size: 15px;
         margin-top: 10px;
       }
       .specs.active {
@@ -624,7 +638,7 @@
         background: rgba(218, 41, 28, 0.04);
         .active-corner {
           position: absolute;
-          right: -13px;
+          right: -17px;
           bottom: -16px;
           img {
             width: 20px;
@@ -637,7 +651,6 @@
         .info-list {
           height: 550px;
           overflow-y: scroll;
-          padding-right: 10px;
         }
       }
     }
@@ -666,7 +679,7 @@
       background: #ffffff;
       position: absolute;
       bottom: -80%;
-      height: 700px;
+      height: 600px;
       .active {
         animation:show .5s forwards;
       }
@@ -683,13 +696,21 @@
           margin-top: 10px;
           .img-box {
             width: 20%;
-            .img {
+            img {
               height: 40px;
               width: 40px;
             }
           }
           .contact-info {
             width: 30%;
+            p {
+              font-weight: 700;
+            }
+            p:last-child {
+              font-size: 14px;
+              margin-top: 5px;
+              font-weight: 300;
+            }
           }
           .contact-btn {
             width: 50%;
@@ -706,7 +727,7 @@
 
       @keyframes show{
         to {
-          bottom: 20%;
+          bottom: 10%;
           opacity: 1;
         }
       }
@@ -723,6 +744,8 @@
       }
 
       .form {
+        height: 370px;
+        overflow-y: scroll;
         .form-item {
           .label {
             margin-top: 15px;
@@ -779,32 +802,31 @@
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
-    padding-bottom: 30px;
-    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     background: #000000;
     position: fixed;
     bottom: 0;
     width: 100%;
     .btn-mid {
       img,image {
-        width: 30px;
+        width: 21px;
         position: relative;
         top: 10px;
         cursor: pointer;
       }
-      margin-top: 10px;
       width: 49.5%;
       text-align: center;
       color: #ffffff;
-      line-height: 45px;
+      line-height: 35px;
       border-radius: 3px;
-      font-size: 20px;
+      font-size: 18px;
     }
     .btn-mid:last-child {
       border-left: 1px solid rgba(239, 239, 239, 0.38);
     }
     >div {
-
+      cursor: pointer;
     }
   }
 

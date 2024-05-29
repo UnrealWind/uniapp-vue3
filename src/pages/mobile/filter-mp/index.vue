@@ -1,23 +1,12 @@
 <template>
-  <view class="content">
-    <web-view src="http://repairtest.ctygps.com/#/pages/mobile/filter-h5/index"></web-view>
-  </view>
+  <web-view src="http://repairtest.ctygps.com/#/pages/mobile/filter-h5/index"></web-view>
 </template>
 
 <script setup>
 
-  onMounted(() => {
-    const sys = uni.getSystemInfo({
-      success:(res)=>{
-        console.log(res,11111111111111)
-        if(res.uniPlatform == 'mp-weixin'){
-          // do wx
-        }else if(res.uniPlatform == 'web'){
-          // do web
-        }
-      }
-    })
-  });
+onMounted(() => {
+
+});
 
 </script>
 

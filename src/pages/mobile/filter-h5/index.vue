@@ -59,16 +59,6 @@
         </template>
       </Slider>
     </div>
-    <h2 class="w-full p-2 title-container mt-2">
-      <span class="ml-3 font-bold title">排放控制技术路线</span>
-    </h2>
-    <div class="radio">
-      <div class="active">EGR</div>
-      <div>DOC</div>
-      <div>DPF</div>
-      <div>SCR</div>
-      <div>高压共轨</div>
-    </div>
     <div class="btn-box">
       <Button class="w-full" style="margin-top: 15px"  type="danger" size="normal" @click="goList">共有112个产品符合条件 进入</Button>
     </div>
@@ -136,7 +126,7 @@
   }
 
   onMounted(() => {
-    const sys = uni.getSystemInfo({
+    uni.getSystemInfo({
       success:(res)=>{
         console.log(res,11111111111111)
         if(res.uniPlatform == 'mp-weixin'){

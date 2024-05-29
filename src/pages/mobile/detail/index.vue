@@ -296,8 +296,20 @@
     current.value = e.detail.current;
   }
 
+  let sysName = ref('mp-weixin')
   onMounted(() => {
+    uni.getSystemInfo({
+      success:(res)=>{
+        console.log(res,11111111111111)
+        if(res.uniPlatform == 'mp-weixin'){
+          sysName.value = 'mp-weixin'
+          // do wx
+        }else if(res.uniPlatform == 'web'){
 
+          // do web
+        }
+      }
+    })
   });
 
 </script>

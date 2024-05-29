@@ -1,5 +1,5 @@
 {
-    "name" : "test",
+    "name" : "Cummins Products",
     "appid" : "",
     "description" : "",
     "versionName" : "1.0.0",
@@ -50,7 +50,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "wx6dbb844313c56eed",
+        "appid" : "wx2d0d380d645d9d0f",
         "setting" : {
             "urlCheck" : false
         },

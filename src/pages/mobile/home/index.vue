@@ -1,131 +1,131 @@
 <template>
   <view class="content">
-      <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
-        <swiper-item  @click="goFilter">
-          <view class="swiper-item">
-            <img class="w-full h-full" :src="info[0].url" />
-            <p class="p">{{info[0].content}}</p>
-          </view>
-        </swiper-item>
-        <swiper-item  @click="goFilter">
-          <view class="swiper-item">
-            <img class="w-full h-full" :src="info[1].url" />
-            <p class="p" style="color: #c9c9c9">{{info[1].content}}</p>
-          </view>
-        </swiper-item>
-      </swiper>
-      <h2 class="w-full p-2 fix-margin title-container">
-        <span class="ml-3 font-bold title">适用于各种场景的动力系统</span>
-        <span @click="goFilter()" class="more">更多应用场景 ></span>
-      </h2>
-      <div class="device">
-        <div class="device-item">
-          <img @click="goFilter('ldswj')" mode="widthFix" src="../../../static/img/jump2.png" />
-          <p class="p">履带式挖机</p>
-        </div>
-        <div class="device-item">
-          <img @click="goFilter('ttj')" mode="widthFix" src="../../../static/img/jump1.png" />
-          <p class="p">推土机</p>
-        </div>
-        <div class="device-item">
-          <img @click="goFilter('ldqzj')" mode="widthFix" src="../../../static/img/jump4.png" />
-          <p class="p">履带起重机</p>
-        </div>
-        <div class="device-item">
-          <img @click="goFilter('tpj')" mode="widthFix" src="../../../static/img/jump3.png" />
-          <p class="p">摊铺机</p>
-        </div>
+    <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
+      <swiper-item  @click="goFilter">
+        <view class="swiper-item">
+          <img class="w-full h-full" :src="info[0].url" />
+          <p class="p">{{info[0].content}}</p>
+        </view>
+      </swiper-item>
+      <swiper-item  @click="goFilter">
+        <view class="swiper-item">
+          <img class="w-full h-full" :src="info[1].url" />
+          <p class="p" style="color: #c9c9c9">{{info[1].content}}</p>
+        </view>
+      </swiper-item>
+    </swiper>
+    <h2 class="w-full p-2 fix-margin title-container">
+      <span class="ml-3 font-bold title">适用于各种场景的动力系统</span>
+      <span @click="goFilter()" class="more">更多应用场景 ></span>
+    </h2>
+    <div class="device">
+      <div class="device-item">
+        <img @click="goFilter('ldswj')" mode="widthFix" src="../../../static/img/jump2.png" />
+        <p class="p">履带式挖机</p>
       </div>
-      <h2 class="w-full p-2 title-container">
-        <span class="ml-3 font-bold title">推荐产品</span>
-        <span @click="goFilter()" class="more">更多产品 ></span>
-      </h2>
-      <div class="product">
-        <div @click="goDetail" class="prod-item">
-          <img mode="widthFix" src="../../../static/img/B7-icon.png" />
-          <div class="prod-info">
-            <div class="info">
-              <div>B7 (169hp) </div>
-              <div>126kw</div>
-            </div>
-          </div>
-        </div>
-        <div @click="goDetail" class="prod-item">
-          <img mode="widthFix" src="../../../static/img/B7-icon.png" />
-          <div class="prod-info">
-            <div class="info">
-              <div>B7 (241hp) </div>
-              <div>180kw</div>
-            </div>
-          </div>
-        </div>
-        <div @click="goDetail" class="prod-item">
-          <img mode="widthFix" src="../../../static/img/L9-icon.png" />
-          <div class="prod-info">
-            <div class="info">
-              <div>L9 (217hp) </div>
-              <div>162kw</div>
-            </div>
+      <div class="device-item">
+        <img @click="goFilter('ttj')" mode="widthFix" src="../../../static/img/jump1.png" />
+        <p class="p">推土机</p>
+      </div>
+      <div class="device-item">
+        <img @click="goFilter('ldqzj')" mode="widthFix" src="../../../static/img/jump4.png" />
+        <p class="p">履带起重机</p>
+      </div>
+      <div class="device-item">
+        <img @click="goFilter('tpj')" mode="widthFix" src="../../../static/img/jump3.png" />
+        <p class="p">摊铺机</p>
+      </div>
+    </div>
+    <h2 class="w-full p-2 title-container">
+      <span class="ml-3 font-bold title">推荐产品</span>
+      <span @click="goFilter()" class="more">更多产品 ></span>
+    </h2>
+    <div class="product">
+      <div @click="goDetail" class="prod-item">
+        <img mode="widthFix" src="../../../static/img/B7-icon.png" />
+        <div class="prod-info">
+          <div class="info">
+            <div>B7 (169hp) </div>
+            <div>126kw</div>
           </div>
         </div>
       </div>
+      <div @click="goDetail" class="prod-item">
+        <img mode="widthFix" src="../../../static/img/B7-icon.png" />
+        <div class="prod-info">
+          <div class="info">
+            <div>B7 (241hp) </div>
+            <div>180kw</div>
+          </div>
+        </div>
+      </div>
+      <div @click="goDetail" class="prod-item">
+        <img mode="widthFix" src="../../../static/img/L9-icon.png" />
+        <div class="prod-info">
+          <div class="info">
+            <div>L9 (217hp) </div>
+            <div>162kw</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <div class="footer-btn">
-        <div @click="goFilter()" class="btn-large">帮我推荐</div>
-        <div class="btn-mid">留言咨询</div>
-        <div class="btn-mid">电话咨询</div>
-      </div>
+    <div class="footer-btn">
+      <div @click="goFilter()" class="btn-large">帮我推荐</div>
+      <div class="btn-mid">留言咨询</div>
+      <div class="btn-mid">电话咨询</div>
+    </div>
   </view>
 </template>
 
 <script setup>
-  import { useUserStore } from '@/store/user.js'
-  const user = useUserStore()
+import { useUserStore } from '@/store/user.js'
+const user = useUserStore()
 
-  let current = ref(0)
+let current = ref(0)
 
-  const info = ref( [{
-      url: '../../../static/img/swiper1.png',
-      content: '传承经典，洞悉创编/打造面向燃油四阶段，全新系列发动机',
-    },
-    {
-      url: '../../../static/img/swiper2.png',
-      content: '凭借 100 多年的创新和为全球应用提供动力的经验，康明斯提供了运营商所期望的可靠性和耐用性'
-    }
-  ])
-
-  const sysname = ref('mp-weixin')
-
-  function goFilter(){
-    sysname.value = 'web' ? uni.navigateTo({
-      url:'/pages/mobile/filter-h5/index'
-    }):uni.navigateTo({
-      url:'/pages/mobile/filter-mp/index'
-    })
+const info = ref( [{
+  url: '../../../static/img/swiper1.png',
+  content: '传承经典，洞悉创编/打造面向燃油四阶段，全新系列发动机',
+},
+  {
+    url: '../../../static/img/swiper2.png',
+    content: '凭借 100 多年的创新和为全球应用提供动力的经验，康明斯提供了运营商所期望的可靠性和耐用性'
   }
+])
 
-  function goDetail(){
-    uni.navigateTo({
-      url:'/pages/mobile/detail/index'
-    })
-  }
-
-  function change(e){
-    current.value = e.detail.current;
-  }
-
-  onMounted(() => {
-    const sys = uni.getSystemInfo({
-      success:(res)=>{
-        console.log(res,11111111111111)
-        if(res.uniPlatform == 'mp-weixin'){
-           sysname.value = 'mp-weixin'
-        }else if(res.uniPlatform == 'web'){
-          sysname.value = 'web'
-        }
+function goFilter(){
+  uni.getSystemInfo({
+    success:(res)=>{
+      console.log(res,11111111111111)
+      if(res.uniPlatform == 'mp-weixin'){
+        uni.navigateTo({
+          url:'/pages/mobile/filter-mp/index'
+        })
+        // do wx
+      }else if(res.uniPlatform == 'web'){
+        uni.navigateTo({
+          url:'/pages/mobile/filter-h5/index'
+        })
+        // do web
       }
-    })
-  });
+    }
+  })
+}
+
+function goDetail(){
+  uni.navigateTo({
+    url:'/pages/mobile/detail/index'
+  })
+}
+
+function change(e){
+  current.value = e.detail.current;
+}
+
+onMounted(() => {
+
+});
 
 </script>
 
