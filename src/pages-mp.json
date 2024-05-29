@@ -1,0 +1,31 @@
+{
+	"pages": [
+		{
+			"path": "pages/mobile/home/index",
+			"style": {
+				"navigationBarTitleText": "Cummins Products"
+			}
+		},
+		{
+			"path": "pages/mobile/filter-mp/index",
+			"style": {
+				"navigationBarTitleText": "条件筛选"
+			}
+		},
+		{
+			"path": "pages/mobile/detail/index",
+			"style": {
+				"navigationBarTitleText": "产品详情"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#000",
+		"backgroundColor": "#F8F8F8",
+		"usingComponents": {
+			"van-button": "./wxcomponents/vant-weapp/button/index"
+		}
+	}
+}

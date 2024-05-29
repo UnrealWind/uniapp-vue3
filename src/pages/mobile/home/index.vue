@@ -4,13 +4,13 @@
         <swiper-item  @click="goFilter">
           <view class="swiper-item">
             <img class="w-full h-full" :src="info[0].url" />
-            <p>{{info[0].content}}</p>
+            <p class="p">{{info[0].content}}</p>
           </view>
         </swiper-item>
         <swiper-item  @click="goFilter">
           <view class="swiper-item">
             <img class="w-full h-full" :src="info[1].url" />
-            <p style="color: #c9c9c9">{{info[1].content}}</p>
+            <p class="p" style="color: #c9c9c9">{{info[1].content}}</p>
           </view>
         </swiper-item>
       </swiper>
@@ -19,21 +19,21 @@
         <span @click="goFilter()" class="more">更多应用场景 ></span>
       </h2>
       <div class="device">
-        <div>
+        <div class="device-item">
           <img @click="goFilter('ldswj')" mode="widthFix" src="../../../static/img/jump2.png" />
-          <p>履带式挖机</p>
+          <p class="p">履带式挖机</p>
         </div>
-        <div>
+        <div class="device-item">
           <img @click="goFilter('ttj')" mode="widthFix" src="../../../static/img/jump1.png" />
-          <p>推土机</p>
+          <p class="p">推土机</p>
         </div>
-        <div>
+        <div class="device-item">
           <img @click="goFilter('ldqzj')" mode="widthFix" src="../../../static/img/jump4.png" />
-          <p>履带起重机</p>
+          <p class="p">履带起重机</p>
         </div>
-        <div>
+        <div class="device-item">
           <img @click="goFilter('tpj')" mode="widthFix" src="../../../static/img/jump3.png" />
-          <p>摊铺机</p>
+          <p class="p">摊铺机</p>
         </div>
       </div>
       <h2 class="w-full p-2 title-container">
@@ -94,9 +94,13 @@
     }
   ])
 
+  const sysname = ref('mp-weixin')
+
   function goFilter(){
-    uni.navigateTo({
+    sysname.value = 'web' ? uni.navigateTo({
       url:'/pages/mobile/filter-h5/index'
+    }):uni.navigateTo({
+      url:'/pages/mobile/filter-mp/index'
     })
   }
 
@@ -111,7 +115,16 @@
   }
 
   onMounted(() => {
-
+    const sys = uni.getSystemInfo({
+      success:(res)=>{
+        console.log(res,11111111111111)
+        if(res.uniPlatform == 'mp-weixin'){
+           sysname.value = 'mp-weixin'
+        }else if(res.uniPlatform == 'web'){
+          sysname.value = 'web'
+        }
+      }
+    })
   });
 
 </script>
@@ -137,7 +150,7 @@
     color: #ccc;
     height: 100%;
     position: relative;
-    p {
+    .p {
       position: absolute;
       right: 10px;
       bottom: 10px;
@@ -168,10 +181,10 @@
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
-    >div {
+    .device-item {
       width: 45%;
       position: relative;
-      p {
+      .p {
         position: absolute;
         top: 15px;
         left: 10px;
