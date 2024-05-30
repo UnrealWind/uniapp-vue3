@@ -1,13 +1,14 @@
 <template>
   <view class="content">
-    <div class="header">
-      <img @click="goHome" src="../../../static/img/cummins.png">
-      <span>
-        <span style="cursor: pointer" @click="goProtal">经销商服务网</span>
-        <span @click="showMessage = true" style="cursor: pointer">联系我们</span>
-      </span>
-    </div>
-    <div style="height: 76vh;overflow-y: scroll;padding: 0 150px">
+
+    <div style="height: 85vh;overflow-y: scroll;">
+      <div class="header">
+        <img @click="goHome" src="../../../static/img/cummins.png">
+        <span>
+          <span style="cursor: pointer" @click="goProtal">经销商服务网</span>
+          <span @click="showMessage = true" style="cursor: pointer">联系我们</span>
+        </span>
+      </div>
       <div class="detail-info">
         <div class="detail-left">
           <img mode="widthFix" src="../../../static/img-web/product.png" />
@@ -16,7 +17,7 @@
           <h2>B7 ( 126kw/169hp )</h2>
           <h3>
             <span>规格</span>
-            <span @click="showSpecification = true" style="cursor: pointer" class="right-fix text-red-500">选择规格 (共六款) > </span>
+            <span @click="showSpecification = true" class="specs-btn right-fix text-red-500">选择规格 (共六款)</span>
           </h3>
           <div class="specs">
             <div >
@@ -53,7 +54,7 @@
           </div>
           <div class="scenario">
             <h3>适用应用场景</h3>
-            <div><i>履带挖掘机</i><span >20-21T</span><span class="text-gray-500">标准吨位：</span></div>
+            <div><i>履带挖掘机</i><span class="text-gray-500">标准吨位： &nbsp;<span class="text-gray-900">20-21T</span></span></div>
 <!--            <div><i>旋挖钻机</i><span>360R</span><span class="text-gray-500">标称转矩：</span></div>-->
 <!--            <div><i>采棉机</i><span>6</span><span class="text-gray-500">作业行数（行箱式）：</span></div>-->
           </div>
@@ -262,7 +263,17 @@
             </div>
             <div class="form-item">
               <div class="label"> 所在地区</div>
-              <input class="uni-input input-item" placeholder="请留下您的所在地区" />
+              <input v-model="fieldValue" @click="showArea = true" class="uni-input input-item" placeholder="请留下您的所在地区" />
+
+              <Popup v-model:show="showArea" round position="bottom">
+                <Cascader
+                    v-model="cascaderValue"
+                    title="请选择所在地区"
+                    :options="options"
+                    @close="showArea = false"
+                    @finish="onFinish"
+                />
+              </Popup>
             </div>
             <div class="form-item">
               <div class="label"> 使用场景</div>
@@ -295,28 +306,26 @@
           <div class="contact-list">
             <div class="contact">
               <div class="img-box">
-                <img src="../../../static/img/user.png">
+                <img src="../../../static/img-web/user.png">
               </div>
               <div class="contact-info">
                 <p>赵日天</p>
                 <p>AE</p>
               </div>
               <div class="contact-btn">
-                <img @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
-                <img style="margin-right: 0" @click="showCall = true,showCall=false" src="../../../static/img/phone-red.png">
+                <img @click="showMessage = true,showCall=false" src="../../../static/img-web/consultation-red.png">
               </div>
             </div>
             <div class="contact">
               <div class="img-box">
-                <img src="../../../static/img/user.png">
+                <img src="../../../static/img-web/user.png">
               </div>
               <div class="contact-info">
                 <p>赵日天</p>
                 <p>AE</p>
               </div>
               <div class="contact-btn">
-                <img @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
-                <img style="margin-right: 0" @click="showCall = true,showCall=false" src="../../../static/img/phone-red.png">
+                <img @click="showMessage = true,showCall=false" src="../../../static/img-web/consultation-red.png">
               </div>
             </div>
           </div>
@@ -355,7 +364,11 @@
 
 <script setup>
 
+  import { Popup, Cascader} from 'vant'
   import { useUserStore } from '@/store/user.js'
+  import { useCascaderAreaData } from '@vant/area-data';
+  import 'vant/lib/index.css';
+
   const user = useUserStore()
 
   let current = ref(0)
@@ -364,6 +377,16 @@
   let showMessage = ref(false)
   let showCall = ref(false)
   let showTips = ref(false)
+  let showArea = ref(false)
+
+  const fieldValue = ref('');
+  const cascaderValue = ref('');
+  const options = useCascaderAreaData();
+
+  const onFinish = ({ selectedOptions }) => {
+    showArea.value = false;
+    fieldValue.value = selectedOptions.map((option) => option.text).join('/');
+  };
 
   const info = ref( [{
       url: '../../../static/img/swiper.png',
@@ -379,6 +402,10 @@
 
   function change(e){
     current.value = e.detail.current;
+  }
+
+  function goProtal(){
+    window.location.href = 'https://cs.cummins.com.cn/dealer-portal/#/dealer-home/index'
   }
 
   onMounted(() => {
@@ -442,11 +469,10 @@
     height: 100%;
   }
   .detail-info {
-    width: 95%;
+    padding: 10px 150px;
     margin: 0 auto;
     background: #ffffff;
     border-radius: 6px;
-    padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -460,6 +486,20 @@
     }
     .detail-right {
       width: 65%;
+      h3 {
+        position: relative;
+      }
+      .specs-btn {
+        background: #DA291CFF;
+        border-radius: 5px;
+        color: #ffffff;
+        font-size: 13px;
+        padding: 8px 30px;
+        position: absolute;
+        right: 0;
+        bottom: 0px;
+        cursor: pointer;
+      }
     }
     h2 {
       font-size: 25px;
@@ -559,10 +599,6 @@
 
   .scenario {
     margin-top: 15px;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    flex-wrap: wrap;
     h3 {
       border-top: 1px solid #efefef;
       padding-top: 10px;
@@ -572,10 +608,10 @@
     div {
       margin-top: 10px;
       font-size: 13px;
-      width: 30%;
       height: 30px;
       line-height: 30px;
       padding: 0 20px 0 0;
+      display: inline-block;
       i {
         border: 1px solid #DA291CFF;
         color: rgba(218, 41, 28, 1);
@@ -585,8 +621,8 @@
         margin-left: 5px;
         font-style: normal;
       }
-      span {
-        float: right;
+      >span {
+        margin-left: 40px;
       }
     }
   }
@@ -596,6 +632,7 @@
     h3 {
       border-top: 1px solid #efefef;
       padding-top: 10px;
+      padding-bottom: 10px;
     }
     margin-top: 15px;
   }
@@ -615,7 +652,7 @@
     justify-content: space-around;
     overflow: hidden;
     .info-part {
-      height: 700px;
+      height: 600px;
       width: 800px;
       background: #ffffff;
       position: absolute;
@@ -649,7 +686,7 @@
         width: 95%;
         margin: 0 auto;
         .info-list {
-          height: 550px;
+          height: 440px;
           overflow-y: scroll;
         }
       }
@@ -662,7 +699,7 @@
     }
     @keyframes show{
       to {
-        bottom: 20%;
+        bottom: 10%;
         opacity: 1;
       }
     }
@@ -771,7 +808,7 @@
       border-radius: 10px;
       padding: 10px;
       position: relative;
-      top: 20%;
+      top: 30%;
       h3 {
         text-align: center;
         font-size: 18px;
@@ -795,6 +832,7 @@
       }
     }
   }
+
 
   .pos-footer-btn {
     margin-top: 20px;

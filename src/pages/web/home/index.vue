@@ -1,13 +1,13 @@
 <template>
   <view class="content">
-    <div class="header">
-      <img @click="goHome" src="../../../static/img/cummins.png">
-      <span>
+    <div class="info-box" style="height: 88vh;overflow-y: scroll;">
+      <div class="header">
+        <img @click="goHome" src="../../../static/img/cummins.png">
+        <span>
         <span style="cursor: pointer" @click="goProtal">经销商服务网</span>
         <span @click="showMessage = true" style="cursor: pointer">联系我们</span>
       </span>
-    </div>
-    <div class="info-box" style="height: 76vh;overflow-y: scroll;">
+      </div>
       <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
         <swiper-item  @click="goFilter">
           <view class="swiper-item">
@@ -178,7 +178,17 @@
               </div>
               <div class="form-item">
                 <div class="label"> 所在地区</div>
-                <input class="uni-input input-item" placeholder="请留下您的所在地区" />
+                <input v-model="fieldValue" @click="showArea = true" class="uni-input input-item" placeholder="请留下您的所在地区" />
+
+                <Popup v-model:show="showArea" round position="bottom">
+                  <Cascader
+                      v-model="cascaderValue"
+                      title="请选择所在地区"
+                      :options="options"
+                      @close="showArea = false"
+                      @finish="onFinish"
+                  />
+                </Popup>
               </div>
               <div class="form-item">
                 <div class="label"> 使用场景</div>
@@ -272,11 +282,24 @@
 <script setup>
   import { useUserStore } from '@/store/user.js'
   const user = useUserStore()
+  import { Popup, Cascader} from 'vant'
+  import 'vant/lib/index.css';
+  import {useCascaderAreaData} from "@vant/area-data";
 
   let current = ref(0)
   let showMessage = ref(false)
   let showCall = ref(false)
   let showTips = ref(false)
+  let showArea = ref(false)
+
+  const fieldValue = ref('');
+  const cascaderValue = ref('');
+  const options = useCascaderAreaData();
+
+  const onFinish = ({ selectedOptions }) => {
+    showArea.value = false;
+    fieldValue.value = selectedOptions.map((option) => option.text).join('/');
+  };
 
 
   const info = ref([{
@@ -289,7 +312,7 @@
     }])
 
   function goProtal(){
-    window.location.href = ''
+    window.location.href = 'https://cs.cummins.com.cn/dealer-portal/#/dealer-home/index'
   }
 
   function goHome(){

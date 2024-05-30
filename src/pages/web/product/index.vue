@@ -1,13 +1,13 @@
 <template>
   <view class="content">
-    <div class="header">
-      <img @click="goHome" src="../../../static/img/cummins.png">
-      <span>
+    <div class="content-box">
+      <div class="header">
+        <img @click="goHome" src="../../../static/img/cummins.png">
+        <span>
         <span style="cursor: pointer" @click="goProtal">经销商服务网</span>
         <span @click="showMessage = true" style="cursor: pointer">联系我们</span>
       </span>
-    </div>
-    <div class="content-box">
+      </div>
       <div class="content-item">
         <h2 class="w-full p-2 title-container">
           <span class="ml-3 font-bold title">应用场景</span>
@@ -181,6 +181,46 @@
           </div>
         </div>
       </div>
+      <div v-show="showMessage" class="message">
+        <div :class="showMessage?'active':''" class="info-part">
+          <div class="info">
+            <h3>留言咨询  <img @click="showMessage = false" style="float: right" src="../../../static/img/close.png"></h3>
+            <h4>B7</h4>
+            <div class="des">126Kw/2000rpm</div>
+            <div class="form">
+              <div class="form-item">
+                <div class="label"><span class="text-red-500">*</span> 姓名</div>
+                <input class="uni-input input-item" placeholder="请输入您的姓名" />
+              </div>
+              <div class="form-item">
+                <div class="label"><span class="text-red-500">*</span> 手机号码</div>
+                <input class="uni-input input-item" placeholder="请留下您的手机号码" />
+              </div>
+              <div class="form-item">
+                <div class="label"> 所在地区</div>
+                <input class="uni-input input-item" placeholder="请留下您的所在地区" />
+              </div>
+              <div class="form-item">
+                <div class="label"> 使用场景</div>
+                <input class="uni-input input-item" placeholder="请留下您的使用场景" />
+              </div>
+              <div class="form-item">
+                <div class="label"><span class="text-red-500">*</span> 留言</div>
+                <textarea class="input-item text-area"  auto-height placeholder="请输入留言..." maxlength="-1" />
+              </div>
+            </div>
+            <div class="footer-btn fixed-circle" style="margin-top: 20px">
+              <checkbox-group class="checkPrivacy-box">
+                <label>
+                  <checkbox class="check-box" value="checkPrivacy" color="#FFCC33" style="transform:scale(0.7)"/>同意为您提供产品咨询服务
+                </label>
+              </checkbox-group>
+              <div @click="showMessage= false,showTips=true"  class="btn-large">提交</div>
+              <div class="privacy">Cummins将严格遵循<span>《隐私政策》</span>保证您的信息安全</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </view>
 </template>
@@ -224,6 +264,7 @@
     {label:'叉车',value:'cc',active:false},
     {label:'叉装车',value:'czc',active:false},
   ])
+  let showMessage = ref(false)
 
   const chosed = ref('履带式挖机')
   function choseDevice(item){
@@ -237,6 +278,10 @@
   function onChange(e){
     console.log(e)
     console.log(priceValue)
+  }
+
+  function goProtal(){
+    window.location.href = 'https://cs.cummins.com.cn/dealer-portal/#/dealer-home/index'
   }
 
   function changeScenarios(){
@@ -296,6 +341,8 @@
 .header {
   background: #000000;
   padding: 15px 0 8px 15px;
+  width: 100%;
+  height: 28px;
   img {
     cursor: pointer;
     width: 25px;
@@ -321,24 +368,28 @@
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
+    height: 99vh;
+    overflow-y: scroll;
   }
   .content-item {
     width: 23%;
     background: #efefef;
     margin-top: 15px;
+    height: 90%;
   }
   .content-info {
     width: 73%;
+    height: 90%;
     h3 {
       font-size: 18px;
-      margin-top: 20px;
+      margin-top: 10px;
     }
     .product {
       display: flex;
       flex-direction: row;
       justify-content: left;
       flex-wrap: wrap;
-      margin-top: 10px;
+      margin-top: 0px;
       position: relative;
       .footer {
         width: 100%;
@@ -360,7 +411,7 @@
         background: #ffffff;
         border-radius: 5px;
         overflow: hidden;
-        margin-top: 20px;
+        margin-top: 0px;
         text-align: center;
         margin-left: 3%;
         >img,.image {
@@ -606,4 +657,263 @@
 :root:root {
   --van-pagination-item-default-color: rgba(255, 0, 0, 0.2);
 }
+
+.specification,.message {
+  z-index:99;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  background: rgba(1, 12, 23, 0.57);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  overflow: hidden;
+  .info-part {
+    height: 700px;
+    width: 800px;
+    background: #ffffff;
+    position: absolute;
+    bottom: -100%;
+    border-radius: 20px;
+    h3 {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 20px;
+      img {
+        cursor: pointer;
+      }
+    }
+    h4 {
+      font-size: 15px;
+      margin-top: 10px;
+    }
+    .specs.active {
+      border: 1px solid red;
+      background: rgba(218, 41, 28, 0.04);
+      .active-corner {
+        position: absolute;
+        right: -17px;
+        bottom: -16px;
+        img {
+          width: 20px;
+        }
+      }
+    }
+    .info {
+      width: 95%;
+      margin: 0 auto;
+      .info-list {
+        height: 550px;
+        overflow-y: scroll;
+      }
+    }
+  }
+  .active {
+    animation:show .5s forwards;
+  }
+  .hide {
+    animation:hide .5s forwards;
+  }
+  @keyframes show{
+    to {
+      bottom: 20%;
+      opacity: 1;
+    }
+  }
+  @keyframes hide{
+    to {
+      bottom: -80%;
+      opacity: 0;
+    }
+  }
+}
+
+.message {
+  .info-part {
+    background: #ffffff;
+    position: absolute;
+    bottom: -80%;
+    height: 600px;
+    .active {
+      animation:show .5s forwards;
+    }
+    .contact-list {
+      .contact {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-around;
+        height: 45px;
+        border-radius: 8px;
+        background: rgba(248, 248, 248, 1);
+        padding: 15px;
+        margin-top: 10px;
+        .img-box {
+          width: 20%;
+          img {
+            height: 40px;
+            width: 40px;
+          }
+        }
+        .contact-info {
+          width: 30%;
+          p {
+            font-weight: 700;
+          }
+          p:last-child {
+            font-size: 14px;
+            margin-top: 5px;
+            font-weight: 300;
+          }
+        }
+        .contact-btn {
+          width: 50%;
+          text-align: right;
+          img {
+            width: 44px;
+            height: 44px;
+            margin-right: 20px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    @keyframes show{
+      to {
+        bottom: 10%;
+        opacity: 1;
+      }
+    }
+    @keyframes hide{
+      to {
+        bottom: -80%;
+        opacity: 0;
+      }
+    }
+    .des {
+      font-size: 13px;
+      color: #999;
+      margin-top: 5px;
+    }
+
+    .form {
+      height: 370px;
+      overflow-y: scroll;
+      .form-item {
+        .label {
+          margin-top: 15px;
+        }
+        .input-item {
+          width: 90%;
+          margin-top: 10px;
+          background: rgba(239, 239, 239, 0.47);
+          padding: 10px;
+          border-radius: 3px;
+        }
+        .text-area {
+          width: 90%;
+        }
+      }
+    }
+  }
+  .tips {
+    width: 500px;
+    height: 200px;
+    background: #ffffff;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+    top: 20%;
+    h3 {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+    p {
+      font-size: 15px;
+      margin-top: 10px;
+      padding: 10px;
+    }
+    div {
+      width: 400px;
+      margin: 0 auto;
+      text-align: center;
+      height: 45px;
+      background: rgba(218, 41, 28, 1);
+      color: #ffffff;
+      line-height: 45px;
+      border-radius: 3px;
+      margin-top: 50px;
+    }
+  }
+}
+
+.footer-btn {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+  .btn-large{
+    width: 93%;
+    margin: 0 auto;
+    text-align: center;
+    height: 45px;
+    background: rgba(218, 41, 28, 1);
+    color: #ffffff;
+    line-height: 45px;
+    border-radius: 3px;
+  }
+  .btn-mid {
+    margin-top: 10px;
+    width: 43%;
+    text-align: center;
+    border: 1px solid rgba(218, 41, 28, 1);
+    color: #fff;
+    line-height: 40px;
+    height: 40px;
+    border-radius: 3px;
+    background: rgba(218, 41, 28, 1);
+    img {
+      position: relative;
+      top: 6px;
+      margin-right: 5px;
+    }
+  }
+  .privacy {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #999999;
+    span {
+      color: #59a0ff;
+    }
+  }
+  .checkPrivacy-box {
+    text-align: left;
+    width: 90%;
+    font-size: 13px;
+    margin-bottom: 5px;
+    .check-box {
+      position: relative;
+      top: -1px;
+    }
+  }
+}
+.fixed-circle {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 20px;
+  .btn-large {
+    border-radius: 20px;
+    cursor: pointer;
+  }
+}
+
 </style>

@@ -14,7 +14,7 @@
         </view>
       </swiper-item>
     </swiper>
-    <h2 class="w-full p-2 fix-margin title-container">
+    <h2 class="p-2 fix-margin title-container">
       <span class="ml-3 font-bold title">适用于各种场景的动力系统</span>
       <span @click="goFilter()" class="more">更多应用场景 ></span>
     </h2>
@@ -36,7 +36,7 @@
         <p class="p">摊铺机</p>
       </div>
     </div>
-    <h2 class="w-full p-2 title-container">
+    <h2 class="p-2 title-container">
       <span class="ml-3 font-bold title">推荐产品</span>
       <span @click="goFilter()" class="more">更多产品 ></span>
     </h2>
@@ -72,8 +72,97 @@
 
     <div class="footer-btn">
       <div @click="goFilter()" class="btn-large">帮我推荐</div>
-      <div class="btn-mid">留言咨询</div>
-      <div class="btn-mid">电话咨询</div>
+      <div @click="showMessage=true" class="btn-mid">留言咨询</div>
+      <div @click="showCall=true" class="btn-mid">电话咨询</div>
+    </div>
+
+    <div v-show="showMessage" class="message">
+      <div :class="showMessage?'active':''" class="info-part">
+        <div class="info">
+          <h3  class="h3">留言咨询 <img class="img" @click="showMessage = false" style="float: right" src="../../../static/img/close.png"></h3>
+          <h4 class="h4">B7</h4>
+          <div class="des">126Kw/2000rpm</div>
+          <div class="form">
+            <div class="form-item">
+              <div class="label"><span class="text-red-500">*</span> 姓名</div>
+              <input class="uni-input input-item" placeholder="请输入您的姓名" />
+            </div>
+            <div class="form-item">
+              <div class="label"><span class="text-red-500">*</span> 手机号码</div>
+              <input class="uni-input input-item" placeholder="请留下您的手机号码" />
+            </div>
+            <div class="form-item">
+              <div class="label"> 所在地区</div>
+              <input class="uni-input input-item" placeholder="请留下您的所在地区" />
+            </div>
+            <div class="form-item">
+              <div class="label"> 使用场景</div>
+              <input class="uni-input input-item" placeholder="请留下您的使用场景" />
+            </div>
+            <div class="form-item">
+              <div class="label"><span class="text-red-500">*</span> 留言</div>
+              <textarea class="input-item text-area"  auto-height placeholder="请输入留言..." maxlength="-1" />
+            </div>
+          </div>
+          <div class="model-footer-btn fixed">
+            <checkbox-group class="checkPrivacy-box">
+              <label>
+                <checkbox class="check-box" value="checkPrivacy" color="#FFCC33" style="transform:scale(0.7)"/>同意为您提供产品咨询服务
+              </label>
+            </checkbox-group>
+            <div @click="showMessage= false,showTips=true"  class="btn-large">提交</div>
+            <div class="privacy">Cummins将严格遵循<span>《隐私政策》</span>保证您的信息安全</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-show="showCall" class="message">
+      <div :class="showCall?'active':''" class="info-part">
+        <div class="info">
+          <h3  class="h3">电话咨询 <img class="img" @click="showCall = false" style="float: right" src="../../../static/img/close.png"></h3>
+          <h4 class="h4">B7 </h4>
+          <div class="des">126Kw/2000rpm</div>
+          <div class="contact-list">
+            <div class="contact">
+              <div class="img-box">
+                <img class="img" src="../../../static/img/user.png">
+              </div>
+              <div class="contact-info">
+                <p class="p">赵日天</p>
+                <p class="p">AE</p>
+              </div>
+              <div class="contact-btn">
+                <img class="img" @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall" src="../../../static/img/phone-red.png">
+              </div>
+            </div>
+            <div class="contact">
+              <div class="img-box">
+                <img class="img" src="../../../static/img/user.png">
+              </div>
+              <div class="contact-info">
+                <p class="p">赵日天</p>
+                <p class="p">AE</p>
+              </div>
+              <div class="contact-btn">
+                <img class="img" @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall" src="../../../static/img/phone-red.png">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-show="showTips" class="message" @click="showTips=false">
+      <div :class="showTips?'active':''" class="tips">
+        <h3  class="h3">提交成功</h3>
+        <p class="p">
+          您的康明斯专属客户经理将会第一时间联系您！
+        </p>
+        <div class="div">确定</div>
+      </div>
     </div>
   </view>
 </template>
@@ -113,6 +202,14 @@ function goFilter(){
   })
 }
 
+let showMessage = ref(false)
+let showCall = ref(false)
+let showTips = ref(false  )
+
+function makePhoneCall(){
+  uni.makePhoneCall({phoneNumber:'12312312312'})
+}
+
 function goDetail(){
   uni.navigateTo({
     url:'/pages/mobile/detail/index'
@@ -133,15 +230,16 @@ onMounted(() => {
 <style lang="scss" scoped>
 .content {
   background: #ffffff;
-
+  height: 100vh;
+  overflow-y: scroll;
+  width: 100%;
   .fix-margin {
     margin-top: 10px;
   }
   .swiper-box {
-    height: 240px;
+    height: 200px;
     width: 100%;
   }
-
   .swiper-item {
     display: flex;
     flex-direction: column;
@@ -237,7 +335,196 @@ onMounted(() => {
     }
   }
 
-  .footer-btn {
+  .specification,.message {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    background: rgba(1, 12, 23, 0.57);
+    .info-part {
+      height: 100%;
+      width: 100%;
+      background: #ffffff;
+      position: absolute;
+      bottom: -100%;
+
+      border-radius: 20px 20px 0 0;
+      overflow: hidden;
+      .h3 {
+        text-align: center;
+        font-size: 15px;
+        margin-top: 20px;
+        .img {
+          width: 20px !important;
+          height: 20px !important;
+        }
+      }
+      .h4 {
+        font-size: 13px;
+        margin-top: 10px;
+      }
+      .specs.active {
+        border: 1px solid red;
+        position: relative;
+        background: rgba(218, 41, 28, 0.04);
+        .active-corner {
+          position: absolute;
+          right: -1px;
+          bottom: -3px;
+          .img {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+      .info {
+        width: 92%;
+        margin: 0 auto;
+        height: 100%;
+        overflow-y: scroll;
+      }
+    }
+    .active {
+      animation:show .5s forwards;
+    }
+    .hide {
+      animation:hide .5s forwards;
+    }
+    @keyframes show{
+      to {
+        bottom: 0;
+        opacity: 1;
+      }
+    }
+    @keyframes hide{
+      to {
+        bottom: -100%;
+        opacity: 0;
+      }
+    }
+  }
+
+  .message {
+    .info-part {
+      height: 100%;
+      width: 100%;
+      background: #ffffff;
+      position: absolute;
+      bottom: -100%;
+      .active {
+        animation:show .5s forwards;
+      }
+      .contact-list {
+        .contact {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: row;
+          justify-content: space-around;
+          height: 45px;
+          border-radius: 8px;
+          background: rgba(248, 248, 248, 1);
+          padding: 15px;
+          margin-top: 10px;
+          .img-box {
+            width: 20%;
+            .img {
+              height: 40px;
+              width: 40px;
+            }
+          }
+          .contact-info {
+            width: 30%;
+          }
+          .contact-btn {
+            width: 50%;
+            text-align: right;
+            .img {
+              width: 44px;
+              height: 44px;
+              margin-right: 20px;
+            }
+          }
+        }
+      }
+
+      @keyframes show{
+        to {
+          bottom: 0;
+          opacity: 1;
+        }
+      }
+      @keyframes hide{
+        to {
+          bottom: -100%;
+          opacity: 0;
+        }
+      }
+      .des {
+        font-size: 13px;
+        color: #999;
+        margin-top: 5px;
+      }
+
+      .form {
+        height: 65vh;
+        overflow-y: scroll;
+        .form-item {
+          .label {
+            margin-top: 15px;
+          }
+          .input-item {
+            width: 90%;
+            margin-top: 10px;
+            background: rgba(239, 239, 239, 0.47);
+            padding: 10px;
+            border-radius: 3px;
+          }
+          .text-area {
+            width: 90%;
+          }
+        }
+      }
+    }
+    .tips {
+      width: 80%;
+      height: 150px;
+      background: #ffffff;
+      margin: 0 auto;
+      border-radius: 10px;
+      padding: 10px;
+      position: relative;
+      top: 30%;
+      .h3 {
+        text-align: center;
+        font-size: 15px;
+      }
+      .p {
+        font-size: 15px;
+        margin-top: 10px;
+        padding: 10px;
+      }
+      .div {
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+        height: 45px;
+        background: rgba(218, 41, 28, 1);
+        color: #ffffff;
+        line-height: 45px;
+        border-radius: 3px;
+      }
+    }
+  }
+
+  .footer-btn.fixed {
+    position: fixed;
+    bottom: 10px;
+    width: 90%;
+  }
+
+  .model-footer-btn {
     margin-top: 20px;
     display: flex;
     flex-direction: row;
@@ -259,11 +546,65 @@ onMounted(() => {
       width: 43%;
       text-align: center;
       border: 1px solid rgba(218, 41, 28, 1);
+      color: #fff;
+      line-height: 40px;
+      height: 40px;
+      border-radius: 3px;
+      background: rgba(218, 41, 28, 1);
+      img {
+        position: relative;
+        top: 6px;
+        margin-right: 5px;
+      }
+    }
+    .privacy {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #999999;
+      span {
+        color: #59a0ff;
+      }
+    }
+    .checkPrivacy-box {
+      text-align: left;
+      width: 90%;
+      font-size: 13px;
+      margin-bottom: 5px;
+      .check-box {
+        position: relative;
+        top: -1px;
+      }
+    }
+  }
+
+  .footer-btn {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+
+    .btn-large{
+      width: 93%;
+      margin: 0 auto;
+      text-align: center;
+      height: 45px;
+      background: rgba(218, 41, 28, 1);
+      color: #ffffff;
+      line-height: 45px;
+      border-radius: 3px;
+    }
+    .btn-mid {
+      margin-top: 10px;
+      width: 43%;
+      text-align: center;
+      border: 1px solid rgba(218, 41, 28, 1);
       color: rgba(218, 41, 28, 1);
       line-height: 45px;
       height: 45px;
       border-radius: 3px;
-
+      background: #ffffff;
     }
   }
 }

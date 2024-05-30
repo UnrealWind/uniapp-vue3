@@ -4,14 +4,7 @@
       <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
         <swiper-item  >
           <view class="swiper-item">
-            <img class="w-full h-full" :src="info[0].url" />
-            <p class="p">{{info[0].content}}</p>
-          </view>
-        </swiper-item>
-        <swiper-item  >
-          <view class="swiper-item">
-            <img class="w-full h-full" :src="info[1].url" />
-            <p class="p" style="color: #c9c9c9">{{info[1].content}}</p>
+            <img class="" :src="info[0].url" />
           </view>
         </swiper-item>
       </swiper>
@@ -279,12 +272,8 @@
   let showTips = ref(false  )
 
   const info = ref( [{
-    url: '../../../static/img/swiper1.png',
-    content: '传承经典，洞悉创编/打造面向燃油四阶段，全新系列发动机',
-  },
-    {
-      url: '../../../static/img/swiper2.png',
-      content: '凭借 100 多年的创新和为全球应用提供动力的经验，康明斯提供了运营商所期望的可靠性和耐用性'
+      url: '../../../static/img/B7-icon.png',
+      content: '传承经典，洞悉创编/打造面向燃油四阶段，全新系列发动机',
     }
   ])
 
