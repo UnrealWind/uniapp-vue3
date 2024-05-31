@@ -1,0 +1,112 @@
+.content {
+  background: url("../../../static/img/background.png") no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
+  .uni-slider-handle {
+    z-index: 999;
+  }
+
+  .title-container {
+    height: 20px;
+    line-height: 20px;
+    .tar-value {
+      color: red;
+      font-size: 13px;
+      float: right;
+      margin-right: 30px;
+      position: relative;
+      top: 3px;
+    }
+  }
+  .title {
+    font-size: 0.9rem;
+  }
+
+  .radio {
+    width: 90%;
+    margin:0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    flex-wrap: wrap;
+    >div {
+      margin-top: 5px;
+      width: 30%;
+      font-size: 12px;
+      background: #efefef;
+      text-align: center;
+      padding: 6px 0;
+      border-radius: 5px;
+      margin-left: 10px;
+    }
+    .active {
+      background: rgba(218, 41, 28, 1);
+      color: #ffffff;
+    }
+  }
+  .slider {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  :deep(.custom-button) {
+    width: 26px;
+    color: #fff;
+    font-size: 10px;
+    line-height: 18px;
+    text-align: center;
+    background-color: red;
+    border-radius: 100px;
+  }
+  .btn-box {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  .scenarios {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: left;
+    .device {
+      width: 26%;
+      border: 1px solid #efefef;
+      border-radius: 8px;
+      text-align: center;
+      padding: 10px 0 0px 0;
+      margin-top: 10px;
+      margin-left: 5%;
+      overflow: hidden;
+      >div {
+        text-align: center;
+        font-size: 11px;
+        margin-top: 3px;
+        padding-bottom: 8px;
+        width: 100%;
+      }
+      img {
+        margin: 0 auto;
+        height: 50px;
+        object-fit: contain;
+      }
+    }
+    .active {
+      border: 1px solid red;
+      position: relative;
+      background: #ffffff;
+      .active-corner {
+        position: absolute;
+        right: -1px;
+        bottom: -3px;
+        img {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}

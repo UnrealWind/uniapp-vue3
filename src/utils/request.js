@@ -34,7 +34,6 @@ instance.interceptors.response.use(
      */
     (response) => {
         const res = response.data;
-
         // 请求出错处理
         // -1 超时、token过期或者没有获得授权
         if (res.status === -1 && tokenLose) {
@@ -46,9 +45,11 @@ instance.interceptors.response.use(
 
             return Promise.reject(res);
         }
-        if (successCode.indexOf(res.status) !== -1) {
+
+        if (successCode.indexOf(res.status) == -1) {
             return Promise.reject(res);
         }
+
         return res;
     },
     (error) => {

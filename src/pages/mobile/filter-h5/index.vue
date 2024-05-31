@@ -7,12 +7,12 @@
 
       <div v-for="(item,index) in deviceTypeList" class="device" :class="item.active?'active':''" @click="choseDevice(item)" v-show="!showMore && index<3">
         <template v-if="!item.active">
-          <img :src="`../../../static/img/device/${item.value}.png`">
-          <div>{{item.label}}</div>
+          <img :src="`../../../static/img/device/${item.sceneCode}.png`">
+          <div>{{item.sceneName}}</div>
         </template>
         <template v-if="item.active">
-          <img :src="`../../../static/img/device/${item.value}A.png`">
-          <div>{{item.label}}
+          <img :src="`../../../static/img/device/${item.sceneCode}A.png`">
+          <div>{{item.sceneName}}
             <span class="active-corner">
               <img src="../../../static/img/active-corner.png">
             </span>
@@ -21,12 +21,12 @@
       </div>
       <div v-for="(item,index) in deviceTypeList" class="device" :class="item.active?'active':''" @click="choseDevice(item)" v-show="showMore">
         <template v-if="!item.active">
-          <img :src="`../../../static/img/device/${item.value}.png`">
-          <div>{{item.label}}</div>
+          <img :src="`../../../static/img/device/${item.sceneCode}.png`">
+          <div>{{item.sceneName}}</div>
         </template>
         <template v-if="item.active">
-          <img :src="`../../../static/img/device/${item.value}A.png`">
-          <div>{{item.label}}
+          <img :src="`../../../static/img/device/${item.sceneCode}A.png`">
+          <div>{{item.sceneName}}
             <span class="active-corner">
               <img src="../../../static/img/active-corner.png">
             </span>
@@ -37,30 +37,40 @@
       <Button class="w-full" style="margin-top: 15px" v-show="!showMore" type="default" size="small" @click="changeScenarios">更多场景  <Icon name="arrow-down" /> </Button>
       <Button class="w-full" style="margin-top: 15px" v-show="showMore" type="default" size="small" @click="changeScenarios">收起  <Icon name="arrow-up" /> </Button>
     </div>
-    <h2 class="w-full p-2 title-container mt-2">
-      <span class="ml-3 font-bold title">生产工厂</span>
-    </h2>
-    <div class="radio">
-      <div class="active">东风康明斯</div>
-      <div>西安康明斯</div>
-      <div>福田康明斯</div>
-    </div>
-    <h2 class="w-full p-2 title-container mt-2">
-      <span class="ml-3 font-bold title">额定功率</span>
-      <span class="tar-value">{{priceValue[0]}}kw - {{priceValue[1]}}kw</span>
-    </h2>
-    <div class="slider" >
-      <Slider v-model="priceValue" range @change="onChange"  active-color="#ee0a24">
-        <template #left-button>
-          <div class="custom-button">{{ priceValue[0] }}</div>
-        </template>
-        <template #right-button>
-          <div class="custom-button">{{ priceValue[1] }}</div>
-        </template>
-      </Slider>
+<!--    <h2 class="w-full p-2 title-container mt-2">-->
+<!--      <span class="ml-3 font-bold title">生产工厂</span>-->
+<!--    </h2>-->
+<!--    <div class="radio">-->
+<!--      <div v-for="(item,index) in manuList" @click="choseManu(item)" :class="item.active?'active':''">{{item.manuName}}</div>-->
+<!--    </div>-->
+    <div v-if="filter.filterClasses" v-for="(item,index) in filter.filterClasses">
+      <div v-if="item.filterType == 1">
+        <h2 class="w-full p-2 title-container mt-2">
+          <span class="ml-3 font-bold title">{{item.filterName}}</span>
+          <span class="tar-value">{{item.valueMin}}{{item.filterUnit}} - {{item.valueMax}}{{item.filterUnit}}</span>
+        </h2>
+        <div class="slider" >
+          <Slider v-model="item.value" range @change="onChange($event,item)" :min="item.valueMin" :max="item.valueMax" :step="item.step" active-color="#ee0a24">
+            <template #left-button>
+              <div class="custom-button">{{ item.value[0] }}</div>
+            </template>
+            <template #right-button>
+              <div class="custom-button">{{ item.value[1] }}</div>
+            </template>
+          </Slider>
+        </div>
+      </div>
+      <div v-if="item.filterType == 2">
+        <h2 class="w-full p-2 title-container mt-2">
+          <span class="ml-3 font-bold title">{{item.filterName}}</span>
+        </h2>
+        <div class="radio">
+          <div v-for="(opt,index) in item.valueEnum" @click="choseRadio(item,opt)" :class="item.value == opt?'active':''">{{opt}}</div>
+        </div>
+      </div>
     </div>
     <div class="btn-box">
-      <Button class="w-full" style="margin-top: 15px"  type="danger" size="normal" @click="goList">共有112个产品符合条件 进入</Button>
+      <Button class="w-full" style="margin-top: 15px"  type="danger" size="normal" @click="goList">共有{{total.length}}个产品符合条件 进入</Button>
     </div>
   </view>
 </template>
@@ -71,187 +81,140 @@
   import 'vant/lib/index.css';
   import { useUserStore } from '@/store/user.js'
   const user = useUserStore()
+  import request from '@/utils/request'
 
-  const priceValue = ref([0,100])
   const showMore = ref(false)
-  const deviceTypeList = ref([
-    {label:'履带式挖机',value:'ldswj',active:true},
-    {label:'轮式挖机',value:'lswj',active:false}, //
-    {label:'装载机',value:'zzj',active:false},
-    {label:'推土机',value:'ttj',active:false},
-    {label:'旋挖钻机',value:'xwzj',active:false},
-    {label:'水平定向钻机',value:'spdxzj',active:false},
-    {label:'单钢轮压路机',value:'dglylj',active:false},  //
-    {label:'双钢轮压路机',value:'sglylj',active:false},
-    {label:'平地机',value:'pdj',active:false},
-    {label:'摊铺机',value:'tpj',active:false},
-    {label:'铣刨机',value:'xpj',active:false},
-    {label:'履带起重机',value:'ldqzj',active:false},
-    {label:'高空作业平台',value:'gkzypt',active:false},
-    {label:'地下铲运车',value:'dxcyc',active:false},
-    {label:'地下矿卡',value:'dxkk',active:false},
-    {label:'机场牵引车',value:'jcqyc',active:false},
-    {label:'机场皮带传送车',value:'jcpdcsc',active:false},//
-    {label:'机场电源车',value:'jcdyc',active:false},//
-    {label:'机场平台车',value:'jcptc',active:false},//
-    {label:'采棉机-打包',value:'cmjdb',active:false},
-    {label:'采棉机-箱式',value:'cmjxs',active:false},//
-    {label:'青储机',value:'qcj',active:false},
-    {label:'空压机',value:'kyj',active:false},
-    {label:'扫地车',value:'sdc',active:false},//
-    {label:'叉车',value:'cc',active:false},
-    {label:'叉装车',value:'czc',active:false},
-  ])
 
+  // 设备列表
+  const deviceTypeList = ref([])
+  let listParam = {
+    device:'',
+    filters: [],
+    specIds:''
+  }
+  function getDeviceTypeList(){
+    request({
+      url: 'dapi/scene/getProductSceneList',
+      method: 'get',
+      params: {},
+    }).then((res)=>{
+      deviceTypeList.value = res.data
+    })
+  }
   function choseDevice(item){
     deviceTypeList.value.forEach((n,i)=>{
-      n.active = false
+      n['active'] = false
     })
-    item.active = true
+    item['active'] = true
+    listParam.device = item.sceneName
+    getSceneFilter(item)
   }
 
-  function onChange(e){
-    console.log(e)
-    console.log(priceValue)
+  // 生产厂商列表
+  const manuList = ref([])
+  function getManuList(){
+    request({
+      url: 'dapi/manu/getManuList',
+      method: 'get',
+      params: {},
+    }).then((res)=>{
+      manuList.value = res.data
+    })
   }
+  function choseManu(item){
+    manuList.value.forEach((n,i)=>{
+      n['active'] = false
+    })
+    item['active'] = true
+  }
+
+  // 筛选条件
+  const filter = ref({})
+  const total = ref([])
+  function getSceneFilter(item){
+    request({
+      url: 'dapi/scene/getSceneFilter/'+ item.sceneId,
+      method: 'get',
+      params: {},
+    }).then((res)=>{
+      res.data.filterClasses.forEach((n,i)=>{
+        if(n.filterType == 1){
+          n['value'] = [Number(n.valueMin),Number(n.valueMax)]
+        }else {
+          n.valueEnum = n.valueEnum.split(',')
+          n['value'] = null
+        }
+      })
+      filter.value = res.data
+      total.value = res.data.prodSpecIdArr
+    })
+  }
+  function choseRadio(item,opt){
+    item.value = opt
+    getFilterProductCount()
+  }
+  function onChange(e,item){
+    console.log(e)
+    getFilterProductCount()
+  }
+  function getFilterProductCount(){
+    let data = {
+      "sceneId":filter.value.sceneId,
+      "filters":[]
+    }
+    filter.value.filterClasses.forEach((n,i)=>{
+      if(n.filterType == 1){
+        data.filters.push({
+          "filterClassId" : n.filterClassId,
+          "filterType": n.filterType,
+          "valueMax": n.value[1],
+          "valueMin": n.value[0]
+        })
+      }else {
+        data.filters.push({
+          "filterClassId" : n.filterClassId,
+          "filterType": n.filterType,
+          "valueEnum": n.value,
+        })
+      }
+    })
+    request({
+      url: 'dapi/productSpec/filterProductCount',
+      method: 'post',
+      params: {},
+      data:data
+    }).then((res)=>{
+      total.value = res.data
+    })
+  }
+
 
   function changeScenarios(){
     showMore.value = !showMore.value
   }
-
   function goList(){
+    listParam.specIds = total.value.join(',')
+    filter.value.filterClasses.forEach((n,i)=>{
+      if(n.filterType == 1){
+        listParam.filters.push(n.value[0]+ '-' + n.value[1]+ n.filterUnit)
+      }else {
+        listParam.filters.push(n.value + n.filterUnit)
+      }
+    })
+
     uni.navigateTo({
-      url:'/pages/mobile/list-h5/index'
+      url:'/pages/mobile/list-h5/index?listParam='+JSON.stringify(listParam)
     })
   }
 
   onMounted(() => {
-    uni.getSystemInfo({
-      success:(res)=>{
-        console.log(res,11111111111111)
-        if(res.uniPlatform == 'mp-weixin'){
-          // do wx
-        }else if(res.uniPlatform == 'web'){
-          // do web
-        }
-      }
-    })
+    getDeviceTypeList()
+    getManuList()
   });
 
 </script>
 
 
 <style lang="scss" scoped>
-.content {
-  background: url("../../../static/img/background.png") no-repeat;
-  background-size: 100% 100%;
-  height: 100vh;
-  .uni-slider-handle {
-    z-index: 999;
-  }
-
-  .title-container {
-    height: 20px;
-    line-height: 20px;
-    .tar-value {
-      color: red;
-      font-size: 13px;
-      float: right;
-      margin-right: 30px;
-      position: relative;
-      top: 3px;
-    }
-  }
-  .title {
-    font-size: 0.9rem;
-  }
-
-  .radio {
-    width: 90%;
-    margin:0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    flex-wrap: wrap;
-    >div {
-      margin-top: 5px;
-      width: 30%;
-      font-size: 12px;
-      background: #efefef;
-      text-align: center;
-      padding: 6px 0;
-      border-radius: 5px;
-      margin-left: 10px;
-    }
-    .active {
-      background: rgba(218, 41, 28, 1);
-      color: #ffffff;
-    }
-  }
-  .slider {
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 20px;
-  }
-
-  :deep(.custom-button) {
-    width: 26px;
-    color: #fff;
-    font-size: 10px;
-    line-height: 18px;
-    text-align: center;
-    background-color: red;
-    border-radius: 100px;
-  }
-  .btn-box {
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 20px;
-  }
-
-  .scenarios {
-    width: 95%;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: left;
-    .device {
-      width: 26%;
-      border: 1px solid #efefef;
-      border-radius: 8px;
-      text-align: center;
-      padding: 10px 0 0px 0;
-      margin-top: 10px;
-      margin-left: 5%;
-      overflow: hidden;
-      >div {
-        text-align: center;
-        font-size: 11px;
-        margin-top: 3px;
-        padding-bottom: 8px;
-        width: 100%;
-      }
-      img {
-        margin: 0 auto;
-        height: 50px;
-        object-fit: contain;
-      }
-    }
-    .active {
-      border: 1px solid red;
-      position: relative;
-      background: #ffffff;
-      .active-corner {
-        position: absolute;
-        right: -1px;
-        bottom: -3px;
-        img {
-          width: 20px;
-          height: 20px;
-        }
-      }
-    }
-  }
-}
+@import "index.scss";
 </style>
