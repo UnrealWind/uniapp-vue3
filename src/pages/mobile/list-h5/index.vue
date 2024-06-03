@@ -2,8 +2,8 @@
   <view class="content">
     <div class="bg">
       <div class="chose">
-        <div v-if="listParam.device" class="chose-item">{{listParam.device}}<img src="../../../static/img/delete.png"></div>
-        <div class="chose-item" v-for="(item,index) in listParam.filters">{{item}}<img src="../../../static/img/delete.png"></div>
+        <div v-if="listParam.device" class="chose-item">{{listParam.device}}<img @click="clear" src="../../../static/img/delete.png"></div>
+        <div class="chose-item" v-for="(item,index) in listParam.filters">{{item.label}}<img @click="clearFilter(index)" src="../../../static/img/delete.png"></div>
         <div @click="clear" class="clear"><img src="../../../static/img/clear.png">清除</div>
       </div>
       <div class="describe">
@@ -118,6 +118,42 @@
     listParam.value.filters = []
     listParam.value.device = ''
     onRefresh()
+  }
+
+  function getFilterProductCount(){
+    let data = {
+      "sceneId":listParam.value.sceneId,
+      "filters":[]
+    }
+    listParam.value.filters.forEach((n,i)=>{
+      if(n.value.filterType == 1){
+        data.filters.push({
+          "filterClassId" : n.value.filterClassId,
+          "filterType": n.value.filterType,
+          "valueMax": n.value.value[1],
+          "valueMin": n.value.value[0]
+        })
+      }else {
+        data.filters.push({
+          "filterClassId" : n.value.filterClassId,
+          "filterType": n.value.filterType,
+          "valueEnum": n.value.value,
+        })
+      }
+    })
+    request({
+      url: 'dapi/productSpec/filterProductCount',
+      method: 'post',
+      params: {},
+      data:data
+    }).then((res)=>{
+      listParam.value.specIds = res.data.join(',')
+      onRefresh()
+    })
+  }
+  function clearFilter(index){
+    listParam.value.filters.splice(index,1)
+    getFilterProductCount()
   }
 
   const listParam = ref({})

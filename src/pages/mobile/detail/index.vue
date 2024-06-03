@@ -102,7 +102,7 @@
             </div>
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 手机号码</div>
-              <input type="number" :value="commitInfo.province" @input="input($event,'province')" class="uni-input input-item" placeholder="请留下您的手机号码" />
+              <input type="number" :value="commitInfo.phone" @input="input($event,'phone')" class="uni-input input-item" placeholder="请留下您的手机号码" />
             </div>
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 所在地区</div>
@@ -143,12 +143,12 @@
                 <img class="img" src="../../../static/img/user.png">
               </div>
               <div class="contact-info">
-                <p class="p">赵日天</p>
-                <p class="p">AE</p>
+                <p class="p">张延昭</p>
+                <p class="p">AE（北区）</p>
               </div>
               <div class="contact-btn">
                 <img class="img" @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(12312312312)" src="../../../static/img/phone-red.png">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall(15810139248)" src="../../../static/img/phone-red.png">
               </div>
             </div>
             <div class="contact">
@@ -156,12 +156,25 @@
                 <img class="img" src="../../../static/img/user.png">
               </div>
               <div class="contact-info">
-                <p class="p">赵霸天</p>
-                <p class="p">AE</p>
+                <p class="p">王建平</p>
+                <p class="p">AE（南区）</p>
               </div>
               <div class="contact-btn">
                 <img class="img" @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(12312312312)" src="../../../static/img/phone-red.png">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall(13671669950)" src="../../../static/img/phone-red.png">
+              </div>
+            </div>
+            <div class="contact">
+              <div class="img-box">
+                <img class="img" src="../../../static/img/user.png">
+              </div>
+              <div class="contact-info">
+                <p class="p">杨懿</p>
+                <p class="p">AE（西区）</p>
+              </div>
+              <div class="contact-btn">
+                <img class="img" @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall(18615711430)" src="../../../static/img/phone-red.png">
               </div>
             </div>
           </div>
@@ -277,7 +290,7 @@
       "scene":"请留下您的使用场景",
       "message":"请输入留言"
     }
-    for(let i in commitInfo.value){
+    for(let i in jud){
       if(!commitInfo.value[i]){
         uni.showToast({
           icon:'none',

@@ -46,54 +46,55 @@
       <div @click="showCall=true" class="btn-mid">电话咨询</div>
     </div>
 
-    <div v-show="showMessage" class="message">
+    <div v-if="showMessage" class="message">
       <div :class="showMessage?'active':''" class="info-part">
         <div class="info">
           <h3  class="h3">留言咨询 <img class="img" @click="showMessage = false" style="float: right" src="../../../static/img/close.png"></h3>
-          <h4 class="h4">B7</h4>
-          <div class="des">126Kw/2000rpm</div>
+<!--          <h4 class="h4">{{detailInfo.doemProduct.name}}</h4>-->
+<!--          <div class="des">{{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp</div>-->
           <div class="form">
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 姓名</div>
-              <input class="uni-input input-item" placeholder="请输入您的姓名" />
+              <input class="uni-input input-item" :value="commitInfo.name" @input="input($event,'name')" placeholder="请输入您的姓名" />
             </div>
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 手机号码</div>
-              <input class="uni-input input-item" placeholder="请留下您的手机号码" />
+              <input type="number" :value="commitInfo.phone" @input="input($event,'phone')" class="uni-input input-item" placeholder="请留下您的手机号码" />
             </div>
             <div class="form-item">
-              <div class="label"> 所在地区</div>
-              <input class="uni-input input-item" placeholder="请留下您的所在地区" />
+              <div class="label"><span class="text-red-500">*</span> 所在地区</div>
+              <input class="uni-input input-item" :value="commitInfo.areas" @click="visible = true"  placeholder="请留下您的所在地区" />
+              <cityPicker :column="column" :default-value="defaultValue" :mask-close-able="maskCloseAble" @confirm="confirm" @cancel="visible = false" :visible="visible"/>
             </div>
             <div class="form-item">
-              <div class="label"> 使用场景</div>
-              <input class="uni-input input-item" placeholder="请留下您的使用场景" />
+              <div class="label"><span class="text-red-500">*</span> 使用场景</div>
+              <input class="uni-input input-item" :value="commitInfo.scene" @input="input($event,'scene')" placeholder="请留下您的使用场景" />
             </div>
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 留言</div>
-              <textarea class="input-item text-area"  auto-height placeholder="请输入留言..." maxlength="-1" />
+              <textarea class="input-item text-area" :value="commitInfo.message" @input="input($event,'message')"  auto-height placeholder="请输入留言..." maxlength="-1" />
             </div>
           </div>
-          <div class="model-footer-btn fixed">
-            <checkbox-group class="checkPrivacy-box">
+          <div class="footer-btn fixed">
+            <checkbox-group class="checkPrivacy-box" @change="changeCheckBox">
               <label>
-                <checkbox class="check-box" value="checkPrivacy" color="#FFCC33" style="transform:scale(0.7)"/>同意为您提供产品咨询服务
+                <checkbox class="check-box" value="1" :checked="checkPrivacy.length" color="#FFCC33" style="transform:scale(0.7)"/>同意为您提供产品咨询服务
               </label>
             </checkbox-group>
-            <div @click="showMessage= false,showTips=true"  class="btn-large">提交</div>
+            <div @click="commit"  class="btn-large">提交</div>
             <div class="privacy">Cummins将严格遵循<span>《隐私政策》</span>保证您的信息安全</div>
           </div>
         </div>
       </div>
     </div>
 
-    <div v-show="showCall" class="message">
+    <div v-if="showCall" class="message">
       <div :class="showCall?'active':''" class="info-part">
         <div class="info">
           <h3  class="h3">电话咨询 <img class="img" @click="showCall = false" style="float: right" src="../../../static/img/close.png"></h3>
-          <h4 class="h4">B7 </h4>
-          <div class="des">126Kw/2000rpm</div>
-          <div class="contact-list">
+<!--          <h4 class="h4">{{detailInfo.doemProduct.name}}</h4>-->
+<!--          <div class="des">{{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp</div>-->
+          <div class="contact-list" style="margin-top: 20px">
             <div class="contact">
               <div class="img-box">
                 <img class="img" src="../../../static/img/user.png">
@@ -104,7 +105,7 @@
               </div>
               <div class="contact-btn">
                 <img class="img" @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall" src="../../../static/img/phone-red.png">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall(12312312312)" src="../../../static/img/phone-red.png">
               </div>
             </div>
             <div class="contact">
@@ -112,12 +113,12 @@
                 <img class="img" src="../../../static/img/user.png">
               </div>
               <div class="contact-info">
-                <p class="p">赵日天</p>
+                <p class="p">赵霸天</p>
                 <p class="p">AE</p>
               </div>
               <div class="contact-btn">
                 <img class="img" @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall" src="../../../static/img/phone-red.png">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall(12312312312)" src="../../../static/img/phone-red.png">
               </div>
             </div>
           </div>
@@ -141,8 +142,10 @@
 import { useUserStore } from '@/store/user.js'
 const user = useUserStore()
 import request from '@/utils/request'
+import cityPicker from '../detail/components/piaoyi-cityPicker/piaoyi-cityPicker'
 
 let current = ref(0)
+let visible = ref(false)
 
 const info = ref( [{
   url: '../../../static/img/swiper1.png',
@@ -166,7 +169,6 @@ function getRecommandProductSceneList(){
 }
 
 const recommandSpec = ref([])
-
 function getRecommandSpec(){
   request({
     url: 'dapi/productSpec/getRecommandSpec',
@@ -177,18 +179,86 @@ function getRecommandSpec(){
   })
 }
 
-function goFilter(){
+const checkPrivacy = ref([])
+function changeCheckBox(e){
+  checkPrivacy.value = e.detail.value
+}
+function confirm(val){
+  commitInfo.value.province = val.provinceName
+  commitInfo.value.city = val.cityName
+  commitInfo.value.county = val.areaName
+  commitInfo.value.areas = val.name
+  visible.value = false
+}
+const commitInfo = ref({
+  "name":"",
+  "phone":"",
+  "message":"",
+  "province":"",
+  "city":"",
+  "county":"",
+  "scene":"",
+  "areas":''
+})
+function input(e,tar){
+  commitInfo.value[tar] = e.detail.value
+}
+let commiting = false
+function commit(){
+  if(commiting) return;
+  let jud = {
+    "name":"请输入您的姓名",
+    "phone":"请留下您的手机号码  ",
+    "areas":'请留下您的所在地区',
+    "scene":"请留下您的使用场景",
+    "message":"请输入留言"
+  }
+  for(let i in commitInfo.value){
+    if(!commitInfo.value[i]){
+      uni.showToast({
+        icon:'none',
+        title: jud[i],
+        duration:2000
+      })
+      return
+    }
+  }
+  if(!checkPrivacy.value.length){
+    uni.showToast({
+      title: '请点击同意为您提供产品咨询服务 !',
+      icon: 'none',
+      duration: 2000
+    })
+    return
+  }
+  commiting = true
+  request({
+    url: 'dapi/message',
+    method: 'post',
+    params: {},
+    data:commitInfo.value
+  }).then((res)=>{
+    commiting = false
+    showMessage.value = false,
+        showTips.value = true
+  })
+}
+function makePhoneCall(phone){
+  uni.makePhoneCall({phoneNumber:phone})
+}
+
+function goFilter(item){
   uni.getSystemInfo({
     success:(res)=>{
       console.log(res,11111111111111)
       if(res.uniPlatform == 'mp-weixin'){
         uni.navigateTo({
-          url:'/pages/mobile/filter-mp/index'
+          url:'/pages/mobile/filter-mp/index?sceneCode='+item.sceneCode
         })
         // do wx
       }else if(res.uniPlatform == 'web'){
         uni.navigateTo({
-          url:'/pages/mobile/filter-h5/index'
+          url:'/pages/mobile/filter-h5/index?sceneCode='+item.sceneCode
         })
         // do web
       }
@@ -200,13 +270,9 @@ let showMessage = ref(false)
 let showCall = ref(false)
 let showTips = ref(false  )
 
-function makePhoneCall(){
-  uni.makePhoneCall({phoneNumber:'12312312312'})
-}
-
 function goDetail(item){
   uni.navigateTo({
-    url:'/pages/mobile/detail/index'
+    url:'/pages/mobile/detail/index?prodSpecId='+item.prodSpecId
   })
 }
 

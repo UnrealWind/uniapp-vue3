@@ -82,6 +82,7 @@
   import { useUserStore } from '@/store/user.js'
   const user = useUserStore()
   import request from '@/utils/request'
+  import {getCurrentInstance, onMounted} from "vue";
 
   const showMore = ref(false)
 
@@ -90,7 +91,8 @@
   let listParam = {
     device:'',
     filters: [],
-    specIds:''
+    specIds:'',
+    sceneId:''
   }
   function getDeviceTypeList(){
     request({
@@ -98,6 +100,9 @@
       method: 'get',
       params: {},
     }).then((res)=>{
+      res.data.forEach((n,i)=>{
+        sceneCode.value == n.sceneCode ? (n['active'] = true,getSceneFilter(n),listParam.device = n.sceneName,getFilterProductCount()) :''
+      })
       deviceTypeList.value = res.data
     })
   }
@@ -132,6 +137,7 @@
   const filter = ref({})
   const total = ref([])
   function getSceneFilter(item){
+    listParam.sceneId = item.sceneId
     request({
       url: 'dapi/scene/getSceneFilter/'+ item.sceneId,
       method: 'get',
@@ -159,10 +165,10 @@
   }
   function getFilterProductCount(){
     let data = {
-      "sceneId":filter.value.sceneId,
+      "sceneId":listParam.sceneId,
       "filters":[]
     }
-    filter.value.filterClasses.forEach((n,i)=>{
+    filter.value.filterClasses?filter.value.filterClasses.forEach((n,i)=>{
       if(n.filterType == 1){
         data.filters.push({
           "filterClassId" : n.filterClassId,
@@ -177,7 +183,7 @@
           "valueEnum": n.value,
         })
       }
-    })
+    }):''
     request({
       url: 'dapi/productSpec/filterProductCount',
       method: 'post',
@@ -194,20 +200,29 @@
   }
   function goList(){
     listParam.specIds = total.value.join(',')
+    listParam.filters = []
     filter.value.filterClasses.forEach((n,i)=>{
       if(n.filterType == 1){
-        listParam.filters.push(n.value[0]+ '-' + n.value[1]+ n.filterUnit)
+        listParam.filters.push({
+          label:n.value[0]+ '-' + n.value[1]+ n.filterUnit,
+          value:n
+        })
       }else {
-        listParam.filters.push(n.value + n.filterUnit)
+        listParam.filters.push({
+          label:n.value + n.filterUnit,
+          value:n
+        })
       }
     })
-
     uni.navigateTo({
       url:'/pages/mobile/list-h5/index?listParam='+JSON.stringify(listParam)
     })
   }
 
+  const sceneCode = ref('')
   onMounted(() => {
+    let option = getCurrentInstance()
+    sceneCode.value = option.attrs.sceneCode
     getDeviceTypeList()
     getManuList()
   });

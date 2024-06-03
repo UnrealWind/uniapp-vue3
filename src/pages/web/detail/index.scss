@@ -1,4 +1,48 @@
+:deep(.pupop ){
+  .picker-view {
+    width: 100vw;
+  }
+}
+
+::-webkit-scrollbar{
+  width:10px;
+  height:10px;
+  /**/
+}
+::-webkit-scrollbar-track{
+  background: rgb(239, 239, 239);
+  border-radius:2px;
+}
+::-webkit-scrollbar-thumb{
+  background: #bfbfbf;
+  border-radius:10px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: #333;
+}
+::-webkit-scrollbar-corner{
+  background: #179a16;
+}
+
+.header {
+  background: #000000;
+  padding: 15px 0 8px 15px;
+  img {
+    cursor: pointer;
+    width: 25px;
+  }
+  span {
+    color: #ffffff;
+    margin-left: 20px;
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+    top: -3px;
+  }
+}
+
 .content {
+  background-size: 100% 100%;
   .swiper-box {
     height: 240px;
     width: 100%;
@@ -10,39 +54,51 @@
     align-items: center;
     color: #ccc;
     height: 100%;
-    position: relative;
-    .p {
-      position: absolute;
-      right: 10px;
-      bottom: 10px;
-      color: #666;
-      width: 50%;
-      font-size: 12px;
-    }
   }
-
   .detail-info {
-    width: 90%;
+    padding: 10px 150px;
     margin: 0 auto;
     background: #ffffff;
     border-radius: 6px;
-    padding: 10px;
-    .h2 {
-      font-size: 16px;
-      height: 1rem;
-      font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    .detail-left {
+      width: 35%;
+      text-align: center;
+      img {
+        margin-top: 20px;
+      }
     }
-    .h3 {
-      margin-top: 5px;
-      font-size: 14px;
-      height: 1rem;
-      font-weight: 700;
+    .detail-right {
+      width: 65%;
+      h3 {
+        position: relative;
+      }
+      .specs-btn {
+        background: #DA291CFF;
+        border-radius: 5px;
+        color: #ffffff;
+        font-size: 13px;
+        padding: 8px 30px;
+        position: absolute;
+        right: 0;
+        bottom: 0px;
+        cursor: pointer;
+      }
+    }
+    h2 {
+      font-size: 25px;
+    }
+    h3 {
+      margin-top: 15px;
+      font-size: 16px;
       .right-fix {
         float: right;
         font-weight: normal;
       }
     }
-
   }
 
   .specs {
@@ -61,22 +117,30 @@
       width: 28%;
       border-left: 1px solid rgba(204, 204, 204, 0.63);
       padding-left: 15px;
+      display: flex;
+      flex-direction: row;
+      justify-content: left;
+      flex-wrap: wrap;
+      >div {
+        width: 33%;
+        padding-top: 15px;
+      }
+      >div:last-child {
+        width: 63%;
+        padding-top: 5px;
+      }
     }
     >div:first-child {
       border: 0;
     }
     .specs-line1 {
-      margin-top: 3px;
-      .img {
+      img {
         position: relative;
         top: 3px;
-        margin-right: 5px;
-        height: 16px !important;
-        width: 16px !important;
       }
     }
     .specs-line2 {
-      margin-top: 10px;
+      margin-top: 5px;
       font-size: 16px;
       color: #000;
       font-weight: 600;
@@ -85,44 +149,57 @@
       }
     }
     .specs-line3 {
-      margin-top: 3px;
+      margin-top: 5px;
     }
   }
   .detail-para {
     margin-top: 10px;
-    .h3 {
+
+    h3 {
       border-top: 1px solid #efefef;
       padding-top: 10px;
+      width: 100%;
+      font-size: 15px;
     }
-    .div {
+    div {
+      display: inline-block;
       font-size: 13px;
       margin-top: 5px;
-      .img {
-        position: relative;
-        top: 3px;
+      height: 30px;
+      line-height: 30px;
+      padding: 0 30px 0 10px;
+      img {
         margin-right: 5px;
-        height: 16px !important;
-        width: 16px !important;
+        position: relative;
+        top: 4px;
+        width: 16px;
+        height: 16px;
       }
-      .span {
-        float: right;
+      span {
         font-weight: 600;
         font-size: 13px;
+        float: right;
+        margin-left: 20px;
       }
     }
   }
 
   .scenario {
     margin-top: 15px;
-    .h3 {
+    h3 {
       border-top: 1px solid #efefef;
       padding-top: 10px;
+      width: 100%;
+      font-size: 15px;
     }
-    .div {
+    div {
       margin-top: 10px;
       font-size: 13px;
-      line-height: 20px;
-      .i {
+      height: 30px;
+      line-height: 30px;
+      padding: 0 20px 0 0;
+      display: inline-block;
+      i {
         border: 1px solid #DA291CFF;
         color: rgba(218, 41, 28, 1);
         border-radius: 3px;
@@ -130,17 +207,16 @@
         padding: 2px 5px;
         margin-left: 5px;
         font-style: normal;
-        display: inline-block;
       }
-      .span {
-        float: right;
-        position: relative;
-        top: 4px;
+      >span {
+        margin-left: 40px;
       }
     }
   }
   .tec {
-    .h3 {
+    width: 100%;
+    margin-bottom: 50px;
+    h3 {
       border-top: 1px solid #efefef;
       padding-top: 10px;
       padding-bottom: 10px;
@@ -149,6 +225,7 @@
   }
 
   .specification,.message {
+    z-index:99;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -156,47 +233,49 @@
     left: 0;
     height: 100%;
     background: rgba(1, 12, 23, 0.57);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    overflow: hidden;
     .info-part {
-      height: 100%;
-      width: 100%;
+      height: 600px;
+      width: 800px;
       background: #ffffff;
       position: absolute;
       bottom: -100%;
-
-      border-radius: 20px 20px 0 0;
-      overflow: hidden;
-      .h3 {
+      border-radius: 20px;
+      h3 {
         text-align: center;
-        font-size: 15px;
+        font-size: 18px;
         margin-top: 20px;
-        .img {
-          width: 20px !important;
-          height: 20px !important;
+        img {
+          cursor: pointer;
         }
       }
-      .h4 {
-        font-size: 13px;
+      h4 {
+        font-size: 15px;
         margin-top: 10px;
       }
       .specs.active {
         border: 1px solid red;
-        position: relative;
         background: rgba(218, 41, 28, 0.04);
         .active-corner {
           position: absolute;
-          right: -1px;
-          bottom: -3px;
-          .img {
+          right: -17px;
+          bottom: -16px;
+          img {
             width: 20px;
-            height: 20px;
           }
         }
       }
       .info {
-        width: 92%;
+        width: 95%;
         margin: 0 auto;
-        height: 100%;
-        overflow-y: scroll;
+        .info-list {
+          height: 440px;
+          overflow-y: scroll;
+        }
       }
     }
     .active {
@@ -207,13 +286,13 @@
     }
     @keyframes show{
       to {
-        bottom: 0;
+        bottom: 10%;
         opacity: 1;
       }
     }
     @keyframes hide{
       to {
-        bottom: -100%;
+        bottom: -80%;
         opacity: 0;
       }
     }
@@ -221,11 +300,10 @@
 
   .message {
     .info-part {
-      height: 100%;
-      width: 100%;
       background: #ffffff;
       position: absolute;
-      bottom: -100%;
+      bottom: -80%;
+      height: 600px;
       .active {
         animation:show .5s forwards;
       }
@@ -242,21 +320,30 @@
           margin-top: 10px;
           .img-box {
             width: 20%;
-            .img {
+            img {
               height: 40px;
               width: 40px;
             }
           }
           .contact-info {
             width: 30%;
+            p {
+              font-weight: 700;
+            }
+            p:last-child {
+              font-size: 14px;
+              margin-top: 5px;
+              font-weight: 300;
+            }
           }
           .contact-btn {
             width: 50%;
             text-align: right;
-            .img {
+            img {
               width: 44px;
               height: 44px;
               margin-right: 20px;
+              cursor: pointer;
             }
           }
         }
@@ -264,13 +351,13 @@
 
       @keyframes show{
         to {
-          bottom: 0;
+          bottom: 20%;
           opacity: 1;
         }
       }
       @keyframes hide{
         to {
-          bottom: -100%;
+          bottom: -80%;
           opacity: 0;
         }
       }
@@ -281,7 +368,7 @@
       }
 
       .form {
-        height: 65vh;
+        height: 370px;
         overflow-y: scroll;
         .form-item {
           .label {
@@ -301,25 +388,26 @@
       }
     }
     .tips {
-      width: 80%;
-      height: 150px;
+      width: 500px;
+      height: 200px;
       background: #ffffff;
       margin: 0 auto;
       border-radius: 10px;
       padding: 10px;
       position: relative;
-      top: 20%;
-      .h3 {
+      top: 30%;
+      h3 {
         text-align: center;
-        font-size: 15px;
+        font-size: 18px;
+        margin-top: 10px;
       }
-      .p {
+      p {
         font-size: 15px;
         margin-top: 10px;
         padding: 10px;
       }
-      .div {
-        width: 50%;
+      div {
+        width: 400px;
         margin: 0 auto;
         text-align: center;
         height: 45px;
@@ -327,10 +415,45 @@
         color: #ffffff;
         line-height: 45px;
         border-radius: 3px;
+        margin-top: 50px;
       }
     }
   }
 
+
+  .pos-footer-btn {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background: #000000;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    .btn-mid {
+      img,image {
+        width: 21px;
+        position: relative;
+        top: 10px;
+        cursor: pointer;
+      }
+      width: 49.5%;
+      text-align: center;
+      color: #ffffff;
+      line-height: 35px;
+      border-radius: 3px;
+      font-size: 18px;
+    }
+    .btn-mid:last-child {
+      border-left: 1px solid rgba(239, 239, 239, 0.38);
+    }
+    >div {
+      cursor: pointer;
+    }
+  }
 
   .footer-btn {
     margin-top: 20px;
@@ -359,12 +482,10 @@
       height: 40px;
       border-radius: 3px;
       background: rgba(218, 41, 28, 1);
-      .img {
+      img {
         position: relative;
         top: 6px;
         margin-right: 5px;
-        width: 20px !important;
-        height: 20px !important;
       }
     }
     .privacy {
@@ -386,9 +507,13 @@
       }
     }
   }
-  .footer-btn.fixed {
-    position: fixed;
-    bottom: 10px;
-    width: 90%;
+  .fixed-circle {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+    .btn-large {
+      border-radius: 20px;
+      cursor: pointer;
+    }
   }
 }
