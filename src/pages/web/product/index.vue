@@ -31,7 +31,7 @@
               <span class="tar-value">{{item.valueMin}}{{item.filterUnit}} - {{item.valueMax}}{{item.filterUnit}}</span>
             </h2>
             <div class="slider" >
-              <Slider v-model="item.value" range @change="onChange($event,item)" :min="item.valueMin" :max="item.valueMax" :step="item.step" active-color="#ee0a24">
+              <Slider v-model="item.value" range @change="onChange($event,item)" min="0" :max="item.valueMax" :step="item.step" active-color="#ee0a24" inactive-color="#fff">
                 <template #left-button>
                   <div class="custom-button">{{ item.value[0] }}</div>
                 </template>
@@ -84,8 +84,8 @@
               </div>
             </div>
           </div>
-          <div class="pagination">
-            <Pagination v-model="pages.current"  force-ellipses :total-items="pages.total" @change="changePage" :items-per-page="5" />
+          <div v-if="list.length" class="pagination">
+            <Pagination v-model="pages.current"  force-ellipses :total-items="pages.total" :page-count="pages.pageCount" @change="changePage" :items-per-page="5" />
           </div>
         </div>
       </div>
@@ -140,12 +140,17 @@
         </div>
       </div>
     </div>
+    <Overlay :show="loading" @click="loading = false">
+      <div class="wrapper" @click.stop>
+        <Loading color="#0094ff">加载中...</Loading>
+      </div>
+    </Overlay>
   </view>
 </template>
 
 <script setup>
 
-  import { Slider,Icon,Button,Pagination } from 'vant'
+  import { Slider,Icon,Button,Pagination,Overlay,Loading } from 'vant'
   import 'vant/lib/index.css';
   import { useUserStore } from '@/store/user.js'
   import '@vant/touch-emulator';
@@ -226,6 +231,7 @@
           n['value'] = null
         }
       })
+      console.log(res.data.filterClasses[0].value)
       filter.value = res.data
       total.value = res.data.prodSpecIdArr
       getFilterProductCount()
@@ -233,10 +239,24 @@
   }
   function choseRadio(item,opt){
     item.value = opt
+    pages.value = {
+      pageNum:1,
+      pageSize:4,
+      current:1,
+      total:0,
+      pageCount:0
+    }
     getFilterProductCount()
   }
   function onChange(e,item){
     console.log(e)
+    pages.value = {
+      pageNum:1,
+      pageSize:4,
+      current:1,
+      total:0,
+      pageCount:0
+    }
     getFilterProductCount()
   }
   function getFilterProductCount(){
@@ -268,7 +288,12 @@
       data:data
     }).then((res)=>{
       total.value = res.data
-      goList()
+      if(res.data.length){
+        goList()
+      }else {
+        list.value = []
+        listParam.value.total = 0
+      }
     })
   }
 
@@ -306,10 +331,11 @@
   }
 
   const pages = ref({
-    pageNum:0,
+    pageNum:1,
     pageSize:4,
-    current:0,
-    total:0
+    current:1,
+    total:0,
+    pageCount:0
   })
   const list = ref([]);
 
@@ -328,6 +354,7 @@
 
   function clearFilter(index){
     listParam.value.filters.splice(index,1)
+    filter.value.filterClasses[index].value = [filter.value.filterClasses[index].valueMin,filter.value.filterClasses[index].valueMax]
     getFilterProductCountClear()
   }
 
@@ -336,7 +363,9 @@
     goList()
   }
 
+  const loading = ref(false)
   function goList(final){
+    loading.value = true
     if(final){
 
     }else {
@@ -368,10 +397,12 @@
         specIds: final? final.join(',') :listParam.value.specIds
       },
     }).then((res)=>{
+      loading.value = false
       list.value = res.data.records
       listParam.value.total = res.data.total
       pages.value.current = res.data.current
       pages.value.total = res.data.total
+      pages.value.pageCount = res.data.pages
       console.log(list.value)
     })
   }
@@ -475,12 +506,23 @@
   }
 
 
+  function goProtal(){
+    window.location.href = 'https://cs.cummins.com.cn/dealer-portal/#/dealer-home/index'
+  }
+
+  function goHome(){
+    uni.reLaunch({
+      url:'/pages/web/home/index'
+    })
+  }
+
   const sceneCode = ref('')
   onMounted(() => {
     let option = getCurrentInstance()
     sceneCode.value = option.attrs.sceneCode
     getDeviceTypeList()
     getManuList()
+    if(!option.attrs.sceneCode) goList()
   });
 
 </script>

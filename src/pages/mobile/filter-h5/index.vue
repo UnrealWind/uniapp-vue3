@@ -50,7 +50,7 @@
           <span class="tar-value">{{item.valueMin}}{{item.filterUnit}} - {{item.valueMax}}{{item.filterUnit}}</span>
         </h2>
         <div class="slider" >
-          <Slider v-model="item.value" range @change="onChange($event,item)" :min="item.valueMin" :max="item.valueMax" :step="item.step" active-color="#ee0a24">
+          <Slider v-model="item.value" range @change="onChange($event,item)" min="0" :max="item.valueMax" :step="item.step" active-color="#ee0a24">
             <template #left-button>
               <div class="custom-button">{{ item.value[0] }}</div>
             </template>
@@ -143,6 +143,7 @@
       method: 'get',
       params: {},
     }).then((res)=>{
+      filter.value = []
       res.data.filterClasses.forEach((n,i)=>{
         if(n.filterType == 1){
           n['value'] = [Number(n.valueMin),Number(n.valueMax)]

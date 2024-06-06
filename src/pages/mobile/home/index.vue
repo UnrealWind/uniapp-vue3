@@ -1,13 +1,13 @@
 <template>
   <view class="content">
     <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
-      <swiper-item  @click="goFilter">
+      <swiper-item  @click="goFilter({sceneCode:''})">
         <view class="swiper-item">
           <img class="w-full h-full" :src="info[0].url" />
           <p class="p">{{info[0].content}}</p>
         </view>
       </swiper-item>
-      <swiper-item  @click="goFilter">
+      <swiper-item  @click="goFilter({sceneCode:''})">
         <view class="swiper-item">
           <img class="w-full h-full" :src="info[1].url" />
           <p class="p" style="color: #c9c9c9">{{info[1].content}}</p>
@@ -16,7 +16,7 @@
     </swiper>
     <h2 class="p-2 fix-margin title-container">
       <span class="ml-3 font-bold title">适用于各种场景的动力系统</span>
-      <span @click="goFilter()" class="more">更多应用场景 ></span>
+      <span @click="goFilter({sceneCode:''})" class="more">更多应用场景 ></span>
     </h2>
     <div class="device">
       <div class="device-item" v-for="(item,index) in recommandProductSceneList">
@@ -26,7 +26,7 @@
     </div>
     <h2 class="p-2 title-container">
       <span class="ml-3 font-bold title">推荐产品</span>
-      <span @click="goFilter()" class="more">更多产品 ></span>
+      <span @click="goFilter({sceneCode:''})" class="more">更多产品 ></span>
     </h2>
     <div class="product">
       <div @click="goDetail(item)" class="prod-item" v-for="(item,index) in recommandSpec">
@@ -41,7 +41,7 @@
     </div>
 
     <div class="footer-btn">
-      <div @click="goFilter()" class="btn-large">帮我推荐</div>
+      <div @click="goFilter({sceneCode:''})" class="btn-large">帮我推荐</div>
       <div @click="showMessage=true" class="btn-mid">留言咨询</div>
       <div @click="showCall=true" class="btn-mid">电话咨询</div>
     </div>

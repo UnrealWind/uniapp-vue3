@@ -17,7 +17,7 @@
           <h2 v-if="detailInfo.doemProduct">{{detailInfo.doemProduct.name}} ( {{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp )</h2>
           <h3>
             <span>规格</span>
-            <span v-if="detailInfo.specList" @click="showSpecification = true" class="right-fix text-red-500">选择规格 (共{{detailInfo.specList.length}}款) > </span>
+            <span v-if="detailInfo.specList" @click="showSpecification = true" class="specs-btn right-fix text-red-500">选择规格 (共{{detailInfo.specList.length}}款)</span>
           </h3>
           <div class="specs">
             <div >

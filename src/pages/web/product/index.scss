@@ -4,6 +4,13 @@
   }
 }
 
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
 :deep(.van-pagination__item){
   cursor: default !important;
   button {

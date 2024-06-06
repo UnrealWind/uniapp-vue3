@@ -9,13 +9,13 @@
       </span>
       </div>
       <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
-        <swiper-item  @click="goFilter">
+        <swiper-item  @click="goFilter({sceneCode:''})">
           <view class="swiper-item">
             <img class="w-full h-full" :src="info[0].url" />
             <p class="p">{{info[0].content}}</p>
           </view>
         </swiper-item>
-        <swiper-item  @click="goFilter">
+        <swiper-item  @click="goFilter({sceneCode:''})">
           <view class="swiper-item">
             <img class="w-full h-full" :src="info[1].url" />
             <p class="p" style="color: #c9c9c9">{{info[1].content}}</p>
@@ -32,7 +32,7 @@
             <img @click="goFilter(item)" mode="widthFix" :src="`../../../static/img-web/device/${item.sceneCode}.png`" />
             <p class="p">{{item.sceneName}}</p>
           </div>
-          <div  @click="goFilter" class="more">查看应用场景 ></div>
+          <div  @click="goFilter({sceneCode:''})" class="more">查看应用场景 ></div>
         </div>
 
         <h2 class="w-full title-container mt-16">
@@ -66,7 +66,7 @@
             </div>
           </div>
           <div class="footer">
-            <div @click="goFilter" class="more">查看更多推荐 ></div>
+            <div @click="goFilter({sceneCode:''})" class="more">查看更多推荐 ></div>
           </div>
         </div>
       </div>
