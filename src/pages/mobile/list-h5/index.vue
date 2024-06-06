@@ -21,7 +21,7 @@
         >
           <div class="list-item" v-for="(item,index) in list">
             <div class="img-box">
-              <img :src="item.file">
+              <img :src="item.file && item.file.filePath ?item.file.filePath:''">
               <div class="des">{{item.productName}}</div>
             </div>
             <div class="info">

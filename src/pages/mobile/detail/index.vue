@@ -4,7 +4,7 @@
       <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
         <swiper-item v-for="(item,index) in detailInfo.files">
           <view class="swiper-item">
-            <img class="" :src="item" />
+            <img class="" :src="item.filePath" />
           </view>
         </swiper-item>
       </swiper>
@@ -102,7 +102,7 @@
             </div>
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 手机号码</div>
-              <input type="number" :value="commitInfo.phone" @input="input($event,'phone')" class="uni-input input-item" placeholder="请留下您的手机号码" />
+              <input type="number" maxlength="11" :value="commitInfo.phone" @input="input($event,'phone')" class="uni-input input-item" placeholder="请留下您的手机号码" />
             </div>
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 所在地区</div>
@@ -318,6 +318,17 @@
       commiting = false
       showMessage.value = false,
       showTips.value = true
+      commitInfo.value = {
+        "name":"",
+        "phone":"",
+        "message":"",
+        "province":"",
+        "city":"",
+        "county":"",
+        "scene":"",
+        "areas":''
+      }
+      checkPrivacy.value = []
     })
   }
 

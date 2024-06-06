@@ -30,7 +30,7 @@
     </h2>
     <div class="product">
       <div @click="goDetail(item)" class="prod-item" v-for="(item,index) in recommandSpec">
-        <img mode="widthFix" :src="item.file" />
+        <img v-if="item.file && item.file.filePath" mode="widthFix" :src="item.file.filePath" />
         <div class="prod-info">
           <div class="info">
             <div>{{item.productName}} ({{item.ratedHorsepower}}hp) </div>
@@ -59,7 +59,7 @@
             </div>
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 手机号码</div>
-              <input type="number" :value="commitInfo.phone" @input="input($event,'phone')" class="uni-input input-item" placeholder="请留下您的手机号码" />
+              <input type="number"  maxlength="11" :value="commitInfo.phone" @input="input($event,'phone')" class="uni-input input-item" placeholder="请留下您的手机号码" />
             </div>
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 所在地区</div>
@@ -94,18 +94,18 @@
           <h3  class="h3">电话咨询 <img class="img" @click="showCall = false" style="float: right" src="../../../static/img/close.png"></h3>
 <!--          <h4 class="h4">{{detailInfo.doemProduct.name}}</h4>-->
 <!--          <div class="des">{{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp</div>-->
-          <div class="contact-list" style="margin-top: 20px">
+          <div class="contact-list">
             <div class="contact">
               <div class="img-box">
                 <img class="img" src="../../../static/img/user.png">
               </div>
               <div class="contact-info">
-                <p class="p">赵日天</p>
-                <p class="p">AE</p>
+                <p class="p">张延昭</p>
+                <p class="p">AE（北区）</p>
               </div>
               <div class="contact-btn">
                 <img class="img" @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(12312312312)" src="../../../static/img/phone-red.png">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall(15810139248)" src="../../../static/img/phone-red.png">
               </div>
             </div>
             <div class="contact">
@@ -113,12 +113,25 @@
                 <img class="img" src="../../../static/img/user.png">
               </div>
               <div class="contact-info">
-                <p class="p">赵霸天</p>
-                <p class="p">AE</p>
+                <p class="p">王建平</p>
+                <p class="p">AE（南区）</p>
               </div>
               <div class="contact-btn">
                 <img class="img" @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(12312312312)" src="../../../static/img/phone-red.png">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall(13671669950)" src="../../../static/img/phone-red.png">
+              </div>
+            </div>
+            <div class="contact">
+              <div class="img-box">
+                <img class="img" src="../../../static/img/user.png">
+              </div>
+              <div class="contact-info">
+                <p class="p">杨懿</p>
+                <p class="p">AE（西区）</p>
+              </div>
+              <div class="contact-btn">
+                <img class="img" @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall(18615711430)" src="../../../static/img/phone-red.png">
               </div>
             </div>
           </div>
@@ -240,7 +253,18 @@ function commit(){
   }).then((res)=>{
     commiting = false
     showMessage.value = false,
-        showTips.value = true
+    showTips.value = true
+    commitInfo.value = {
+      "name":"",
+      "phone":"",
+      "message":"",
+      "province":"",
+      "city":"",
+      "county":"",
+      "scene":"",
+      "areas":''
+    }
+    checkPrivacy.value = []
   })
 }
 function makePhoneCall(phone){

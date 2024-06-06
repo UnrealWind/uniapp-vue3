@@ -127,7 +127,7 @@
             </div>
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 手机号码</div>
-              <input type="number" :value="commitInfo.phone" @input="input($event,'phone')" class="uni-input input-item" placeholder="请留下您的手机号码" />
+              <input maxlength="11" type="number" :value="commitInfo.phone" @input="input($event,'phone')" class="uni-input input-item" placeholder="请留下您的手机号码" />
             </div>
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 所在地区</div>
@@ -352,6 +352,19 @@
       commiting = false
       showMessage.value = false,
       showTips.value = true
+
+      commitInfo.value = {
+        "name":"",
+        "phone":"",
+        "message":"",
+        "province":"",
+        "city":"",
+        "county":"",
+        "scene":"",
+        "areas":''
+      }
+      checkPrivacy.value = []
+
     })
   }
 

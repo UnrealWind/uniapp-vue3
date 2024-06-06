@@ -1,3 +1,8 @@
+:deep(.pupop ){
+  .picker-view {
+    width: 100vw;
+  }
+}
 
 :deep(.van-pagination__item){
   cursor: default !important;

@@ -147,7 +147,7 @@
         if(n.filterType == 1){
           n['value'] = [Number(n.valueMin),Number(n.valueMax)]
         }else {
-          n.valueEnum = n.valueEnum.split(',')
+          n.valueEnum = n.valueEnum.split('/')
           n['value'] = null
         }
       })
@@ -208,6 +208,7 @@
           value:n
         })
       }else {
+        if(!n.value) return
         listParam.filters.push({
           label:n.value + n.filterUnit,
           value:n
