@@ -20,7 +20,7 @@
     </h2>
     <div class="device">
       <div class="device-item" v-for="(item,index) in recommandProductSceneList">
-        <img @click="goFilter(item)" mode="widthFix" :src="getImg(`../../../static/img/${item.sceneCode}.png`)" />
+        <img @click="goFilter(item)" mode="widthFix" :src="getImg(`https://uat.cs.cummins.com.cn/doem-h5/static/img/${item.sceneCode}.png`)" />
         <p class="p">{{item.sceneName}}</p>
       </div>
     </div>
@@ -50,7 +50,7 @@
     <div v-if="showMessage" class="message">
       <div :class="showMessage?'active':''" class="info-part">
         <div class="info">
-          <h3  class="h3">留言咨询 <img class="img" @click="showMessage = false" style="float: right" :src="getImg('../../../static/img/close.png')"></h3>
+          <h3  class="h3">留言咨询 <img class="img" @click="showMessage = false" style="float: right" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/close.png')"></h3>
 <!--          <h4 class="h4">{{detailInfo.doemProduct.name}}</h4>-->
 <!--          <div class="des">{{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp</div>-->
           <div class="form">
@@ -92,47 +92,47 @@
     <div v-if="showCall" class="message">
       <div :class="showCall?'active':''" class="info-part">
         <div class="info">
-          <h3  class="h3">电话咨询 <img class="img" @click="showCall = false" style="float: right" :src="getImg('../../../static/img/close.png')"></h3>
+          <h3  class="h3">电话咨询 <img class="img" @click="showCall = false" style="float: right" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/close.png')"></h3>
 <!--          <h4 class="h4">{{detailInfo.doemProduct.name}}</h4>-->
 <!--          <div class="des">{{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp</div>-->
           <div class="contact-list">
             <div class="contact">
               <div class="img-box">
-                <img class="img" :src="getImg('../../../static/img/user.png')">
+                <img class="img" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/user.png')">
               </div>
               <div class="contact-info">
                 <p class="p">张延昭</p>
                 <p class="p">AE（北区）</p>
               </div>
               <div class="contact-btn">
-                <img class="img" @click="showMessage = true,showCall=false" :src="getImg('../../../static/img/consultation-red.png')">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(15810139248)" :src="getImg('../../../static/img/phone-red.png')">
+                <img class="img" @click="showMessage = true,showCall=false" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/consultation-red.png')">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall(15810139248)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/phone-red.png')">
               </div>
             </div>
             <div class="contact">
               <div class="img-box">
-                <img class="img" :src="getImg('../../../static/img/user.png')">
+                <img class="img" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/user.png')">
               </div>
               <div class="contact-info">
                 <p class="p">王建平</p>
                 <p class="p">AE（南区）</p>
               </div>
               <div class="contact-btn">
-                <img class="img" @click="showMessage = true,showCall=false" :src="getImg('../../../static/img/consultation-red.png')">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(13671669950)" :src="getImg('../../../static/img/phone-red.png')">
+                <img class="img" @click="showMessage = true,showCall=false" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/consultation-red.png')">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall(13671669950)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/phone-red.png')">
               </div>
             </div>
             <div class="contact">
               <div class="img-box">
-                <img class="img" :src="getImg('../../../static/img/user.png')">
+                <img class="img" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/user.png')">
               </div>
               <div class="contact-info">
                 <p class="p">杨懿</p>
                 <p class="p">AE（西区）</p>
               </div>
               <div class="contact-btn">
-                <img class="img" @click="showMessage = true,showCall=false" :src="getImg('../../../static/img/consultation-red.png')">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(18615711430)" :src="getImg('../../../static/img/phone-red.png')">
+                <img class="img" @click="showMessage = true,showCall=false" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/consultation-red.png')">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall(18615711430)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/phone-red.png')">
               </div>
             </div>
           </div>
@@ -167,11 +167,11 @@ let current = ref(0)
 let visible = ref(false)
 
 const info = ref( [{
-  url: '../../../static/img/swiper1.png',
+  url: 'https://uat.cs.cummins.com.cn/doem-h5/static/img/swiper1.png',
   content: '传承经典，洞悉创编/打造面向燃油四阶段，全新系列发动机',
 },
   {
-    url: '../../../static/img/swiper2.png',
+    url: 'https://uat.cs.cummins.com.cn/doem-h5/static/img/swiper2.png',
     content: '凭借 100 多年的创新和为全球应用提供动力的经验，康明斯提供了运营商所期望的可靠性和耐用性'
   }
 ])

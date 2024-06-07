@@ -3,7 +3,7 @@
 
     <div style="height: 85vh;overflow-y: scroll;">
       <div class="header">
-        <img @click="goHome" :src="getImg('../../../static/img/cummins.png')">
+        <img @click="goHome" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/cummins.png')">
         <span>
           <span style="cursor: pointer" @click="goProtal">经销商服务网</span>
           <span @click="showMessage = true" style="cursor: pointer">联系我们</span>
@@ -11,7 +11,7 @@
       </div>
       <div class="detail-info">
         <div class="detail-left">
-          <img mode="widthFix" :src="getImg('../../../static/img-web/product.png')" />
+          <img mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/product.png')" />
         </div>
         <div class="detail-right">
           <h2 v-if="detailInfo.doemProduct">{{detailInfo.doemProduct.name}} ( {{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp )</h2>
@@ -21,7 +21,7 @@
           </h3>
           <div class="specs">
             <div >
-              <div><img :src="getImg('../../../static/img-web/power.png')"></div>
+              <div><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/power.png')"></div>
               <div>
                 <div class="specs-line1">额定功率</div>
                 <div class="specs-line2">{{detailInfo.ratedHorsepower}}<span>hp</span></div>
@@ -29,7 +29,7 @@
               </div>
             </div>
             <div>
-              <div><img :src="getImg('../../../static/img-web/torque.png')"></div>
+              <div><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/torque.png')"></div>
               <div>
                 <div class="specs-line1">扭矩</div>
                 <div class="specs-line2">{{detailInfo.maxTorque}}<span>n·m</span></div>
@@ -38,7 +38,7 @@
             </div>
             <div>
               <div>
-                <img :src="getImg('../../../static/img-web/rotate.png')">
+                <img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/rotate.png')">
               </div>
               <div>
                 <div class="specs-line1">额定转速</div>
@@ -48,11 +48,11 @@
           </div>
           <div class="detail-para">
             <h3>详细参数</h3>
-            <div><img :src="getImg('../../../static/img/size.png')">尺寸（长*宽*高 mm）
+            <div><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/size.png')">尺寸（长*宽*高 mm）
               <span>{{detailInfo.doemProduct['length']}}*{{detailInfo.doemProduct.width}}*{{detailInfo.doemProduct.height}}</span>
             </div>
-            <div><img :src="getImg('../../../static/img/weight.png')">重量<span>{{detailInfo.doemProduct.weight}}kg</span></div>
-            <div><img :src="getImg('../../../static/img/way.png')">技术路线<span>{{detailInfo.emissionControlRoutes}}</span></div>
+            <div><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/weight.png')">重量<span>{{detailInfo.doemProduct.weight}}kg</span></div>
+            <div><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/way.png')">技术路线<span>{{detailInfo.emissionControlRoutes}}</span></div>
           </div>
           <div class="scenario">
             <h3>适用应用场景</h3>
@@ -73,12 +73,12 @@
     <div v-show="showSpecification" class="specification">
       <div :class="showSpecification?'active':''" class="info-part">
         <div class="info">
-          <h3>选择规格 <img @click="showSpecification = false" style="float: right" :src="getImg('../../../static/img/close.png')"></h3>
+          <h3>选择规格 <img @click="showSpecification = false" style="float: right" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/close.png')"></h3>
           <h4>所有规格（共{{specList.length}}款）</h4>
           <div class="info-list">
             <div v-for="(item,index) in specList" @click="changeProdSpecId(item)" class="specs" :class="item.prodSpecId == prodSpecId ?'active':''">
               <div>
-                <div><img :src="getImg('../../../static/img-web/power.png')"></div>
+                <div><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/power.png')"></div>
                 <div>
                   <div class="specs-line1">额定功率</div>
                   <div class="specs-line2">{{item.ratedHorsepower}}<span>hp</span></div>
@@ -86,7 +86,7 @@
                 </div>
               </div>
               <div>
-                <div><img :src="getImg('../../../static/img-web/torque.png')"></div>
+                <div><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/torque.png')"></div>
                 <div>
                   <div class="specs-line1">扭矩</div>
                   <div class="specs-line2">{{item.maxTorque}}<span>n·m</span></div>
@@ -95,14 +95,14 @@
               </div>
               <div style="position:relative;">
                 <div>
-                  <img :src="getImg('../../../static/img-web/rotate.png')">
+                  <img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/rotate.png')">
                 </div>
                 <div>
                   <div class="specs-line1">额定转速</div>
                   <div class="specs-line2">{{item.ratedSpeed}}<span>rpm</span></div>
                 </div>
                 <span class="active-corner" v-if="item.prodSpecId == prodSpecId" >
-                  <img :src="getImg('../../../static/img/active-corner.png')">
+                  <img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/active-corner.png')">
                 </span>
               </div>
             </div>
@@ -117,7 +117,7 @@
     <div v-show="showMessage" class="message">
       <div :class="showMessage?'active':''" class="info-part">
         <div class="info">
-          <h3>留言咨询  <img @click="showMessage = false" style="float: right" :src="getImg('../../../static/img/close.png')"></h3>
+          <h3>留言咨询  <img @click="showMessage = false" style="float: right" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/close.png')"></h3>
           <h4>{{detailInfo.doemProduct.name}}</h4>
           <div class="des">{{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp</div>
           <div class="form">
@@ -159,44 +159,44 @@
     <div v-show="showCall" class="message">
       <div :class="showCall?'active':''" class="info-part">
         <div class="info">
-          <h3>电话咨询  <img @click="showCall = false" style="float: right" :src="getImg('../../../static/img/close.png')"></h3>
+          <h3>电话咨询  <img @click="showCall = false" style="float: right" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/close.png')"></h3>
           <h4>{{detailInfo.doemProduct.name}}</h4>
           <div class="des">{{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp</div>
           <div class="contact-list">
             <div class="contact">
               <div class="img-box">
-                <img src="../../../static/img-web/user.png">
+                <img src="https://uat.cs.cummins.com.cn/doem-h5/static/img-web/user.png">
               </div>
               <div class="contact-info">
                 <p>张延昭 （15810139248）</p>
                 <p>AE（北区）</p>
               </div>
               <div class="contact-btn">
-                <img @click="showMessage = true,showCall=false" :src="getImg('../../../static/img-web/consultation-red.png')">
+                <img @click="showMessage = true,showCall=false" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/consultation-red.png')">
               </div>
             </div>
             <div class="contact">
               <div class="img-box">
-                <img src="../../../static/img-web/user.png">
+                <img src="https://uat.cs.cummins.com.cn/doem-h5/static/img-web/user.png">
               </div>
               <div class="contact-info">
                 <p>王建平 （13671669950）</p>
                 <p>AE（南区）</p>
               </div>
               <div class="contact-btn">
-                <img @click="showMessage = true,showCall=false" :src="getImg('../../../static/img-web/consultation-red.png')">
+                <img @click="showMessage = true,showCall=false" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/consultation-red.png')">
               </div>
             </div>
             <div class="contact">
               <div class="img-box">
-                <img src="../../../static/img-web/user.png">
+                <img src="https://uat.cs.cummins.com.cn/doem-h5/static/img-web/user.png">
               </div>
               <div class="contact-info">
                 <p>杨懿 （18615711430）</p>
                 <p>AE（西区）</p>
               </div>
               <div class="contact-btn">
-                <img @click="showMessage = true,showCall=false" :src="getImg('../../../static/img-web/consultation-red.png')">
+                <img @click="showMessage = true,showCall=false" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/consultation-red.png')">
               </div>
             </div>
           </div>
@@ -216,7 +216,7 @@
       <div class="btn-mid">
         <div @click="showMessage = true">
           <div>
-            <img :src="getImg('../../../static/img-web/consultation.png')">
+            <img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/consultation.png')">
           </div>
           留言咨询
         </div>
@@ -224,7 +224,7 @@
       <div class="btn-mid">
         <div @click="showCall = true">
           <div>
-            <img :src="getImg('../../../static/img-web/phone.png')">
+            <img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/phone.png')">
           </div>
           电话咨询
         </div>

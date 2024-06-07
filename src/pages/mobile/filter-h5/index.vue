@@ -7,28 +7,28 @@
 
       <div v-for="(item,index) in deviceTypeList" class="device" :class="item.active?'active':''" @click="choseDevice(item)" v-show="!showMore && index<3">
         <template v-if="!item.active">
-          <img :src="getImg(`../../../static/img/device/${item.sceneCode}.png`)">
+          <img :src="getImg(`https://uat.cs.cummins.com.cn/doem-h5/static/img/device/${item.sceneCode}.png`)">
           <div>{{item.sceneName}}</div>
         </template>
         <template v-if="item.active">
-          <img :src="getImg(`../../../static/img/device/${item.sceneCode}A.png`)">
+          <img :src="getImg(`https://uat.cs.cummins.com.cn/doem-h5/static/img/device/${item.sceneCode}A.png`)">
           <div>{{item.sceneName}}
             <span class="active-corner">
-              <img :src="getImg('../../../static/img/active-corner.png')">
+              <img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/active-corner.png')">
             </span>
           </div>
         </template>
       </div>
       <div v-for="(item,index) in deviceTypeList" class="device" :class="item.active?'active':''" @click="choseDevice(item)" v-show="showMore">
         <template v-if="!item.active">
-          <img :src="getImg(`../../../static/img/device/${item.sceneCode}.png`)">
+          <img :src="getImg(`https://uat.cs.cummins.com.cn/doem-h5/static/img/device/${item.sceneCode}.png`)">
           <div>{{item.sceneName}}</div>
         </template>
         <template v-if="item.active">
-          <img :src="getImg(`../../../static/img/device/${item.sceneCode}A.png`)">
+          <img :src="getImg(`https://uat.cs.cummins.com.cn/doem-h5/static/img/device/${item.sceneCode}A.png`)">
           <div>{{item.sceneName}}
             <span class="active-corner">
-              <img :src="getImg('../../../static/img/active-corner.png')">
+              <img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/active-corner.png')">
             </span>
           </div>
         </template>

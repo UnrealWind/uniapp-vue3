@@ -2,13 +2,13 @@
   <view class="content">
     <div class="bg">
       <div class="chose">
-        <div v-if="listParam.device" class="chose-item">{{listParam.device}}<img @click="clear" :src="getImg('../../../static/img/delete.png')"></div>
-        <div class="chose-item" v-for="(item,index) in listParam.filters">{{item.label}}<img @click="clearFilter(index)" :src="getImg('../../../static/img/delete.png')"></div>
-        <div @click="clear" class="clear"><img :src="getImg('../../../static/img/clear.png')">清除</div>
+        <div v-if="listParam.device" class="chose-item">{{listParam.device}}<img @click="clear" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/delete.png')"></div>
+        <div class="chose-item" v-for="(item,index) in listParam.filters">{{item.label}}<img @click="clearFilter(index)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/delete.png')"></div>
+        <div @click="clear" class="clear"><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/clear.png')">清除</div>
       </div>
       <div class="describe">
         共 <span class="text-red-500" v-if="listParam.total">{{listParam.total}}</span> 个产品符合条件
-        <span @click="backFilter" class="right-fix text-red-500"><img :src="getImg('../../../static/img/more.png')"> 更多条件</span>
+        <span @click="backFilter" class="right-fix text-red-500"><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/more.png')"> 更多条件</span>
       </div>
 
       <pull-refresh v-model="refreshing" @refresh="onRefresh">
@@ -25,8 +25,8 @@
               <div class="des">{{item.productName}}</div>
             </div>
             <div class="info">
-              <div class="scenarios"><span><img :src="getImg('../../../static/img/power.png')"> 功率 {{item.ratedPower}}kw/{{item.ratedHorsepower}}hp</span></div>
-              <div class="scenarios"><span><img :src="getImg('../../../static/img/torque.png')"> 最大扭矩 {{item.maxTorque}}Nm/{{item.ratedSpeed}}rpm</span></div>
+              <div class="scenarios"><span><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/power.png')"> 功率 {{item.ratedPower}}kw/{{item.ratedHorsepower}}hp</span></div>
+              <div class="scenarios"><span><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/torque.png')"> 最大扭矩 {{item.maxTorque}}Nm/{{item.ratedSpeed}}rpm</span></div>
               <div class="device-type">
                 <span v-for="(opt,i) in item.sceneList">{{opt.sceneName}}</span>
               </div>
