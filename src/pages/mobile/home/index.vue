@@ -3,13 +3,13 @@
     <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
       <swiper-item  @click="goFilter({sceneCode:''})">
         <view class="swiper-item">
-          <img class="w-full h-full" :src="info[0].url" />
+          <img class="w-full h-full" :src="getImg(info[0].url)" />
           <p class="p">{{info[0].content}}</p>
         </view>
       </swiper-item>
       <swiper-item  @click="goFilter({sceneCode:''})">
         <view class="swiper-item">
-          <img class="w-full h-full" :src="info[1].url" />
+          <img class="w-full h-full" :src="getImg(info[1].url)" />
           <p class="p" style="color: #c9c9c9">{{info[1].content}}</p>
         </view>
       </swiper-item>
@@ -20,7 +20,7 @@
     </h2>
     <div class="device">
       <div class="device-item" v-for="(item,index) in recommandProductSceneList">
-        <img @click="goFilter(item)" mode="widthFix" :src="`../../../static/img/${item.sceneCode}.png`" />
+        <img @click="goFilter(item)" mode="widthFix" :src="getImg(`../../../static/img/${item.sceneCode}.png`)" />
         <p class="p">{{item.sceneName}}</p>
       </div>
     </div>
@@ -30,7 +30,7 @@
     </h2>
     <div class="product">
       <div @click="goDetail(item)" class="prod-item" v-for="(item,index) in recommandSpec">
-        <img v-if="item.file && item.file.filePath" mode="widthFix" :src="item.file.filePath" />
+        <img v-if="item.file && item.file.filePath" mode="widthFix" :src="getImg(item.file.filePath)" />
         <div class="prod-info">
           <div class="info">
             <div>{{item.productName}} ({{item.ratedHorsepower}}hp) </div>
@@ -42,14 +42,15 @@
 
     <div class="footer-btn">
       <div @click="goFilter({sceneCode:''})" class="btn-large">帮我推荐</div>
-      <div @click="showMessage=true" class="btn-mid">留言咨询</div>
+      <div v-if="systype == 'h5'" @click="showMessage=true" class="btn-mid">留言咨询</div>
+      <div v-if="systype == 'mp'" @getphonenumber="getPhoneNum" class="btn-mid">留言咨询</div>
       <div @click="showCall=true" class="btn-mid">电话咨询</div>
     </div>
 
     <div v-if="showMessage" class="message">
       <div :class="showMessage?'active':''" class="info-part">
         <div class="info">
-          <h3  class="h3">留言咨询 <img class="img" @click="showMessage = false" style="float: right" src="../../../static/img/close.png"></h3>
+          <h3  class="h3">留言咨询 <img class="img" @click="showMessage = false" style="float: right" :src="getImg('../../../static/img/close.png')"></h3>
 <!--          <h4 class="h4">{{detailInfo.doemProduct.name}}</h4>-->
 <!--          <div class="des">{{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp</div>-->
           <div class="form">
@@ -91,47 +92,47 @@
     <div v-if="showCall" class="message">
       <div :class="showCall?'active':''" class="info-part">
         <div class="info">
-          <h3  class="h3">电话咨询 <img class="img" @click="showCall = false" style="float: right" src="../../../static/img/close.png"></h3>
+          <h3  class="h3">电话咨询 <img class="img" @click="showCall = false" style="float: right" :src="getImg('../../../static/img/close.png')"></h3>
 <!--          <h4 class="h4">{{detailInfo.doemProduct.name}}</h4>-->
 <!--          <div class="des">{{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp</div>-->
           <div class="contact-list">
             <div class="contact">
               <div class="img-box">
-                <img class="img" src="../../../static/img/user.png">
+                <img class="img" :src="getImg('../../../static/img/user.png')">
               </div>
               <div class="contact-info">
                 <p class="p">张延昭</p>
                 <p class="p">AE（北区）</p>
               </div>
               <div class="contact-btn">
-                <img class="img" @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(15810139248)" src="../../../static/img/phone-red.png">
+                <img class="img" @click="showMessage = true,showCall=false" :src="getImg('../../../static/img/consultation-red.png')">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall(15810139248)" :src="getImg('../../../static/img/phone-red.png')">
               </div>
             </div>
             <div class="contact">
               <div class="img-box">
-                <img class="img" src="../../../static/img/user.png">
+                <img class="img" :src="getImg('../../../static/img/user.png')">
               </div>
               <div class="contact-info">
                 <p class="p">王建平</p>
                 <p class="p">AE（南区）</p>
               </div>
               <div class="contact-btn">
-                <img class="img" @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(13671669950)" src="../../../static/img/phone-red.png">
+                <img class="img" @click="showMessage = true,showCall=false" :src="getImg('../../../static/img/consultation-red.png')">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall(13671669950)" :src="getImg('../../../static/img/phone-red.png')">
               </div>
             </div>
             <div class="contact">
               <div class="img-box">
-                <img class="img" src="../../../static/img/user.png">
+                <img class="img" :src="getImg('../../../static/img/user.png')">
               </div>
               <div class="contact-info">
                 <p class="p">杨懿</p>
                 <p class="p">AE（西区）</p>
               </div>
               <div class="contact-btn">
-                <img class="img" @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(18615711430)" src="../../../static/img/phone-red.png">
+                <img class="img" @click="showMessage = true,showCall=false" :src="getImg('../../../static/img/consultation-red.png')">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall(18615711430)" :src="getImg('../../../static/img/phone-red.png')">
               </div>
             </div>
           </div>
@@ -156,6 +157,11 @@ import { useUserStore } from '@/store/user.js'
 const user = useUserStore()
 import request from '@/utils/request'
 import cityPicker from '../detail/components/piaoyi-cityPicker/piaoyi-cityPicker'
+import {getAssetsFile} from "@/utils/pub-tool";
+
+function getImg(url){
+  return getAssetsFile(url)
+}
 
 let current = ref(0)
 let visible = ref(false)
@@ -272,22 +278,15 @@ function makePhoneCall(phone){
 }
 
 function goFilter(item){
-  uni.getSystemInfo({
-    success:(res)=>{
-      console.log(res,11111111111111)
-      if(res.uniPlatform == 'mp-weixin'){
-        uni.navigateTo({
-          url:'/pages/mobile/filter-mp/index?sceneCode='+item.sceneCode
-        })
-        // do wx
-      }else if(res.uniPlatform == 'web'){
-        uni.navigateTo({
-          url:'/pages/mobile/filter-h5/index?sceneCode='+item.sceneCode
-        })
-        // do web
-      }
-    }
-  })
+  if(systype.value == 'mp'){
+    uni.navigateTo({
+      url:'/pages/mobile/filter-mp/index?sceneCode='+item.sceneCode
+    })
+  }else if(systype.value == 'h5'){
+    uni.navigateTo({
+      url:'/pages/mobile/filter-h5/index?sceneCode='+item.sceneCode
+    })
+  }
 }
 
 let showMessage = ref(false)
@@ -304,9 +303,43 @@ function change(e){
   current.value = e.detail.current;
 }
 
+function getPhoneNum(e){
+  wx.login({
+    success: async (res) => {
+      if (!e.encryptedData && !e.iv) {
+        return
+      }
+      request({
+        url: 'dapi/weixin/getPhoneNumber',
+        method: 'post',
+        params: {},
+        data:{
+          code:res.code
+        }
+      }).then((res)=>{
+          console.log(res)
+        showMessage=true
+      })
+    },
+  })
+}
+
+let systype = ref('h5')
 onMounted(() => {
   getRecommandProductSceneList()
   getRecommandSpec()
+
+  uni.getSystemInfo({
+    success:(res)=>{
+      console.log(res,11111111111111)
+      if(res.uniPlatform == 'mp-weixin'){
+        systype.value = 'mp'
+      }else if(res.uniPlatform == 'web'){
+        systype.value = 'h5'
+      }
+    }
+  })
+
 });
 
 </script>

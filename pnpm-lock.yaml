@@ -38,6 +38,7 @@ specifiers:
   vite: 4.3.5
   vue: ^3.3.11
   vue-i18n: ^9.1.9
+  weixin-js-sdk: ^1.6.5
 
 dependencies:
   '@dcloudio/types': 3.4.8
@@ -63,6 +64,7 @@ dependencies:
   '@vant/area-data': registry.npmmirror.com/@vant/area-data/1.5.1
   '@vant/touch-emulator': registry.npmmirror.com/@vant/touch-emulator/1.4.0
   uni-simple-router: 2.0.8-beta.4
+  weixin-js-sdk: registry.npmmirror.com/weixin-js-sdk/1.6.5
 
 devDependencies:
   '@vant/weapp': 1.11.4
@@ -5381,3 +5383,9 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  registry.npmmirror.com/weixin-js-sdk/1.6.5:
+    resolution: {integrity: sha512-Gph1WAWB2YN/lMOFB/ymb+hbU/wYazzJgu6PMMktCy9cSCeW5wA6Zwt0dpahJbJ+RJEwtTv2x9iIu0U4enuVSQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/weixin-js-sdk/-/weixin-js-sdk-1.6.5.tgz}
+    name: weixin-js-sdk
+    version: 1.6.5
+    dev: false

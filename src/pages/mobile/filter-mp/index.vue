@@ -1,11 +1,15 @@
 <template>
-  <web-view src="http://repairtest.ctygps.com/#/pages/mobile/filter-h5/index"></web-view>
+  <web-view :src="`http://repairtest.ctygps.com/#/pages/mobile/filter-h5/index?sceneCode=${sceneCode}&systype=mp`"></web-view>
 </template>
 
 <script setup>
 
-onMounted(() => {
+import {getCurrentInstance} from "vue";
 
+const sceneCode = ref('')
+onMounted(() => {
+  let option = getCurrentInstance()
+  sceneCode.value = option.attrs.sceneCode
 });
 
 </script>

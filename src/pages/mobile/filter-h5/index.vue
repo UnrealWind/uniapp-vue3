@@ -7,28 +7,28 @@
 
       <div v-for="(item,index) in deviceTypeList" class="device" :class="item.active?'active':''" @click="choseDevice(item)" v-show="!showMore && index<3">
         <template v-if="!item.active">
-          <img :src="`../../../static/img/device/${item.sceneCode}.png`">
+          <img :src="getImg(`../../../static/img/device/${item.sceneCode}.png`)">
           <div>{{item.sceneName}}</div>
         </template>
         <template v-if="item.active">
-          <img :src="`../../../static/img/device/${item.sceneCode}A.png`">
+          <img :src="getImg(`../../../static/img/device/${item.sceneCode}A.png`)">
           <div>{{item.sceneName}}
             <span class="active-corner">
-              <img src="../../../static/img/active-corner.png">
+              <img :src="getImg('../../../static/img/active-corner.png')">
             </span>
           </div>
         </template>
       </div>
       <div v-for="(item,index) in deviceTypeList" class="device" :class="item.active?'active':''" @click="choseDevice(item)" v-show="showMore">
         <template v-if="!item.active">
-          <img :src="`../../../static/img/device/${item.sceneCode}.png`">
+          <img :src="getImg(`../../../static/img/device/${item.sceneCode}.png`)">
           <div>{{item.sceneName}}</div>
         </template>
         <template v-if="item.active">
-          <img :src="`../../../static/img/device/${item.sceneCode}A.png`">
+          <img :src="getImg(`../../../static/img/device/${item.sceneCode}A.png`)">
           <div>{{item.sceneName}}
             <span class="active-corner">
-              <img src="../../../static/img/active-corner.png">
+              <img :src="getImg('../../../static/img/active-corner.png')">
             </span>
           </div>
         </template>
@@ -83,6 +83,12 @@
   const user = useUserStore()
   import request from '@/utils/request'
   import {getCurrentInstance, onMounted} from "vue";
+
+  import {getAssetsFile} from "@/utils/pub-tool";
+
+  function getImg(url){
+    return getAssetsFile(url)
+  }
 
   const showMore = ref(false)
 
@@ -217,14 +223,16 @@
       }
     })
     uni.navigateTo({
-      url:'/pages/mobile/list-h5/index?listParam='+JSON.stringify(listParam)
+      url:'/pages/mobile/list-h5/index?listParam='+JSON.stringify(listParam) + '&systype='+systype.value
     })
   }
 
+  const systype = ref('h5')
   const sceneCode = ref('')
   onMounted(() => {
     let option = getCurrentInstance()
     sceneCode.value = option.attrs.sceneCode
+    option.attrs.systype?systype.value = option.attrs.systype:''
     getDeviceTypeList()
     getManuList()
   });

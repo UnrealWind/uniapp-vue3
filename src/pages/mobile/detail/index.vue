@@ -17,26 +17,26 @@
         </h3>
         <div class="specs">
           <div>
-            <div class="specs-line1"><img class="img" mode="widthFix" src="../../../static/img/power.png">额定功率</div>
+            <div class="specs-line1"><img class="img" mode="widthFix" :src="getImg('../../../static/img/power.png')">额定功率</div>
             <div class="specs-line2">{{detailInfo.ratedHorsepower}}<span>hp</span></div>
             <div class="specs-line3">{{detailInfo.ratedPower}}<span>kw</span></div>
           </div>
           <div>
-            <div class="specs-line1"><img class="img" mode="widthFix" src="../../../static/img/torque.png">扭矩</div>
+            <div class="specs-line1"><img class="img" mode="widthFix" :src="getImg('../../../static/img/torque.png')">扭矩</div>
             <div class="specs-line2">{{detailInfo.maxTorque}}<span>n·m</span></div>
             <div class="specs-line3">{{detailInfo.maxTorqueSpeedMin}}-{{detailInfo.maxTorqueSpeedMax}}<span>rpm</span></div>
           </div>
           <div>
-            <div class="specs-line1"><img class="img" mode="widthFix" src="../../../static/img/rotate.png">额定转速</div>
+            <div class="specs-line1"><img class="img" mode="widthFix" :src="getImg('../../../static/img/rotate.png')">额定转速</div>
             <div class="specs-line2">{{detailInfo.ratedSpeed}}<span>rpm</span></div>
           </div>
         </div>
         <div class="detail-para" v-if="detailInfo.doemProduct">
           <h3  class="h3">详细参数</h3>
-          <div class="div"><img class="img" mode="widthFix" src="../../../static/img/size.png">
+          <div class="div"><img class="img" mode="widthFix" :src="getImg('../../../static/img/size.png')">
             尺寸（长*宽*高 mm）<span class="span">{{detailInfo.doemProduct['length']}}*{{detailInfo.doemProduct.width}}*{{detailInfo.doemProduct.height}}</span></div>
-          <div class="div"><img class="img" mode="widthFix" src="../../../static/img/weight.png">重量<span class="span">{{detailInfo.doemProduct.weight}}kg</span></div>
-          <div class="div"><img class="img" mode="widthFix" src="../../../static/img/way.png">技术路线<span class="span">{{detailInfo.emissionControlRoutes}}</span></div>
+          <div class="div"><img class="img" mode="widthFix" :src="getImg('../../../static/img/weight.png')">重量<span class="span">{{detailInfo.doemProduct.weight}}kg</span></div>
+          <div class="div"><img class="img" mode="widthFix" :src="getImg('../../../static/img/way.png')">技术路线<span class="span">{{detailInfo.emissionControlRoutes}}</span></div>
         </div>
         <div class="scenario">
           <h3  class="h3">适用应用场景</h3>
@@ -54,31 +54,31 @@
       </div>
     </div>
     <div class="footer-btn fixed" style="width: 100%;">
-      <div @click="showMessage=true" class="btn-mid"><img class="img" mode="widthFix" src="../../../static/img/consultation.png">留言咨询</div>
-      <div @click="showCall = true" class="btn-mid"><img class="img" mode="widthFix" src="../../../static/img/phone.png">电话咨询</div>
+      <div @click="showMessage=true" class="btn-mid"><img class="img" mode="widthFix" :src="getImg('../../../static/img/consultation.png')">留言咨询</div>
+      <div @click="showCall = true" class="btn-mid"><img class="img" mode="widthFix" :src="getImg('../../../static/img/phone.png')">电话咨询</div>
     </div>
     <div v-show="showSpecification" class="specification">
       <div :class="showSpecification?'active':''" class="info-part">
         <div class="info">
-          <h3  class="h3">选择规格 <img class="img" @click="showSpecification = false" style="float: right" src="../../../static/img/close.png"></h3>
+          <h3  class="h3">选择规格 <img class="img" @click="showSpecification = false" style="float: right" :src="getImg('../../../static/img/close.png')"></h3>
           <h4 class="h4">所有规格（共{{specList.length}}款）</h4>
           <div v-for="(item,index) in specList" @click="changeProdSpecId(item)" class="specs" :class="item.prodSpecId == prodSpecId ?'active':''">
             <div >
-              <div class="specs-line1"><img class="img" src="../../../static/img/power.png">额定功率</div>
+              <div class="specs-line1"><img class="img" :src="getImg('../../../static/img/power.png')">额定功率</div>
               <div class="specs-line2">{{item.ratedHorsepower}}<span>hp</span></div>
               <div class="specs-line3">{{item.ratedPower}}<span>kw</span></div>
             </div>
             <div>
-              <div class="specs-line1"><img class="img" src="../../../static/img/torque.png">扭矩</div>
+              <div class="specs-line1"><img class="img" :src="getImg('../../../static/img/torque.png')">扭矩</div>
               <div class="specs-line2">{{item.maxTorque}}<span>n·m</span></div>
               <div class="specs-line3">{{item.maxTorqueSpeedMin}}-{{item.maxTorqueSpeedMax}}<span>rpm</span></div>
             </div>
             <div>
-              <div class="specs-line1"><img class="img" src="../../../static/img/rotate.png">额定转速</div>
+              <div class="specs-line1"><img class="img" :src="getImg('../../../static/img/rotate.png')">额定转速</div>
               <div class="specs-line2">{{item.ratedSpeed}}<span>rpm</span></div>
             </div>
             <span v-if="item.prodSpecId == prodSpecId" class="active-corner">
-              <img class="img" src="../../../static/img/active-corner.png">
+              <img class="img" :src="getImg('../../../static/img/active-corner.png')">
             </span>
           </div>
           <div style="height: 90px"></div>
@@ -92,7 +92,7 @@
     <div v-if="showMessage" class="message">
       <div :class="showMessage?'active':''" class="info-part">
         <div class="info">
-          <h3  class="h3">留言咨询 <img class="img" @click="showMessage = false" style="float: right" src="../../../static/img/close.png"></h3>
+          <h3  class="h3">留言咨询 <img class="img" @click="showMessage = false" style="float: right" :src="getImg('../../../static/img/close.png')"></h3>
           <h4 class="h4">{{detailInfo.doemProduct.name}}</h4>
           <div class="des">{{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp</div>
           <div class="form">
@@ -134,47 +134,47 @@
     <div v-if="showCall" class="message">
       <div :class="showCall?'active':''" class="info-part">
         <div class="info">
-          <h3  class="h3">电话咨询 <img class="img" @click="showCall = false" style="float: right" src="../../../static/img/close.png"></h3>
+          <h3  class="h3">电话咨询 <img class="img" @click="showCall = false" style="float: right" :src="getImg('../../../static/img/close.png')"></h3>
           <h4 class="h4">{{detailInfo.doemProduct.name}}</h4>
           <div class="des">{{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp</div>
           <div class="contact-list">
             <div class="contact">
               <div class="img-box">
-                <img class="img" src="../../../static/img/user.png">
+                <img class="img" :src="getImg('../../../static/img/user.png')">
               </div>
               <div class="contact-info">
                 <p class="p">张延昭</p>
                 <p class="p">AE（北区）</p>
               </div>
               <div class="contact-btn">
-                <img class="img" @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(15810139248)" src="../../../static/img/phone-red.png">
+                <img class="img" @click="showMessage = true,showCall=false" :src="getImg('../../../static/img/consultation-red.png')">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall(15810139248)" :src="getImg('../../../static/img/phone-red.png')">
               </div>
             </div>
             <div class="contact">
               <div class="img-box">
-                <img class="img" src="../../../static/img/user.png">
+                <img class="img" :src="getImg('../../../static/img/user.png')">
               </div>
               <div class="contact-info">
                 <p class="p">王建平</p>
                 <p class="p">AE（南区）</p>
               </div>
               <div class="contact-btn">
-                <img class="img" @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(13671669950)" src="../../../static/img/phone-red.png">
+                <img class="img" @click="showMessage = true,showCall=false" :src="getImg('../../../static/img/consultation-red.png')">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall(13671669950)" :src="getImg('../../../static/img/phone-red.png')">
               </div>
             </div>
             <div class="contact">
               <div class="img-box">
-                <img class="img" src="../../../static/img/user.png">
+                <img class="img" :src="getImg('../../../static/img/user.png')">
               </div>
               <div class="contact-info">
                 <p class="p">杨懿</p>
                 <p class="p">AE（西区）</p>
               </div>
               <div class="contact-btn">
-                <img class="img" @click="showMessage = true,showCall=false" src="../../../static/img/consultation-red.png">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(18615711430)" src="../../../static/img/phone-red.png">
+                <img class="img" @click="showMessage = true,showCall=false" :src="getImg('../../../static/img/consultation-red.png')">
+                <img class="img" style="margin-right: 0" @click="makePhoneCall(18615711430)" :src="getImg('../../../static/img/phone-red.png')">
               </div>
             </div>
           </div>
@@ -202,6 +202,12 @@
   const user = useUserStore()
   import request from '@/utils/request'
   import cityPicker from './components/piaoyi-cityPicker/piaoyi-cityPicker'
+
+  import {getAssetsFile} from "@/utils/pub-tool";
+
+  function getImg(url){
+    return getAssetsFile(url)
+  }
 
   let current = ref(0)
   let strs = ref('<p class="p"><span style="font-size: 13px;"><strong>可靠耐久</strong></span></p><p class="p"><span style="font-size: 13px;">通过近5000小时的可靠性路试验证，以及包括极端冷热冲击、工业循环、热箱试验和冷启动在内的近10000小时台架测试。</span></p><p class="p"><span style="font-size: 13px;"><strong>强劲高效</strong></span></p><p class="p"><span style="font-size: 13px;">新一代高效涡轮增压器，采用前言技术和工艺，全新优化的流道机叶轮型线设计，兼顾高、低速相应需求，显著提升节油和瞬态响应性，效率更高。</span></p><p class="p"><span style="font-size: 13px;"><strong>经济节省</strong></span></p><p class="p"><span style="font-size: 13px;">更广泛的经济油耗区，实现作业效率、效能和经济效益的最佳平衡；热管理能力更强，可靠性更高；采用康明斯超高压燃油系统XPI，采用先进的保压技术，实现超高压喷射，优化喷射角度，在提升燃油经济性的同时降低排放；高压缩比，全新活塞设计，燃烧效率更高，更节油。</span></p><p class="p"><span style="font-size: 13px;"><strong>高智能</strong></span></p><p class="p"><span style="font-size: 13px;">高端智能控制系统，与整机系统无缝链合，提供多达100项电控可选参数进行差异化定制，适配性更强，应用更广泛；康明斯数字化远程在线技术（OTA），能够实现工程设备在用期间的实时升级。</span></p><p class="p"><span style="font-size: 13px;"><strong>全面呵护</strong></span></p><p class="p"><span style="font-size: 13px;">根据中国油品使用现状，设置智能系统的提示功能，提示用户使用合格油品，保护发动机和整机系统正常运行，使用寿命更长；康明斯远程数字化诊断技术，自诊断、自维护能力更强，整机设备高效出勤更有保障。</span></p><p class="p"><span style="font-size: 13px;"><strong>高适应性</strong></span></p><p class="p"><span style="font-size: 13px;">高寒适应性强，胜任零下40度工况作业，零下30度无需辅助加热器启动更轻松；高原适应性强，500米海拔无降扭，胜任4500米海拔作业。</span></p>')
@@ -340,7 +346,7 @@
     current.value = e.detail.current;
   }
 
-  let sysName = ref('mp-weixin')
+  let systype = ref('h5')
   onMounted(() => {
     let option = getCurrentInstance()
     prodSpecId.value = option.attrs.prodSpecId
@@ -349,11 +355,9 @@
       success:(res)=>{
         console.log(res,11111111111111)
         if(res.uniPlatform == 'mp-weixin'){
-          sysName.value = 'mp-weixin'
-          // do wx
+          systype.value = 'mp-weixin'
         }else if(res.uniPlatform == 'web'){
-          sysName.value = 'web'
-          // do web
+          systype.value = 'web'
         }
       }
     })

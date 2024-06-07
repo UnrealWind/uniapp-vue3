@@ -2,13 +2,13 @@
   <view class="content">
     <div class="bg">
       <div class="chose">
-        <div v-if="listParam.device" class="chose-item">{{listParam.device}}<img @click="clear" src="../../../static/img/delete.png"></div>
-        <div class="chose-item" v-for="(item,index) in listParam.filters">{{item.label}}<img @click="clearFilter(index)" src="../../../static/img/delete.png"></div>
-        <div @click="clear" class="clear"><img src="../../../static/img/clear.png">清除</div>
+        <div v-if="listParam.device" class="chose-item">{{listParam.device}}<img @click="clear" :src="getImg('../../../static/img/delete.png')"></div>
+        <div class="chose-item" v-for="(item,index) in listParam.filters">{{item.label}}<img @click="clearFilter(index)" :src="getImg('../../../static/img/delete.png')"></div>
+        <div @click="clear" class="clear"><img :src="getImg('../../../static/img/clear.png')">清除</div>
       </div>
       <div class="describe">
         共 <span class="text-red-500" v-if="listParam.total">{{listParam.total}}</span> 个产品符合条件
-        <span @click="backFilter" class="right-fix text-red-500"><img src="../../../static/img/more.png"> 更多条件</span>
+        <span @click="backFilter" class="right-fix text-red-500"><img :src="getImg('../../../static/img/more.png')"> 更多条件</span>
       </div>
 
       <pull-refresh v-model="refreshing" @refresh="onRefresh">
@@ -21,12 +21,12 @@
         >
           <div class="list-item" v-for="(item,index) in list">
             <div class="img-box">
-              <img :src="item.file && item.file.filePath ?item.file.filePath:''">
+              <img :src="getImg(item.file && item.file.filePath ?item.file.filePath:'')">
               <div class="des">{{item.productName}}</div>
             </div>
             <div class="info">
-              <div class="scenarios"><span><img src="../../../static/img/power.png"> 功率 {{item.ratedPower}}kw/{{item.ratedHorsepower}}hp</span></div>
-              <div class="scenarios"><span><img src="../../../static/img/torque.png"> 最大扭矩 {{item.maxTorque}}Nm/{{item.ratedSpeed}}rpm</span></div>
+              <div class="scenarios"><span><img :src="getImg('../../../static/img/power.png')"> 功率 {{item.ratedPower}}kw/{{item.ratedHorsepower}}hp</span></div>
+              <div class="scenarios"><span><img :src="getImg('../../../static/img/torque.png')"> 最大扭矩 {{item.maxTorque}}Nm/{{item.ratedSpeed}}rpm</span></div>
               <div class="device-type">
                 <span v-for="(opt,i) in item.sceneList">{{opt.sceneName}}</span>
               </div>
@@ -51,6 +51,13 @@
   import { useUserStore } from '@/store/user.js'
   const user = useUserStore()
   import request from '@/utils/request'
+  import wx from 'weixin-js-sdk'
+
+  import {getAssetsFile} from "@/utils/pub-tool";
+
+  function getImg(url){
+    return getAssetsFile(url)
+  }
 
   const loading = ref(false)
   const finished = ref(false)
@@ -75,16 +82,24 @@
       listParam.value.total = res.data.total
       // 加载状态结束
       loading.value = false;
-      if(res.data.current == res.data.pages){
+      if(!res.data.records.length || res.data.current == res.data.pages ){
         finished.value = true;
       }
       refreshing.value = false
     })
   }
   function goDetail(item){
-    uni.navigateTo({
-      url:'/pages/mobile/detail/index?prodSpecId='+item.prodSpecId
-    })
+
+    if(systype.value == 'h5'){
+      uni.navigateTo({
+        url:'/pages/mobile/detail/index?prodSpecId='+item.prodSpecId
+      })
+    }else {
+      wx.miniProgram.navigateTo({
+        url:'/pages/mobile/detail/index?prodSpecId='+item.prodSpecId
+      })
+    }
+
   }
 
   function backFilter(){
@@ -157,9 +172,11 @@
   }
 
   const listParam = ref({})
+  const systype = ref('h5')
   onMounted(() => {
     let option = getCurrentInstance()
     listParam.value = JSON.parse(option.attrs.listParam)
+    systype.value = option.attrs.systype
   });
 
 </script>

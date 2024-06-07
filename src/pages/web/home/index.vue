@@ -2,7 +2,7 @@
   <view class="content">
     <div class="info-box" style="height: 88vh;overflow-y: scroll;">
       <div class="header">
-        <img @click="goHome" src="../../../static/img/cummins.png">
+        <img @click="goHome" :src="getImg('../../../static/img/cummins.png')">
         <span>
         <span style="cursor: pointer" @click="goProtal">经销商服务网</span>
         <span @click="showMessage = true" style="cursor: pointer">联系我们</span>
@@ -11,13 +11,13 @@
       <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
         <swiper-item  @click="goFilter({sceneCode:''})">
           <view class="swiper-item">
-            <img class="w-full h-full" :src="info[0].url" />
+            <img class="w-full h-full" :src="getImg(info[0].url)" />
             <p class="p">{{info[0].content}}</p>
           </view>
         </swiper-item>
         <swiper-item  @click="goFilter({sceneCode:''})">
           <view class="swiper-item">
-            <img class="w-full h-full" :src="info[1].url" />
+            <img class="w-full h-full" :src="getImg(info[1].url)" />
             <p class="p" style="color: #c9c9c9">{{info[1].content}}</p>
           </view>
         </swiper-item>
@@ -29,7 +29,7 @@
         </h2>
         <div class="device">
           <div class="device-item" v-for="(item,index) in recommandProductSceneList">
-            <img @click="goFilter(item)" mode="widthFix" :src="`../../../static/img-web/device/${item.sceneCode}.png`" />
+            <img @click="goFilter(item)" mode="widthFix" :src="getImg(`../../../static/img-web/device/${item.sceneCode}.png`)" />
             <p class="p">{{item.sceneName}}</p>
           </div>
           <div  @click="goFilter({sceneCode:''})" class="more">查看应用场景 ></div>
@@ -40,19 +40,19 @@
         </h2>
         <div class="product">
           <div class="prod-item" v-for="(item,index) in recommandSpec">
-            <img mode="widthFix" src="../../../static/img-web/product.png" />
+            <img mode="widthFix" :src="getImg('../../../static/img-web/product.png')" />
             <div class="prod-info">
               <div class="info">
                 <div>{{item.productName}} </div>
               </div>
               <div class="specs">
                 <div>
-                  <div class="specs-line1"><img src="../../../static/img/power.png">功率</div>
+                  <div class="specs-line1"><img :src="getImg('../../../static/img/power.png')">功率</div>
                   <div class="specs-line2">{{item.ratedHorsepower}}<span>hp</span></div>
                   <div class="specs-line3">{{item.ratedPower}}<span>kw</span></div>
                 </div>
                 <div>
-                  <div class="specs-line1"><img src="../../../static/img/torque.png">最大扭矩</div>
+                  <div class="specs-line1"><img :src="getImg('../../../static/img/torque.png')">最大扭矩</div>
                   <div class="specs-line2">{{item.maxTorque}}<span>n·m</span></div>
                   <div class="specs-line3">{{item.ratedSpeed}}<span>rpm</span></div>
                 </div>
@@ -74,7 +74,7 @@
       <div v-show="showMessage" class="message">
         <div :class="showMessage?'active':''" class="info-part">
           <div class="info">
-            <h3>留言咨询  <img @click="showMessage = false" style="float: right" src="../../../static/img/close.png"></h3>
+            <h3>留言咨询  <img @click="showMessage = false" style="float: right" :src="getImg('../../../static/img/close.png')"></h3>
 <!--            <h4>{{detailInfo.doemProduct.name}}</h4>-->
 <!--            <div class="des">{{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp</div>-->
             <div class="form" style="margin-top: 20px;">
@@ -116,44 +116,44 @@
       <div v-show="showCall" class="message">
         <div :class="showCall?'active':''" class="info-part">
           <div class="info">
-            <h3>电话咨询  <img @click="showCall = false" style="float: right" src="../../../static/img/close.png"></h3>
+            <h3>电话咨询  <img @click="showCall = false" style="float: right" :src="getImg('../../../static/img/close.png')"></h3>
 <!--            <h4>B7</h4>-->
 <!--            <div class="des">126Kw/2000rpm</div>-->
             <div class="contact-list">
               <div class="contact">
                 <div class="img-box">
-                  <img src="../../../static/img-web/user.png">
+                  <img :src="getImg('../../../static/img-web/user.png')">
                 </div>
                 <div class="contact-info">
                   <p>张延昭 （15810139248）</p>
                   <p>AE（北区）</p>
                 </div>
                 <div class="contact-btn">
-                  <img @click="showMessage = true,showCall=false" src="../../../static/img-web/consultation-red.png">
+                  <img @click="showMessage = true,showCall=false" :src="getImg('../../../static/img-web/consultation-red.png')">
                 </div>
               </div>
               <div class="contact">
                 <div class="img-box">
-                  <img src="../../../static/img-web/user.png">
+                  <img :src="getImg('../../../static/img-web/user.png')">
                 </div>
                 <div class="contact-info">
                   <p>王建平 （13671669950）</p>
                   <p>AE（南区）</p>
                 </div>
                 <div class="contact-btn">
-                  <img @click="showMessage = true,showCall=false" src="../../../static/img-web/consultation-red.png">
+                  <img @click="showMessage = true,showCall=false" :src="getImg('../../../static/img-web/consultation-red.png')">
                 </div>
               </div>
               <div class="contact">
                 <div class="img-box">
-                  <img src="../../../static/img-web/user.png">
+                  <img :src="getImg('../../../static/img-web/user.png')">
                 </div>
                 <div class="contact-info">
                   <p>杨懿 （18615711430）</p>
                   <p>AE（西区）</p>
                 </div>
                 <div class="contact-btn">
-                  <img @click="showMessage = true,showCall=false" src="../../../static/img-web/consultation-red.png">
+                  <img @click="showMessage = true,showCall=false" :src="getImg('../../../static/img-web/consultation-red.png')">
                 </div>
               </div>
             </div>
@@ -175,7 +175,7 @@
       <div class="btn-mid">
         <div @click="showMessage = true">
           <div>
-            <img src="../../../static/img-web/consultation.png">
+            <img :src="getImg('../../../static/img-web/consultation.png')">
           </div>
           留言咨询
         </div>
@@ -183,7 +183,7 @@
       <div class="btn-mid">
         <div @click="showCall = true">
           <div>
-            <img src="../../../static/img-web/phone.png">
+            <img :src="getImg('../../../static/img-web/phone.png')">
           </div>
           电话咨询
         </div>
@@ -200,6 +200,12 @@
   import {useCascaderAreaData} from "@vant/area-data";
   import request from '@/utils/request'
   import cityPicker from '../../mobile/detail/components/piaoyi-cityPicker/piaoyi-cityPicker'
+
+  import {getAssetsFile} from "@/utils/pub-tool";
+
+  function getImg(url){
+    return getAssetsFile(url)
+  }
 
   let current = ref(0)
   let showMessage = ref(false)

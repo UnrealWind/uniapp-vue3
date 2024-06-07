@@ -6,6 +6,7 @@ import presetUno from '@unocss/preset-uno'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base:"./",
   plugins: [
     uni(),
     UnoCss({
