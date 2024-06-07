@@ -95,6 +95,8 @@
         url:'/pages/mobile/detail/index?prodSpecId='+item.prodSpecId
       })
     }else {
+      uni.setStorageSync('prodSpecId', item.prodSpecId);
+      wx.miniProgram.postMessage({ data: { prodSpecId: item.prodSpecId } })
       wx.miniProgram.navigateTo({
         url:'/pages/mobile/detail/index?prodSpecId='+item.prodSpecId
       })

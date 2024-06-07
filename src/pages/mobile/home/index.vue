@@ -43,8 +43,8 @@
     <div class="footer-btn">
       <div @click="goFilter({sceneCode:''})" class="btn-large">帮我推荐</div>
       <div v-if="systype == 'h5'" @click="showMessage=true" class="btn-mid">留言咨询</div>
-      <div v-if="systype == 'mp'" @getphonenumber="getPhoneNum" class="btn-mid">留言咨询</div>
-      <div @click="showCall=true" class="btn-mid">电话咨询</div>
+      <button v-if="systype == 'mp'" open-type="getPhoneNumber" @getphonenumber="getPhoneNum" class="btn-mid">留言咨询</button>
+      <button @click="showCall=true" class="btn-mid">电话咨询</button>
     </div>
 
     <div v-if="showMessage" class="message">
@@ -160,6 +160,7 @@ import cityPicker from '../detail/components/piaoyi-cityPicker/piaoyi-cityPicker
 import {getAssetsFile} from "@/utils/pub-tool";
 
 function getImg(url){
+  if(systype.value == 'mp') return url
   return getAssetsFile(url)
 }
 
@@ -279,12 +280,13 @@ function makePhoneCall(phone){
 
 function goFilter(item){
   if(systype.value == 'mp'){
+    uni.setStorageSync('sceneCode', item.sceneCode);
     uni.navigateTo({
       url:'/pages/mobile/filter-mp/index?sceneCode='+item.sceneCode
     })
   }else if(systype.value == 'h5'){
     uni.navigateTo({
-      url:'/pages/mobile/filter-h5/index?sceneCode='+item.sceneCode
+      url:'/pages/mobile/filter-h5/index?sceneCode='+item.sceneCode,
     })
   }
 }
@@ -306,18 +308,15 @@ function change(e){
 function getPhoneNum(e){
   wx.login({
     success: async (res) => {
-      if (!e.encryptedData && !e.iv) {
-        return
-      }
       request({
         url: 'dapi/weixin/getPhoneNumber',
         method: 'post',
         params: {},
         data:{
-          code:res.code
+          code:e.detail.code
         }
       }).then((res)=>{
-          console.log(res)
+        console.log(res.data.phone_info.phoneNumber)
         showMessage=true
       })
     },

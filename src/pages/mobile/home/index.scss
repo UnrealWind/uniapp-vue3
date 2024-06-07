@@ -307,7 +307,7 @@
       border-radius: 3px;
     }
     .btn-mid {
-      margin-top: 10px;
+      margin: 10px 0;
       width: 43%;
       text-align: center;
       border: 1px solid rgba(218, 41, 28, 1);
@@ -316,6 +316,7 @@
       height: 40px;
       border-radius: 3px;
       background: rgba(218, 41, 28, 1);
+      font-size: 16px;
       .img {
         position: relative;
         top: 6px;

@@ -206,6 +206,7 @@
   import {getAssetsFile} from "@/utils/pub-tool";
 
   function getImg(url){
+    if(systype.value == 'mp') return url
     return getAssetsFile(url)
   }
 
@@ -347,7 +348,7 @@
   }
 
   let systype = ref('h5')
-  onMounted(() => {
+  onMounted((opt) => {
     let option = getCurrentInstance()
     prodSpecId.value = option.attrs.prodSpecId
     getProductSpec()
@@ -355,9 +356,9 @@
       success:(res)=>{
         console.log(res,11111111111111)
         if(res.uniPlatform == 'mp-weixin'){
-          systype.value = 'mp-weixin'
+          systype.value = 'mp'
         }else if(res.uniPlatform == 'web'){
-          systype.value = 'web'
+          systype.value = 'h5'
         }
       }
     })

@@ -3,84 +3,29 @@
 		{
 			"path": "pages/mobile/home/index",
 			"style": {
-				"app-plus":{
-					"titleNView": false,
-					"navigationBarTitleText": "Cummins Products"
-				}
+				"navigationBarTitleText": "Cummins Products"
 			}
 		},
 		{
-			"path": "pages/mobile/filter-h5/index",
+			"path": "pages/mobile/filter-mp/index",
 			"style": {
-				"app-plus":{
-					"titleNView": false,
-					"navigationBarTitleText": "条件筛选"
-				}
-			}
-		},
-		{
-			"path": "pages/mobile/list-h5/index",
-			"style": {
-				"app-plus":{
-					"titleNView": false,
-					"navigationBarTitleText": "产品列表"
-				}
+				"navigationBarTitleText": "条件筛选"
 			}
 		},
 		{
 			"path": "pages/mobile/detail/index",
 			"style": {
-				"app-plus":{
-					"titleNView": false,
-					"navigationBarTitleText": "产品详情"
-				}
-			}
-		},
-		{
-			"path": "pages/mobile/index/index",
-			"style": {
-				"app-plus":{
-					"titleNView": false
-				}
+				"navigationBarTitleText": "产品详情"
 			}
 		}
 	],
-	"subPackages": [{
-		"root": "pages/web",
-		"pages": [
-			{
-				"path": "home/index",
-				"style": {
-					"app-plus":{
-						"titleNView": false
-					}
-				}
-			},
-			{
-				"path": "product/index",
-				"style": {
-					"app-plus":{
-						"titleNView": false
-					}
-				}
-			},
-			{
-				"path": "detail/index",
-				"style": {
-					"app-plus":{
-						"titleNView": false
-					}
-				}
-			}
-		]
-	}],
 	"globalStyle": {
-		"navigationBarTextStyle": "rgba(255, 255, 255, 0.9)",
+		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "",
 		"navigationBarBackgroundColor": "#000",
 		"backgroundColor": "#F8F8F8",
 		"usingComponents": {
-			"van-button": "./wxcomponents/vant-weapp/button/index"
+
 		}
 	}
 }
