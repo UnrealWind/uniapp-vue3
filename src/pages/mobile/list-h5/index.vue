@@ -21,7 +21,7 @@
         >
           <div class="list-item" v-for="(item,index) in list">
             <div class="img-box">
-              <img :src="getImg(item.file && item.file.filePath ?item.file.filePath:'')">
+              <img v-if="item.files && item.files.length" :src="getImg(item.files[0].filePath)">
               <div class="des">{{item.productName}}</div>
             </div>
             <div class="info">
@@ -95,8 +95,13 @@
         url:'/pages/mobile/detail/index?prodSpecId='+item.prodSpecId
       })
     }else {
-      uni.setStorageSync('prodSpecId', item.prodSpecId);
-      wx.miniProgram.postMessage({ data: { prodSpecId: item.prodSpecId } })
+      // uni.navigateTo({
+      //   url:'/pages/mobile/detail/index?prodSpecId='+item.prodSpecId
+      // })
+      // return
+      // fydebugger 这块v3版本的uniapp无法获取到路由参数
+      // uni.setStorageSync('prodSpecId', item.prodSpecId);
+      // wx.miniProgram.postMessage({ data: { prodSpecId: item.prodSpecId } })
       wx.miniProgram.navigateTo({
         url:'/pages/mobile/detail/index?prodSpecId='+item.prodSpecId
       })

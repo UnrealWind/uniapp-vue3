@@ -54,8 +54,14 @@
       </div>
     </div>
     <div class="footer-btn fixed" style="width: 100%;">
-      <div @click="showMessage=true" class="btn-mid"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/consultation.png')">留言咨询</div>
-      <div @click="showCall = true" class="btn-mid"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/phone.png')">电话咨询</div>
+      <button v-if="systype == 'h5'" @click="showMessage=true" class="btn-mid">
+        <img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/consultation.png')">留言咨询</button>
+      <button v-if="systype == 'mp' && !commitInfo.phone" open-type="getPhoneNumber" @getphonenumber="getPhoneNum" class="btn-mid">
+        <img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/consultation.png')">留言咨询</button>
+      <button v-if="systype == 'mp' && commitInfo.phone" @click="showMessage=true" class="btn-mid">
+        <img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/consultation.png')">留言咨询</button>
+      <button @click="showCall=true" class="btn-mid">
+        <img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/phone.png')">电话咨询</button>
     </div>
     <div v-show="showSpecification" class="specification">
       <div :class="showSpecification?'active':''" class="info-part">
@@ -125,7 +131,7 @@
               </label>
             </checkbox-group>
             <div @click="commit"  class="btn-large">提交</div>
-            <div class="privacy">Cummins将严格遵循<span>《隐私政策》</span>保证您的信息安全</div>
+            <div class="privacy">Cummins将严格遵循<span @click="goPrivacy" style="color: rgba(218, 41, 28, 1)">《隐私政策》</span>保证您的信息安全</div>
           </div>
         </div>
       </div>
@@ -198,6 +204,7 @@
 <script setup>
 
   import { getCurrentInstance, onMounted } from 'vue'
+  import { onLoad } from '@dcloudio/uni-app'
   import { useUserStore } from '@/store/user.js'
   const user = useUserStore()
   import request from '@/utils/request'
@@ -340,21 +347,47 @@
   }
 
   function makePhoneCall(phone){
-    uni.makePhoneCall({phoneNumber:phone})
+    uni.makePhoneCall({phoneNumber:phone+''})
   }
 
   function change(e){
     current.value = e.detail.current;
   }
 
+  function goPrivacy(){
+    uni.navigateTo({
+      url:'/pages/mobile/privacy/index'
+    })
+  }
+
+  function getPhoneNum(e){
+    wx.login({
+      success: async (res) => {
+        request({
+          url: 'dapi/weixin/getPhoneNumber',
+          method: 'post',
+          params: {},
+          data:{
+            code:e.detail.code
+          }
+        }).then((res)=>{
+          console.log(res.data.phone_info.phoneNumber)
+          commitInfo.value.phone = res.data.phone_info.phoneNumber
+          uni.setStorageSync('phone', commitInfo.value.phone);
+          showMessage.value = true
+        })
+      },
+    })
+  }
+
   let systype = ref('h5')
-  onMounted((opt) => {
+  onLoad((opt) => {
     let option = getCurrentInstance()
-    prodSpecId.value = option.attrs.prodSpecId
+    prodSpecId.value = option.attrs.prodSpecId || opt.prodSpecId
+    commitInfo.value.phone = uni.getStorageSync('phone')
     getProductSpec()
     uni.getSystemInfo({
       success:(res)=>{
-        console.log(res,11111111111111)
         if(res.uniPlatform == 'mp-weixin'){
           systype.value = 'mp'
         }else if(res.uniPlatform == 'web'){

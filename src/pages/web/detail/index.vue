@@ -11,7 +11,7 @@
       </div>
       <div class="detail-info">
         <div class="detail-left">
-          <img mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/product.png')" />
+          <img v-if="detailInfo.files && detailInfo.files.length" mode="widthFix" :src="getImg(detailInfo.files[0].filePath)" />
         </div>
         <div class="detail-right">
           <h2 v-if="detailInfo.doemProduct">{{detailInfo.doemProduct.name}} ( {{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp )</h2>
@@ -375,7 +375,7 @@
   }
 
   function makePhoneCall(phone){
-    uni.makePhoneCall({phoneNumber:phone})
+    uni.makePhoneCall({phoneNumber:phone+''})
   }
 
   function goHome(){

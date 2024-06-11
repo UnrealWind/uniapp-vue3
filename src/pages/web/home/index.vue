@@ -40,7 +40,9 @@
         </h2>
         <div class="product">
           <div class="prod-item" v-for="(item,index) in recommandSpec">
-            <img mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/product.png')" />
+            <div class="prod-img">
+              <img v-if="item.files && item.files.length" mode="widthFix" :src="getImg(item.files[0].filePath)" />
+            </div>
             <div class="prod-info">
               <div class="info">
                 <div>{{item.productName}} </div>

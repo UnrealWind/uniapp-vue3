@@ -28,9 +28,9 @@
       <span class="ml-3 font-bold title">推荐产品</span>
       <span @click="goFilter({sceneCode:''})" class="more">更多产品 ></span>
     </h2>
-    <div class="product">
+    <div class="product mt-1">
       <div @click="goDetail(item)" class="prod-item" v-for="(item,index) in recommandSpec">
-        <img v-if="item.file && item.file.filePath" mode="widthFix" :src="getImg(item.file.filePath)" />
+        <img v-if="item.files && item.files.length" mode="widthFix" :src="getImg(item.files[0].filePath)" />
         <div class="prod-info">
           <div class="info">
             <div>{{item.productName}} ({{item.ratedHorsepower}}hp) </div>
@@ -43,7 +43,8 @@
     <div class="footer-btn">
       <div @click="goFilter({sceneCode:''})" class="btn-large">帮我推荐</div>
       <div v-if="systype == 'h5'" @click="showMessage=true" class="btn-mid">留言咨询</div>
-      <button v-if="systype == 'mp'" open-type="getPhoneNumber" @getphonenumber="getPhoneNum" class="btn-mid">留言咨询</button>
+      <button v-if="systype == 'mp' && !commitInfo.phone" open-type="getPhoneNumber" @getphonenumber="getPhoneNum" class="btn-mid">留言咨询</button>
+      <button v-if="systype == 'mp' && commitInfo.phone" @click="showMessage=true" class="btn-mid">留言咨询</button>
       <button @click="showCall=true" class="btn-mid">电话咨询</button>
     </div>
 
@@ -83,7 +84,7 @@
               </label>
             </checkbox-group>
             <div @click="commit"  class="btn-large">提交</div>
-            <div class="privacy">Cummins将严格遵循<span>《隐私政策》</span>保证您的信息安全</div>
+            <div class="privacy">Cummins将严格遵循<span @click="goPrivacy" style="color: rgba(218, 41, 28, 1)">《隐私政策》</span>保证您的信息安全</div>
           </div>
         </div>
       </div>
@@ -275,7 +276,7 @@ function commit(){
   })
 }
 function makePhoneCall(phone){
-  uni.makePhoneCall({phoneNumber:phone})
+  uni.makePhoneCall({phoneNumber:phone+''})
 }
 
 function goFilter(item){
@@ -301,6 +302,12 @@ function goDetail(item){
   })
 }
 
+function goPrivacy(){
+  uni.navigateTo({
+    url:'/pages/mobile/privacy/index'
+  })
+}
+
 function change(e){
   current.value = e.detail.current;
 }
@@ -317,7 +324,9 @@ function getPhoneNum(e){
         }
       }).then((res)=>{
         console.log(res.data.phone_info.phoneNumber)
-        showMessage=true
+        commitInfo.value.phone = res.data.phone_info.phoneNumber
+        uni.setStorageSync('phone', commitInfo.value.phone);
+        showMessage.value = true
       })
     },
   })

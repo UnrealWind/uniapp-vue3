@@ -4,6 +4,7 @@
 			"path": "pages/mobile/home/index",
 			"style": {
 				"app-plus":{
+					"titleNView": false,
 					"navigationBarTitleText": "Cummins Products"
 				}
 			}
@@ -12,6 +13,7 @@
 			"path": "pages/mobile/filter-h5/index",
 			"style": {
 				"app-plus":{
+					"titleNView": false,
 					"navigationBarTitleText": "条件筛选"
 				}
 			}
@@ -20,6 +22,7 @@
 			"path": "pages/mobile/list-h5/index",
 			"style": {
 				"app-plus":{
+					"titleNView": false,
 					"navigationBarTitleText": "产品列表"
 				}
 			}
@@ -28,6 +31,7 @@
 			"path": "pages/mobile/detail/index",
 			"style": {
 				"app-plus":{
+					"titleNView": false,
 					"navigationBarTitleText": "产品详情"
 				}
 			}
@@ -36,6 +40,7 @@
 			"path": "pages/mobile/privacy/index",
 			"style": {
 				"app-plus":{
+					"titleNView": false,
 					"navigationBarTitleText": "隐私协议"
 				}
 			}

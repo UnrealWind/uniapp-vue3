@@ -17,6 +17,12 @@
 			"style": {
 				"navigationBarTitleText": "产品详情"
 			}
+		},
+		{
+			"path": "pages/mobile/privacy/index",
+			"style": {
+				"navigationBarTitleText": "隐私协议"
+			}
 		}
 	],
 	"globalStyle": {
