@@ -65,7 +65,7 @@
             </div>
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 所在地区</div>
-              <input class="uni-input input-item" :value="commitInfo.areas" @click="visible = true"  placeholder="请留下您的所在地区" />
+              <input :disabled="true" class="uni-input input-item" :value="commitInfo.areas" @click="visible = true"  placeholder="请留下您的所在地区" />
               <cityPicker :column="column" :default-value="defaultValue" :mask-close-able="maskCloseAble" @confirm="confirm" @cancel="visible = false" :visible="visible"/>
             </div>
             <div class="form-item">
@@ -313,6 +313,11 @@ function change(e){
 }
 
 function getPhoneNum(e){
+  console.log(e,1111111111)
+  if(!e.detail.code || commitInfo.value.phone){
+    showMessage.value = true
+    return
+  }
   wx.login({
     success: async (res) => {
       request({

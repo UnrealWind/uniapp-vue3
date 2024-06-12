@@ -10,6 +10,19 @@
       </div>
       <div class="content-item">
         <h2 class="w-full p-2 title-container">
+          <span class="ml-3 font-bold title">应用场景类型</span>
+        </h2>
+        <div class="radio">
+          <div v-for="(item,index) in prodClassList" @click="classIdentifier = item.value,getFilterProductCount()" :class="item.value == classIdentifier?'active':''">{{item.label}}</div>
+        </div>
+        <h2 class="w-full p-2 title-container">
+          <span class="ml-3 font-bold title">使用区域</span>
+        </h2>
+        <div class="radio">
+          <div v-for="(item,index) in areaList" @click="area = item.value,getFilterProductCount()" :class="item.value == area?'active':''">{{item.label}}</div>
+        </div>
+
+        <h2 class="w-full p-2 title-container">
           <span class="ml-3 font-bold title">应用场景</span>
         </h2>
         <div class="radio">
@@ -200,6 +213,13 @@
     })
     item['active'] = true
     listParam.value.device = item.sceneName
+    pages.value = {
+      pageNum:1,
+      pageSize:4,
+      current:1,
+      total:0,
+      pageCount:0
+    }
     await getSceneFilter(item)
   }
 
@@ -241,7 +261,7 @@
       })
       console.log(res.data.filterClasses[0].value)
       filter.value = res.data
-      total.value = res.data.prodSpecIdArr
+      // total.value = res.data.prodSpecIdArr
       getFilterProductCount()
     })
   }
@@ -270,6 +290,8 @@
   function getFilterProductCount(){
     let data = {
       "sceneId":listParam.value.sceneId ,
+      area:area.value,
+      classIdentifier:classIdentifier.value,
       "filters":[]
     }
     filter.value.filterClasses?filter.value.filterClasses.forEach((n,i)=>{
@@ -347,17 +369,18 @@
   })
   const list = ref([]);
 
-  function clear(){
+  async function clear(){
     listParam.value.specIds = []
     listParam.value.filters = []
     listParam.value.device = ''
+    listParam.value.sceneId = ''
     total.value = []
     filter.value = {}
 
     sceneCode.value = ''
     getDeviceTypeList()
     getManuList()
-    goList()
+    getFilterProductCount()
   }
 
   function clearFilter(index){
@@ -524,12 +547,41 @@
     })
   }
 
+  // 使用区域
+  const areaList = ref([])
+  const area = ref('')
+  function getArea(){
+    request({
+      url: 'dapi/productSpec/getArea',
+      method: 'get',
+      params: {},
+    }).then((res)=>{
+      areaList.value = res.data
+    })
+  }
+
+  // 应用场景分类
+  const prodClassList = ref([])
+  const classIdentifier = ref('')
+  function getProdClass(){
+    request({
+      url: 'dapi/productSpec/getProdClass',
+      method: 'get',
+      params: {},
+    }).then((res)=>{
+      prodClassList.value = res.data
+    })
+  }
+
+
   const sceneCode = ref('')
   onMounted(() => {
     let option = getCurrentInstance()
     sceneCode.value = option.attrs.sceneCode
     getDeviceTypeList()
     getManuList()
+    getProdClass()
+    getArea()
     if(!option.attrs.sceneCode) goList()
   });
 

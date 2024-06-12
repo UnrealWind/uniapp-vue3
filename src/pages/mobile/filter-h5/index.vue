@@ -1,10 +1,21 @@
 <template>
   <view class="content">
     <h2 class="w-full p-2 title-container">
+      <span class="ml-3 font-bold title">应用场景类型</span>
+    </h2>
+    <div class="radio">
+      <div v-for="(item,index) in prodClassList" @click="classIdentifier = item.value,getFilterProductCount()" :class="item.value == classIdentifier?'active':''">{{item.label}}</div>
+    </div>
+    <h2 class="w-full p-2 title-container">
+      <span class="ml-3 font-bold title">使用区域</span>
+    </h2>
+    <div class="radio">
+      <div v-for="(item,index) in areaList" @click="area = item.value,getFilterProductCount()" :class="item.value == area?'active':''">{{item.label}}</div>
+    </div>
+    <h2 class="w-full p-2 title-container">
       <span class="ml-3 font-bold title">应用场景</span>
     </h2>
     <div class="scenarios">
-
       <div v-for="(item,index) in deviceTypeList" class="device" :class="item.active?'active':''" @click="choseDevice(item)" v-show="!showMore && index<3">
         <template v-if="!item.active">
           <img :src="getImg(`https://uat.cs.cummins.com.cn/doem-h5/static/img/device/${item.sceneCode}.png`)">
@@ -121,6 +132,32 @@
     getSceneFilter(item)
   }
 
+  // 使用区域
+  const areaList = ref([])
+  const area = ref('')
+  function getArea(){
+    request({
+      url: 'dapi/productSpec/getArea',
+      method: 'get',
+      params: {},
+    }).then((res)=>{
+      areaList.value = res.data
+    })
+  }
+
+  // 应用场景分类
+  const prodClassList = ref([])
+  const classIdentifier = ref('')
+  function getProdClass(){
+    request({
+      url: 'dapi/productSpec/getProdClass',
+      method: 'get',
+      params: {},
+    }).then((res)=>{
+      prodClassList.value = res.data
+    })
+  }
+
   // 生产厂商列表
   const manuList = ref([])
   function getManuList(){
@@ -159,7 +196,8 @@
         }
       })
       filter.value = res.data
-      total.value = res.data.prodSpecIdArr
+      getFilterProductCount()
+      // total.value = res.data.prodSpecIdArr
     })
   }
   function choseRadio(item,opt){
@@ -173,6 +211,8 @@
   function getFilterProductCount(){
     let data = {
       "sceneId":listParam.sceneId,
+      area:area.value,
+      classIdentifier:classIdentifier.value,
       "filters":[]
     }
     filter.value.filterClasses?filter.value.filterClasses.forEach((n,i)=>{
@@ -208,7 +248,7 @@
   function goList(){
     listParam.specIds = total.value.join(',')
     listParam.filters = []
-    filter.value.filterClasses.forEach((n,i)=>{
+    filter.value.filterClasses? filter.value.filterClasses.forEach((n,i)=>{
       if(n.filterType == 1){
         listParam.filters.push({
           label:n.value[0]+ '-' + n.value[1]+ n.filterUnit,
@@ -221,7 +261,7 @@
           value:n
         })
       }
-    })
+    }):''
     uni.navigateTo({
       url:'/pages/mobile/list-h5/index?listParam='+JSON.stringify(listParam) + '&systype='+systype.value
     })
@@ -235,6 +275,8 @@
     option.attrs.systype?systype.value = option.attrs.systype:''
     getDeviceTypeList()
     getManuList()
+    getProdClass()
+    getArea()
   });
 
 </script>
