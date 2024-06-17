@@ -29,7 +29,7 @@
       <span @click="goFilter({sceneCode:''})" class="more">更多产品 ></span>
     </h2>
     <div class="product mt-1">
-      <div @click="goDetail(item)" class="prod-item" v-for="(item,index) in recommandSpec">
+      <div @click="goDetail(item)" class="prod-item mt-1" v-for="(item,index) in recommandSpec">
         <img v-if="item.files && item.files.length" mode="widthFix" :src="getImg(item.files[0].filePath)" />
         <div class="prod-info">
           <div class="info">

@@ -11,7 +11,13 @@
       </div>
       <div class="detail-info">
         <div class="detail-left">
-          <img v-if="detailInfo.files && detailInfo.files.length" mode="widthFix" :src="getImg(detailInfo.files[0].filePath)" />
+          <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
+            <swiper-item v-for="(item,index) in detailInfo.files">
+              <view class="swiper-item">
+                <img class="" :src="item.filePath" />
+              </view>
+            </swiper-item>
+          </swiper>
         </div>
         <div class="detail-right">
           <h2 v-if="detailInfo.doemProduct">{{detailInfo.doemProduct.name}} ( {{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp )</h2>
@@ -150,7 +156,7 @@
               </label>
             </checkbox-group>
             <div @click="commit"  class="btn-large">提交</div>
-            <div class="privacy">Cummins将严格遵循<span>《隐私政策》</span>保证您的信息安全</div>
+            <div class="privacy">Cummins将严格遵循<span style="cursor: pointer" @click="goPrivacy">《隐私政策》</span>保证您的信息安全</div>
           </div>
         </div>
       </div>
@@ -287,6 +293,11 @@
     prodSpecId.value = item.prodSpecId
     getProductSpec()
   }
+
+  function goPrivacy(){
+    window.open('https://cs.cummins.com.cn/dealer-portal/#/dealer-PrivacyPolicy')
+  }
+
 
   let visible = ref(false)
   let maskCloseAble = ref(true)

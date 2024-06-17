@@ -75,6 +75,8 @@
     background: #efefef;
     margin-top: 15px;
     height: 90%;
+    overflow-y: scroll;
+    padding-bottom: 20px;
   }
   .content-info {
     width: 73%;
@@ -107,23 +109,25 @@
       .prod-item {
         width: 21%;
         position: relative;
-        background: #ffffff;
+        background: #efefef;
         border-radius: 5px;
         overflow: hidden;
         margin-top: 0px;
         text-align: center;
         margin-left: 3%;
-        >img,.image {
-          width: 100%;
+        img,.image {
+          height: 90%;
+          margin: 0 auto;
         }
         .prod-img {
           height: 200px;
+          background: #ffffff;
+          object-fit: scale-down;
         }
       }
       .prod-info{
         text-align: left;
         width: 100%;
-        height: 70%;
         margin: 0 auto;
         font-size: 13px;
         background: #efefef;

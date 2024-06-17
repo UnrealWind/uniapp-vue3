@@ -2,9 +2,12 @@
   <view class="content">
     <div class="bg">
       <div class="chose">
-        <div v-if="listParam.device" class="chose-item">{{listParam.device}}<img @click="clear" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/delete.png')"></div>
+        <div v-if="listParam.classIdentifier" class="chose-item">{{listParam.classIdentifier}}<img @click="clearBack('classIdentifier')" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/delete.png')"></div>
+        <div v-if="listParam.area" class="chose-item">{{listParam.area}}<img @click="clearBack('area')" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/delete.png')"></div>
+
+        <div v-if="listParam.device" class="chose-item">{{listParam.device}}<img @click="clearDevice" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/delete.png')"></div>
         <div class="chose-item" v-for="(item,index) in listParam.filters">{{item.label}}<img @click="clearFilter(index)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/delete.png')"></div>
-        <div @click="clear" class="clear"><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/clear.png')">清除</div>
+        <div @click="clearAll" class="clear"><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/clear.png')">清除</div>
       </div>
       <div class="describe">
         共 <span class="text-red-500" v-if="listParam.total">{{listParam.total}}</span> 个产品符合条件
@@ -53,6 +56,9 @@
   import request from '@/utils/request'
   import wx from 'weixin-js-sdk'
 
+  let pageList = getCurrentPages()
+  let prevPage = pageList[pageList.length - 2]
+
   import {getAssetsFile} from "@/utils/pub-tool";
 
   function getImg(url){
@@ -69,6 +75,12 @@
   })
 
   function getProductSpecPage(){
+    if(!listParam.value.specIds){
+      loading.value = false;
+      finished.value = true;
+      listParam.value.total = '0'
+      return
+    }
     request({
       url: 'dapi/productSpec/getProductSpecPage',
       method: 'get',
@@ -110,9 +122,7 @@
   }
 
   function backFilter(){
-    uni.redirectTo({
-      url:'/pages/mobile/filter-h5/index'
-    })
+    uni.navigateBack()
   }
 
   function onLoad(){
@@ -135,18 +145,73 @@
     onLoad();
   };
 
-  function clear(){
+  function clearDevice(){
     listParam.value.specIds = []
     listParam.value.filters = []
     listParam.value.device = ''
-    onRefresh()
+    listParam.value.sceneId = ''
+    uni.$emit('clear','device')
+    getFilterProductCount()
+  }
+
+  function clearAll(){
+    listParam.value.specIds = []
+    listParam.value.filters = []
+    listParam.value.device = ''
+    listParam.value.classIdentifier = ''
+    listParam.value.area = ''
+    listParam.value.sceneId = ''
+    uni.$emit('clear','all')
+    getFilterProductCount()
+  }
+
+  function clearBack(opt){
+    uni.$emit('clear',opt)
+    listParam.value[opt] = ''
+    getFilterProductCount()
+  }
+
+  // 使用区域
+  const areaList = ref([])
+  const area = ref('home')
+  function getArea(){
+    request({
+      url: 'dapi/productSpec/getArea',
+      method: 'get',
+      params: {},
+    }).then((res)=>{
+      areaList.value = res.data
+    })
+  }
+
+  // 应用场景分类
+  const prodClassList = ref([])
+  const classIdentifier = ref('nonroad')
+  function getProdClass(){
+    request({
+      url: 'dapi/productSpec/getProdClass',
+      method: 'get',
+      params: {},
+    }).then((res)=>{
+      prodClassList.value = res.data
+    })
   }
 
   function getFilterProductCount(){
     let data = {
       "sceneId":listParam.value.sceneId,
+      // area:listParam.value.area,
+      // classIdentifier:listParam.value.classIdentifier,
       "filters":[]
     }
+
+    areaList.value.forEach((n,i)=>{
+      n.label == listParam.value.area? data['area'] = n.value:''
+    })
+    prodClassList.value.forEach((n,i)=>{
+      n.label == listParam.value.classIdentifier? data['classIdentifier'] = n.value:''
+    })
+
     listParam.value.filters.forEach((n,i)=>{
       if(n.value.filterType == 1){
         data.filters.push({
@@ -175,12 +240,15 @@
   }
   function clearFilter(index){
     listParam.value.filters.splice(index,1)
+    uni.$emit('clear','filter')
     getFilterProductCount()
   }
 
   const listParam = ref({})
   const systype = ref('h5')
   onMounted(() => {
+    getProdClass()
+    getArea()
     let option = getCurrentInstance()
     listParam.value = JSON.parse(option.attrs.listParam)
     systype.value = option.attrs.systype

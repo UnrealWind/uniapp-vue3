@@ -9,20 +9,20 @@
       </span>
       </div>
       <div class="content-item">
-        <h2 class="w-full p-2 title-container">
+        <h2 class=" p-2 title-container">
           <span class="ml-3 font-bold title">应用场景类型</span>
         </h2>
         <div class="radio">
-          <div v-for="(item,index) in prodClassList" @click="classIdentifier = item.value,getFilterProductCount()" :class="item.value == classIdentifier?'active':''">{{item.label}}</div>
+          <div v-for="(item,index) in prodClassList" @click="classIdentifier = item.value,listParam.classIdentifier = item.label,getFilterProductCount()" :class="item.value == classIdentifier?'active':''">{{item.label}}</div>
         </div>
-        <h2 class="w-full p-2 title-container">
+        <h2 class=" p-2 title-container">
           <span class="ml-3 font-bold title">使用区域</span>
         </h2>
         <div class="radio">
-          <div v-for="(item,index) in areaList" @click="area = item.value,getFilterProductCount()" :class="item.value == area?'active':''">{{item.label}}</div>
+          <div v-for="(item,index) in areaList" @click="area = item.value,listParam.area = item.label,getFilterProductCount()" :class="item.value == area?'active':''">{{item.label}}</div>
         </div>
 
-        <h2 class="w-full p-2 title-container">
+        <h2 class=" p-2 title-container">
           <span class="ml-3 font-bold title">应用场景</span>
         </h2>
         <div class="radio">
@@ -30,8 +30,8 @@
         </div>
 
         <div v-if="filter.filterClasses" v-for="(item,index) in filter.filterClasses">
-          <div v-if="item.filterType == 2">
-            <h2 class="w-full p-2 title-container mt-2">
+          <div v-if="item.filterType == 2 && item.valueEnum && item.valueEnum.length">
+            <h2 class=" p-2 title-container mt-2">
               <span class="ml-3 font-bold title">{{item.filterName}}</span>
             </h2>
             <div class="radio">
@@ -39,7 +39,7 @@
             </div>
           </div>
           <div v-if="item.filterType == 1">
-            <h2  class="w-full p-2 title-container mt-2">
+            <h2  class=" p-2 title-container mt-2">
               <span class="ml-3 font-bold title">{{item.filterName}}</span>
               <span class="tar-value">{{item.valueMin}}{{item.filterUnit}} - {{item.valueMax}}{{item.filterUnit}}</span>
             </h2>
@@ -56,15 +56,18 @@
           </div>
         </div>
         <div class="btn-box">
-          <Button class="w-full" style="margin-top: 15px"  type="danger" size="small" @click="clear">重置</Button>
+          <Button class="w-full" style="margin-top: 15px"  type="danger" size="small" @click="clearAll">重置</Button>
         </div>
       </div>
       <div class="content-info">
         <h3>筛选标签</h3>
         <div class="chose">
+          <div v-if="listParam.classIdentifier" class="chose-item">{{listParam.classIdentifier}}<img @click="clearBack('classIdentifier')" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/delete.png')"></div>
+          <div v-if="listParam.area" class="chose-item">{{listParam.area}}<img @click="clearBack('area')" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/delete.png')"></div>
+
           <div v-if="listParam.device" class="chose-item">{{listParam.device}}<img @click="clear" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/delete.png')"></div>
           <div class="chose-item" v-for="(item,index) in listParam.filters">{{item.label}}<img @click="clearFilter(index)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/delete.png')"></div>
-          <div @click="clear"  class="clear"><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/clear.png')">清除全部</div>
+          <div @click="clearAll"  class="clear"><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/clear.png')">清除全部</div>
         </div>
         <p class="chose-des"> 共有 <span>{{listParam.total || 0}}</span> 个产品符合条件</p>
         <div class="product">
@@ -188,7 +191,9 @@
     device:'',
     filters: [],
     specIds:'',
-    sceneId:''
+    sceneId:'',
+    area:'国内',
+    classIdentifier:'非道路'
   }
   )
   function getDeviceTypeList(){
@@ -201,9 +206,12 @@
         if(sceneCode.value == n.sceneCode){
           n['active'] = true
           await choseDevice(n)
-          listParam.device = n.sceneName
+          listParam.value.device = n.sceneName
         }
       })
+
+      if(!listParam.value.device) getFilterProductCount()
+
       deviceTypeList.value = res.data
     })
   }
@@ -255,7 +263,7 @@
         if(n.filterType == 1){
           n['value'] = [Number(n.valueMin),Number(n.valueMax)]
         }else {
-          n.valueEnum = n.valueEnum.split('/')
+          n.valueEnum?n.valueEnum = n.valueEnum.split('/'):''
           n['value'] = null
         }
       })
@@ -294,6 +302,10 @@
       classIdentifier:classIdentifier.value,
       "filters":[]
     }
+
+    if(!area.value ) delete data.area
+    if(!classIdentifier.value ) delete data.classIdentifier
+
     filter.value.filterClasses?filter.value.filterClasses.forEach((n,i)=>{
       if(n.filterType == 1){
         data.filters.push({
@@ -323,6 +335,7 @@
       }else {
         list.value = []
         listParam.value.total = 0
+        genFilter()
       }
     })
   }
@@ -374,13 +387,34 @@
     listParam.value.filters = []
     listParam.value.device = ''
     listParam.value.sceneId = ''
+
     total.value = []
     filter.value = {}
-
     sceneCode.value = ''
     getDeviceTypeList()
-    getManuList()
-    getFilterProductCount()
+  }
+
+  function clearAll(){
+    listParam.value.specIds = []
+    listParam.value.filters = []
+    listParam.value.device = ''
+    listParam.value.sceneId = ''
+    listParam.value.classIdentifier = ''
+    listParam.value.area = ''
+
+    total.value = []
+    filter.value = {}
+    sceneCode.value = ''
+    classIdentifier.value = ''
+    area.value =''
+
+    getDeviceTypeList()
+  }
+
+  function clearBack(opt){
+    listParam.value[opt] = ''
+    opt == 'classIdentifier'? classIdentifier.value = '': area.value =''
+    getDeviceTypeList()
   }
 
   function clearFilter(index){
@@ -394,6 +428,24 @@
     goList()
   }
 
+  function genFilter(){
+    listParam.value.filters = []
+    filter.value.filterClasses?filter.value.filterClasses.forEach((n,i)=>{
+      if(n.filterType == 1){
+        listParam.value.filters.push({
+          label:n.value[0]+ '-' + n.value[1]+ n.filterUnit,
+          value:n
+        })
+      }else {
+        if(!n.value) return
+        listParam.value.filters.push({
+          label:n.value + n.filterUnit,
+          value:n
+        })
+      }
+    }):''
+  }
+
   const loading = ref(false)
   function goList(final){
     loading.value = true
@@ -401,22 +453,8 @@
 
     }else {
       listParam.value.specIds = total.value.join(',')
-      listParam.value.filters = []
       console.log(filter.value)
-      filter.value.filterClasses?filter.value.filterClasses.forEach((n,i)=>{
-        if(n.filterType == 1){
-          listParam.value.filters.push({
-            label:n.value[0]+ '-' + n.value[1]+ n.filterUnit,
-            value:n
-          })
-        }else {
-          if(!n.value) return
-          listParam.value.filters.push({
-            label:n.value + n.filterUnit,
-            value:n
-          })
-        }
-      }):''
+      genFilter()
     }
 
     request({
@@ -549,7 +587,7 @@
 
   // 使用区域
   const areaList = ref([])
-  const area = ref('')
+  const area = ref('home')
   function getArea(){
     request({
       url: 'dapi/productSpec/getArea',
@@ -562,7 +600,7 @@
 
   // 应用场景分类
   const prodClassList = ref([])
-  const classIdentifier = ref('')
+  const classIdentifier = ref('nonroad')
   function getProdClass(){
     request({
       url: 'dapi/productSpec/getProdClass',
@@ -582,7 +620,6 @@
     getManuList()
     getProdClass()
     getArea()
-    if(!option.attrs.sceneCode) goList()
   });
 
 </script>

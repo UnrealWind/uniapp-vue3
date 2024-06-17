@@ -109,7 +109,7 @@
                 </label>
               </checkbox-group>
               <div @click="commit"  class="btn-large">提交</div>
-              <div class="privacy">Cummins将严格遵循<span>《隐私政策》</span>保证您的信息安全</div>
+              <div class="privacy">Cummins将严格遵循<span style="cursor: pointer" @click="goPrivacy">《隐私政策》</span>保证您的信息安全</div>
             </div>
           </div>
         </div>
@@ -275,6 +275,10 @@
     uni.navigateTo({
       url:'/pages/web/detail/index?prodSpecId='+item.prodSpecId
     })
+  }
+
+  function goPrivacy(){
+    window.open('https://cs.cummins.com.cn/dealer-portal/#/dealer-PrivacyPolicy')
   }
 
   // 留言部分

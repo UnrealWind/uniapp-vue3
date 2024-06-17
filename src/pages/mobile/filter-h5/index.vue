@@ -1,18 +1,18 @@
 <template>
   <view class="content">
-    <h2 class="w-full p-2 title-container">
+    <h2 class=" p-2 title-container">
       <span class="ml-3 font-bold title">应用场景类型</span>
     </h2>
     <div class="radio">
-      <div v-for="(item,index) in prodClassList" @click="classIdentifier = item.value,getFilterProductCount()" :class="item.value == classIdentifier?'active':''">{{item.label}}</div>
+      <div v-for="(item,index) in prodClassList" @click="classIdentifier = item.value,listParam.classIdentifier = item.label,getFilterProductCount()" :class="item.value == classIdentifier?'active':''">{{item.label}}</div>
     </div>
-    <h2 class="w-full p-2 title-container">
+    <h2 class=" p-2 title-container">
       <span class="ml-3 font-bold title">使用区域</span>
     </h2>
     <div class="radio">
-      <div v-for="(item,index) in areaList" @click="area = item.value,getFilterProductCount()" :class="item.value == area?'active':''">{{item.label}}</div>
+      <div v-for="(item,index) in areaList" @click="area = item.value,listParam.area = item.label,getFilterProductCount()" :class="item.value == area?'active':''">{{item.label}}</div>
     </div>
-    <h2 class="w-full p-2 title-container">
+    <h2 class=" p-2 title-container">
       <span class="ml-3 font-bold title">应用场景</span>
     </h2>
     <div class="scenarios">
@@ -105,12 +105,14 @@
 
   // 设备列表
   const deviceTypeList = ref([])
-  let listParam = {
+  let listParam = ref({
     device:'',
     filters: [],
     specIds:'',
-    sceneId:''
-  }
+    sceneId:'',
+    area:'国内',
+    classIdentifier:'非道路'
+  })
   function getDeviceTypeList(){
     request({
       url: 'dapi/scene/getProductSceneList',
@@ -118,8 +120,12 @@
       params: {},
     }).then((res)=>{
       res.data.forEach((n,i)=>{
-        sceneCode.value == n.sceneCode ? (n['active'] = true,getSceneFilter(n),listParam.device = n.sceneName,getFilterProductCount()) :''
+        sceneCode.value == n.sceneCode ? (n['active'] = true,getSceneFilter(n),listParam.value.device = n.sceneName) :''
       })
+
+      if(!listParam.value.device){
+        getFilterProductCount()
+      }
       deviceTypeList.value = res.data
     })
   }
@@ -128,13 +134,13 @@
       n['active'] = false
     })
     item['active'] = true
-    listParam.device = item.sceneName
+    listParam.value.device = item.sceneName
     getSceneFilter(item)
   }
 
   // 使用区域
   const areaList = ref([])
-  const area = ref('')
+  const area = ref('home')
   function getArea(){
     request({
       url: 'dapi/productSpec/getArea',
@@ -147,7 +153,7 @@
 
   // 应用场景分类
   const prodClassList = ref([])
-  const classIdentifier = ref('')
+  const classIdentifier = ref('nonroad')
   function getProdClass(){
     request({
       url: 'dapi/productSpec/getProdClass',
@@ -180,7 +186,7 @@
   const filter = ref({})
   const total = ref([])
   function getSceneFilter(item){
-    listParam.sceneId = item.sceneId
+    listParam.value.sceneId = item.sceneId
     request({
       url: 'dapi/scene/getSceneFilter/'+ item.sceneId,
       method: 'get',
@@ -210,11 +216,15 @@
   }
   function getFilterProductCount(){
     let data = {
-      "sceneId":listParam.sceneId,
+      "sceneId":listParam.value.sceneId,
       area:area.value,
       classIdentifier:classIdentifier.value,
       "filters":[]
     }
+
+    if(!area.value ) delete data.area
+    if(!classIdentifier.value ) delete data.classIdentifier
+
     filter.value.filterClasses?filter.value.filterClasses.forEach((n,i)=>{
       if(n.filterType == 1){
         data.filters.push({
@@ -246,24 +256,24 @@
     showMore.value = !showMore.value
   }
   function goList(){
-    listParam.specIds = total.value.join(',')
-    listParam.filters = []
+    listParam.value.specIds = total.value.join(',')
+    listParam.value.filters = []
     filter.value.filterClasses? filter.value.filterClasses.forEach((n,i)=>{
       if(n.filterType == 1){
-        listParam.filters.push({
+        listParam.value.filters.push({
           label:n.value[0]+ '-' + n.value[1]+ n.filterUnit,
           value:n
         })
       }else {
         if(!n.value) return
-        listParam.filters.push({
+        listParam.value.filters.push({
           label:n.value + n.filterUnit,
           value:n
         })
       }
     }):''
     uni.navigateTo({
-      url:'/pages/mobile/list-h5/index?listParam='+JSON.stringify(listParam) + '&systype='+systype.value
+      url:'/pages/mobile/list-h5/index?listParam='+JSON.stringify(listParam.value) + '&systype='+systype.value
     })
   }
 
@@ -277,6 +287,57 @@
     getManuList()
     getProdClass()
     getArea()
+
+    uni.$on('clear', function(opt) {
+      if(opt == 'all'){
+        classIdentifier.value = ''
+        area.value = ''
+        listParam.value = {
+          device:'',
+          filters: [],
+          specIds:'',
+          sceneId:'',
+          area:'',
+          classIdentifier:''
+        }
+        manuList.value.forEach((n,i)=>{
+          n['active'] = false
+        })
+        deviceTypeList.value.forEach((n,i)=>{
+          n['active'] = false
+        })
+        filter.value.filterClasses = []
+      }else if(opt == 'classIdentifier'){
+        listParam.value.classIdentifier = ''
+        classIdentifier.value = ''
+      }else if(opt == 'area'){
+        listParam.value.area = ''
+        area.value = ''
+      }else if(opt == 'device'){
+        listParam.value.device = ''
+        listParam.value.filters = []
+        listParam.value.specIds = ''
+        listParam.value.sceneId = ''
+        manuList.value.forEach((n,i)=>{
+          n['active'] = false
+        })
+        deviceTypeList.value.forEach((n,i)=>{
+          n['active'] = false
+        })
+        filter.value.filterClasses = []
+      }else if(opt == 'filter'){
+        listParam.value.filters = []
+        filter.value.filterClasses.forEach((n,i)=>{
+          if(n.filterType == 1){
+            n['value'] = [Number(n.valueMin),Number(n.valueMax)]
+          }else {
+            n.valueEnum = n.valueEnum.split('/')
+            n['value'] = null
+          }
+        })
+      }
+      getFilterProductCount()
+    })
   });
 
 </script>

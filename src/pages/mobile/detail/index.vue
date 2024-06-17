@@ -361,6 +361,10 @@
   }
 
   function getPhoneNum(e){
+    if(!e.detail.code || commitInfo.value.phone){
+      showMessage.value = true
+      return
+    }
     wx.login({
       success: async (res) => {
         request({

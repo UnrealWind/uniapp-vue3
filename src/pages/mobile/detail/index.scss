@@ -11,6 +11,9 @@
     color: #ccc;
     height: 100%;
     position: relative;
+    image,img {
+      height: 90%;
+    }
     .p {
       position: absolute;
       right: 10px;
@@ -149,13 +152,14 @@
   }
 
   .specification,.message {
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
     height: 100%;
     background: rgba(1, 12, 23, 0.57);
+    overflow: hidden;
     .info-part {
       height: 100%;
       width: 100%;
@@ -196,6 +200,7 @@
         width: 92%;
         margin: 0 auto;
         height: 100%;
+        padding: 0 20px;
         overflow-y: scroll;
       }
     }
