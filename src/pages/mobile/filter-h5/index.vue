@@ -71,7 +71,7 @@
           </Slider>
         </div>
       </div>
-      <div v-if="item.filterType == 2">
+      <div v-if="item.filterType == 2 && item.valueEnum && item.valueEnum.length">
         <h2 class="w-full p-2 title-container mt-2">
           <span class="ml-3 font-bold title">{{item.filterName}}</span>
         </h2>
@@ -197,7 +197,7 @@
         if(n.filterType == 1){
           n['value'] = [Number(n.valueMin),Number(n.valueMax)]
         }else {
-          n.valueEnum = n.valueEnum.split('/')
+          n.valueEnum?n.valueEnum = n.valueEnum.split('/'):''
           n['value'] = null
         }
       })
