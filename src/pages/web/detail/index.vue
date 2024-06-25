@@ -11,7 +11,7 @@
       </div>
       <div class="detail-info">
         <div class="detail-left">
-          <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
+          <swiper class="swiper-box" autoplay="true" interval="5000" @change="change">
             <swiper-item v-for="(item,index) in detailInfo.files">
               <view class="swiper-item">
                 <img class="" :src="item.filePath" />
@@ -38,7 +38,7 @@
               <div><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/torque.png')"></div>
               <div>
                 <div class="specs-line1">扭矩</div>
-                <div class="specs-line2">{{detailInfo.maxTorque}}<span>n·m</span></div>
+                <div class="specs-line2">{{detailInfo.maxTorque}}<span>N·m</span></div>
                 <div class="specs-line3">{{detailInfo.maxTorqueSpeedMin}}-{{detailInfo.maxTorqueSpeedMax}}<span>rpm</span></div>
               </div>
             </div>
@@ -63,7 +63,7 @@
           <div class="scenario">
             <h3>适用应用场景</h3>
             <div v-for="(item,index) in detailInfo.sceneList">
-              <i>{{item.sceneName}}</i><span class="text-gray-500">标准吨位： &nbsp;<span class="text-gray-900">
+              <i>{{item.sceneName}}</i><span class="text-gray-500">{{item.matchFilters[0].filterName}}： &nbsp;<span class="text-gray-900">
               {{item.matchFilters[0].valueEnum?item.matchFilters[0].valueEnum: item.matchFilters[0].valueMin + '-' + item.matchFilters[0].valueMax + item.matchFilters[0].filterUnit}}</span></span></div>
 <!--            <div><i>旋挖钻机</i><span>360R</span><span class="text-gray-500">标称转矩：</span></div>-->
 <!--            <div><i>采棉机</i><span>6</span><span class="text-gray-500">作业行数（行箱式）：</span></div>-->
@@ -95,7 +95,7 @@
                 <div><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/torque.png')"></div>
                 <div>
                   <div class="specs-line1">扭矩</div>
-                  <div class="specs-line2">{{item.maxTorque}}<span>n·m</span></div>
+                  <div class="specs-line2">{{item.maxTorque}}<span>N·m</span></div>
                   <div class="specs-line3">{{item.maxTorqueSpeedMin}}-{{item.maxTorqueSpeedMax}}<span>rpm</span></div>
                 </div>
               </div>

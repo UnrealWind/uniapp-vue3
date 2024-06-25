@@ -80,8 +80,9 @@
         </div>
       </div>
     </div>
+    <div style="width: 100%;height: 120px"></div>
     <div class="btn-box">
-      <Button class="w-full" style="margin-top: 15px"  type="danger" size="normal" @click="goList">共有{{total.length}}个产品符合条件 进入</Button>
+      <Button class="w-full"  type="danger" size="normal" @click="goList">共有{{total.length}}个产品符合条件 进入</Button>
     </div>
   </view>
 </template>

@@ -90,7 +90,7 @@
                 </div>
                 <div>
                   <div class="specs-line1"><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/torque.png')">最大扭矩</div>
-                  <div class="specs-line2">{{item.maxTorque}}<span>n·m</span></div>
+                  <div class="specs-line2">{{item.maxTorque}}<span>N·m</span></div>
                   <div class="specs-line3">{{item.ratedSpeed}}<span>rpm</span></div>
                 </div>
               </div>
@@ -223,7 +223,7 @@
     listParam.value.device = item.sceneName
     pages.value = {
       pageNum:1,
-      pageSize:4,
+      pageSize:16,
       current:1,
       total:0,
       pageCount:0
@@ -277,7 +277,7 @@
     item.value = opt
     pages.value = {
       pageNum:1,
-      pageSize:4,
+      pageSize:16,
       current:1,
       total:0,
       pageCount:0
@@ -288,7 +288,7 @@
     console.log(e)
     pages.value = {
       pageNum:1,
-      pageSize:4,
+      pageSize:16,
       current:1,
       total:0,
       pageCount:0
@@ -375,7 +375,7 @@
 
   const pages = ref({
     pageNum:1,
-    pageSize:4,
+    pageSize:16,
     current:1,
     total:0,
     pageCount:0

@@ -1,10 +1,10 @@
 <template>
   <view class="content">
     <div  style="height: 85vh;overflow-y: scroll" >
-      <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
+      <swiper class="swiper-box" autoplay="true" interval="5000" @change="change">
         <swiper-item v-for="(item,index) in detailInfo.files">
           <view class="swiper-item">
-            <img class="" :src="item.filePath" />
+            <img mode="widthFix" class="" :src="item.filePath" />
           </view>
         </swiper-item>
       </swiper>
@@ -23,7 +23,7 @@
           </div>
           <div>
             <div class="specs-line1"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/torque.png')">扭矩</div>
-            <div class="specs-line2">{{detailInfo.maxTorque}}<span>n·m</span></div>
+            <div class="specs-line2">{{detailInfo.maxTorque}}<span>N·m</span></div>
             <div class="specs-line3">{{detailInfo.maxTorqueSpeedMin}}-{{detailInfo.maxTorqueSpeedMax}}<span>rpm</span></div>
           </div>
           <div>
@@ -43,7 +43,7 @@
           <div v-for="(item,index) in detailInfo.sceneList" class="div">
             <i class="i">{{item.sceneName}}</i>
             <span class="span">{{item.matchFilters[0].valueEnum?item.matchFilters[0].valueEnum: item.matchFilters[0].valueMin + '-' + item.matchFilters[0].valueMax + item.matchFilters[0].filterUnit}}</span>
-            <span class="span text-gray-500">标准吨位：</span>
+            <span class="span text-gray-500">{{item.matchFilters[0].filterName}}：</span>
           </div>
 
         </div>
@@ -76,7 +76,7 @@
             </div>
             <div>
               <div class="specs-line1"><img class="img" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/torque.png')">扭矩</div>
-              <div class="specs-line2">{{item.maxTorque}}<span>n·m</span></div>
+              <div class="specs-line2">{{item.maxTorque}}<span>N·m</span></div>
               <div class="specs-line3">{{item.maxTorqueSpeedMin}}-{{item.maxTorqueSpeedMax}}<span>rpm</span></div>
             </div>
             <div>
@@ -121,7 +121,7 @@
             </div>
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 留言</div>
-              <textarea class="input-item text-area" :value="commitInfo.message" @input="input($event,'message')"  auto-height placeholder="请输入留言..." maxlength="-1" />
+              <textarea class="input-item text-area" :value="commitInfo.message" @input="input($event,'message')"  placeholder="请输入留言..." maxlength="-1" />
             </div>
           </div>
           <div class="footer-btn fixed">

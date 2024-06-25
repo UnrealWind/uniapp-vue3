@@ -17,7 +17,7 @@ ul {
     height: 100%;
     position: relative;
     image,img {
-      height: 90%;
+      width: 200px;
     }
     .p {
       position: absolute;
@@ -291,11 +291,11 @@ ul {
       }
 
       .form {
-        height: 65vh;
+        height: 75vh;
         overflow-y: scroll;
         .form-item {
           .label {
-            margin-top: 15px;
+            margin-top: 10px;
           }
           .input-item {
             width: 90%;
@@ -306,6 +306,7 @@ ul {
           }
           .text-area {
             width: 90%;
+            height: 80px;
           }
         }
       }

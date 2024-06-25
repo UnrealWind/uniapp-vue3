@@ -3,11 +3,18 @@
   height: 100vh;
   overflow-y: scroll;
   width: 100%;
+
+  :deep(.uni-swiper-dot){
+    width: 12px !important;
+    height: 3px;
+    border-radius: 3px;
+  }
+
   .fix-margin {
     margin-top: 10px;
   }
   .swiper-box {
-    height: 200px;
+    height: 234px;
     width: 100%;
   }
   .swiper-item {
@@ -238,21 +245,20 @@
       }
 
       .form {
-        height: 65vh;
+        height: 75vh;
         overflow-y: scroll;
         .form-item {
           .label {
-            margin-top: 15px;
+            margin-top: 10px;
           }
           .input-item {
-            width: 90%;
             margin-top: 10px;
             background: rgba(239, 239, 239, 0.47);
             padding: 10px;
             border-radius: 3px;
           }
           .text-area {
-            width: 90%;
+            height: 80px;
           }
         }
       }

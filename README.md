@@ -36,6 +36,8 @@ https://www.axios-http.cn/docs/intro
 
   也可自预设自己的规则,  原子化 + sass 简直无敌
 
+  fydebugger  unocss在 uniapp run dev时 会报css编译错误，打包无此问题，uniapp真是个垃圾
+
 ### vant
 
  https://vant-contrib.gitee.io/vant-weapp/#/home <br>

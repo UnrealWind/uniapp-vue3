@@ -1,7 +1,7 @@
 <template>
   <view class="content">
-    <swiper class="swiper-box" autoplay="true" interval="3000" @change="change">
-      <swiper-item  @click="goFilter({sceneCode:''})">
+    <swiper class="swiper-box" autoplay="true" interval="5000" @change="change" :indicator-dots="true" indicator-color="#fff" indicator-active-color="red" >
+      <swiper-item @click="goFilter({sceneCode:''})">
         <view class="swiper-item">
           <img class="w-full h-full" :src="getImg(info[0].url)" />
           <p class="p">{{info[0].content}}</p>
@@ -74,7 +74,7 @@
             </div>
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 留言</div>
-              <textarea class="input-item text-area" :value="commitInfo.message" @input="input($event,'message')"  auto-height placeholder="请输入留言..." maxlength="-1" />
+              <textarea class="input-item text-area" :value="commitInfo.message" @input="input($event,'message')"  placeholder="请输入留言..." maxlength="-1" />
             </div>
           </div>
           <div class="footer-btn fixed">

@@ -55,7 +55,7 @@
                 </div>
                 <div>
                   <div class="specs-line1"><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/torque.png')">最大扭矩</div>
-                  <div class="specs-line2">{{item.maxTorque}}<span>n·m</span></div>
+                  <div class="specs-line2">{{item.maxTorque}}<span>N·m</span></div>
                   <div class="specs-line3">{{item.ratedSpeed}}<span>rpm</span></div>
                 </div>
               </div>
