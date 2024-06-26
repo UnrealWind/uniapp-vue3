@@ -1,7 +1,7 @@
 <template>
   <view class="content">
-    <div  style="height: 85vh;overflow-y: scroll" >
-      <swiper class="swiper-box" autoplay="true" interval="5000" @change="change">
+    <div  style="height: 90vh;overflow-y: scroll" >
+      <swiper class="swiper-box" autoplay="true" interval="5000" @change="change" :indicator-dots="true" indicator-color="#fff" indicator-active-color="red">
         <swiper-item v-for="(item,index) in detailInfo.files">
           <view class="swiper-item">
             <img mode="widthFix" class="" :src="item.filePath" />
@@ -10,46 +10,49 @@
       </swiper>
 
       <div class="detail-info">
-        <h2 class="h2" v-if="detailInfo.doemProduct">{{detailInfo.doemProduct.name}} ( {{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp )</h2>
-        <h3  class="h3">
-          <span>规格</span>
-          <span v-if="detailInfo.specList" @click="showSpecification = true" class="right-fix text-red-500">选择规格 (共{{detailInfo.specList.length}}款) > </span>
-        </h3>
-        <div class="specs">
-          <div>
-            <div class="specs-line1"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/power.png')">额定功率</div>
-            <div class="specs-line2">{{detailInfo.ratedHorsepower}}<span>hp</span></div>
-            <div class="specs-line3">{{detailInfo.ratedPower}}<span>kw</span></div>
+        <div>
+          <h2 class="h2" v-if="detailInfo.doemProduct">{{detailInfo.doemProduct.name}} ( {{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp )</h2>
+          <h3  class="h3">
+            <span>规格</span>
+            <span v-if="detailInfo.specList" @click="showSpecification = true" class="right-fix text-red-500">选择规格 (共{{detailInfo.specList.length}}款) > </span>
+          </h3>
+          <div class="specs">
+            <div>
+              <div class="specs-line1"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/power.png')">额定功率</div>
+              <div class="specs-line2">{{detailInfo.ratedHorsepower}}<span>hp</span></div>
+              <div class="specs-line3">{{detailInfo.ratedPower}}<span>kw</span></div>
+            </div>
+            <div>
+              <div class="specs-line1"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/torque.png')">扭矩</div>
+              <div class="specs-line2">{{detailInfo.maxTorque}}<span>N·m</span></div>
+              <div class="specs-line3">{{detailInfo.maxTorqueSpeedMin}}-{{detailInfo.maxTorqueSpeedMax}}<span>rpm</span></div>
+            </div>
+            <div>
+              <div class="specs-line1"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/rotate.png')">额定转速</div>
+              <div class="specs-line2">{{detailInfo.ratedSpeed}}<span>rpm</span></div>
+            </div>
           </div>
-          <div>
-            <div class="specs-line1"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/torque.png')">扭矩</div>
-            <div class="specs-line2">{{detailInfo.maxTorque}}<span>N·m</span></div>
-            <div class="specs-line3">{{detailInfo.maxTorqueSpeedMin}}-{{detailInfo.maxTorqueSpeedMax}}<span>rpm</span></div>
+          <div class="detail-para" v-if="detailInfo.doemProduct">
+            <h3  class="h3">详细参数</h3>
+            <div class="div"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/size.png')">
+              尺寸（长*宽*高 mm）<span class="span">{{detailInfo.doemProduct['length']}}*{{detailInfo.doemProduct.width}}*{{detailInfo.doemProduct.height}}</span></div>
+            <div class="div"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/weight.png')">重量<span class="span">{{detailInfo.doemProduct.weight}}kg</span></div>
+            <div class="div"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/way.png')">技术路线<span class="span">{{detailInfo.emissionControlRoutes}}</span></div>
+            <div class="div">排放标准<span class="span">{{detailInfo.doemProduct.emissionStandard}}</span></div>
           </div>
-          <div>
-            <div class="specs-line1"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/rotate.png')">额定转速</div>
-            <div class="specs-line2">{{detailInfo.ratedSpeed}}<span>rpm</span></div>
-          </div>
-        </div>
-        <div class="detail-para" v-if="detailInfo.doemProduct">
-          <h3  class="h3">详细参数</h3>
-          <div class="div"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/size.png')">
-            尺寸（长*宽*高 mm）<span class="span">{{detailInfo.doemProduct['length']}}*{{detailInfo.doemProduct.width}}*{{detailInfo.doemProduct.height}}</span></div>
-          <div class="div"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/weight.png')">重量<span class="span">{{detailInfo.doemProduct.weight}}kg</span></div>
-          <div class="div"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/way.png')">技术路线<span class="span">{{detailInfo.emissionControlRoutes}}</span></div>
-        </div>
-        <div class="scenario">
-          <h3  class="h3">适用应用场景</h3>
-          <div v-for="(item,index) in detailInfo.sceneList" class="div">
-            <i class="i">{{item.sceneName}}</i>
-            <span class="span">{{item.matchFilters[0].valueEnum?item.matchFilters[0].valueEnum: item.matchFilters[0].valueMin + '-' + item.matchFilters[0].valueMax + item.matchFilters[0].filterUnit}}</span>
-            <span class="span text-gray-500">{{item.matchFilters[0].filterName}}：</span>
-          </div>
+          <div class="scenario">
+            <h3  class="h3">适用应用场景</h3>
+            <div v-for="(item,index) in detailInfo.sceneList" class="div">
+              <i class="i">{{item.sceneName}}</i>
+              <span class="span">{{item.matchFilters[0].valueEnum?item.matchFilters[0].valueEnum: item.matchFilters[0].valueMin + '-' + item.matchFilters[0].valueMax + item.matchFilters[0].filterUnit}}</span>
+              <span class="span text-gray-500">{{item.matchFilters[0].filterName}}：</span>
+            </div>
 
-        </div>
-        <div class="tec" v-if="detailInfo.doemProduct">
-          <h3  class="h3">技术特点</h3>
-          <rich-text  type="text" :nodes="detailInfo.doemProduct.features"></rich-text>
+          </div>
+          <div class="tec" v-if="detailInfo.doemProduct">
+            <h3  class="h3">技术特点</h3>
+            <rich-text  type="text" :nodes="detailInfo.doemProduct.features"></rich-text>
+          </div>
         </div>
       </div>
     </div>

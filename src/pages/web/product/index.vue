@@ -102,9 +102,9 @@
               </div>
             </div>
           </div>
-          <div v-if="list.length" class="pagination">
-            <Pagination v-model="pages.current"  force-ellipses :total-items="pages.total" :page-count="pages.pageCount" @change="changePage" :items-per-page="5" />
-          </div>
+        </div>
+        <div v-if="list.length" class="pagination">
+          <Pagination v-model="pages.current"  force-ellipses :total-items="pages.total" :page-count="pages.pageCount" @change="changePage" :items-per-page="5" />
         </div>
       </div>
       <div v-show="showTips" class="message" @click="showTips=false">
@@ -142,7 +142,7 @@
               </div>
               <div class="form-item">
                 <div class="label"><span class="text-red-500">*</span> 留言</div>
-                <textarea class="input-item text-area" :value="commitInfo.message" @input="input($event,'message')"  auto-height placeholder="请输入留言..." maxlength="-1" />
+                <textarea class="input-item text-area" :value="commitInfo.message" @input="input($event,'message')"  placeholder="请输入留言..." maxlength="-1" />
               </div>
             </div>
             <div class="footer-btn fixed-circle">

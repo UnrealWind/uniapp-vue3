@@ -73,17 +73,25 @@
   .content-item {
     width: 23%;
     background: #efefef;
-    margin-top: 15px;
+    margin-top: 10px;
     height: 90%;
     overflow-y: scroll;
-    padding-bottom: 20px;
   }
   .content-info {
-    width: 73%;
+    width: 74%;
     height: 90%;
     h3 {
       font-size: 18px;
       margin-top: 10px;
+    }
+    .pagination {
+      width: 100%;
+      margin-top:30px;
+      :deep(.van-pagination__items) {
+        :deep(button) {
+          background: #ffffff !important;
+        }
+      }
     }
     .product {
       display: flex;
@@ -92,20 +100,14 @@
       flex-wrap: wrap;
       margin-top: 0px;
       position: relative;
+      height: 64vh;
+      overflow-y: scroll;
       .footer {
         width: 100%;
         margin-top: 20px;
         margin-bottom: 50px;
       }
-      .pagination {
-        width: 100%;
-        margin-top:30px;
-        :deep(.van-pagination__items) {
-          :deep(button) {
-            background: #ffffff !important;
-          }
-        }
-      }
+
       .prod-item {
         width: 21%;
         position: relative;
@@ -282,7 +284,7 @@
     justify-content: left;
     flex-wrap: wrap;
     >div {
-      margin-top: 10px;
+      margin-top: 5px;
       width: 28%;
       font-size: 12px;
       background: #ffffff;
@@ -392,6 +394,7 @@
       margin-top: 20px;
       img {
         cursor: pointer;
+        width: 15px;
       }
     }
     h4 {
@@ -524,6 +527,7 @@
         }
         .text-area {
           width: 90%;
+          height: 80px;
         }
       }
     }

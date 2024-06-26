@@ -1,9 +1,20 @@
-
 ul {
   list-style: disc !important;
 }
 
+:deep(.uni-swiper-dot){
+  width: 12px !important;
+  height: 3px;
+  border-radius: 3px;
+}
 .content {
+  padding: 0 5px;
+  margin: 0 auto;
+  background: linear-gradient(rgba(239, 239, 239, 0.52), #ccc);
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+
   .swiper-box {
     height: 240px;
     width: 100%;
@@ -30,11 +41,21 @@ ul {
   }
 
   .detail-info {
-    width: 90%;
-    margin: 0 auto;
     background: #ffffff;
-    border-radius: 6px;
-    padding: 10px;
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    >div{
+      width: 95%;
+      margin: 0 auto;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      background: url("https://uat.cs.cummins.com.cn/doem-h5/static/img/detail-background.png") no-repeat;
+      background-size: 120% 120%;
+      padding-top: 15px;
+    }
     .h2 {
       font-size: 16px;
       height: 1rem;
@@ -362,7 +383,7 @@ ul {
     }
     .btn-mid {
       margin-top: 10px;
-      width: 43%;
+      width: 42%;
       text-align: center;
       border: 1px solid rgba(218, 41, 28, 1);
       color: #fff;
@@ -401,6 +422,7 @@ ul {
     position: fixed;
     bottom: 10px;
     width: 90%;
+    left: 0;
     button {
       font-size: 16px;
     }

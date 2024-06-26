@@ -11,7 +11,7 @@
       </div>
       <div class="detail-info">
         <div class="detail-left">
-          <swiper class="swiper-box" autoplay="true" interval="5000" @change="change">
+          <swiper class="swiper-box" autoplay="true" interval="5000" @change="change" :indicator-dots="true" indicator-color="#fff" indicator-active-color="red" >
             <swiper-item v-for="(item,index) in detailInfo.files">
               <view class="swiper-item">
                 <img class="" :src="item.filePath" />
@@ -59,6 +59,7 @@
             </div>
             <div><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/weight.png')">重量<span>{{detailInfo.doemProduct.weight}}kg</span></div>
             <div><img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/way.png')">技术路线<span>{{detailInfo.emissionControlRoutes}}</span></div>
+            <div>排放标准<span>{{detailInfo.doemProduct.emissionStandard}}</span></div>
           </div>
           <div class="scenario">
             <h3>适用应用场景</h3>
@@ -146,7 +147,7 @@
             </div>
             <div class="form-item">
               <div class="label"><span class="text-red-500">*</span> 留言</div>
-              <textarea class="input-item text-area" :value="commitInfo.message" @input="input($event,'message')"  auto-height placeholder="请输入留言..." maxlength="-1" />
+              <textarea class="input-item text-area" :value="commitInfo.message" @input="input($event,'message')"  placeholder="请输入留言..." maxlength="-1" />
             </div>
           </div>
           <div class="footer-btn fixed-circle">

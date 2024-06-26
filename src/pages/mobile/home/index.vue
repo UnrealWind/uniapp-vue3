@@ -42,10 +42,10 @@
 
     <div class="footer-btn">
       <div @click="goFilter({sceneCode:''})" class="btn-large">帮我推荐</div>
-      <div v-if="systype == 'h5'" @click="showMessage=true" class="btn-mid">留言咨询</div>
-      <button v-if="systype == 'mp' && !commitInfo.phone" open-type="getPhoneNumber" @getphonenumber="getPhoneNum" class="btn-mid">留言咨询</button>
-      <button v-if="systype == 'mp' && commitInfo.phone" @click="showMessage=true" class="btn-mid">留言咨询</button>
-      <button @click="showCall=true" class="btn-mid">电话咨询</button>
+      <div v-if="systype == 'h5'" @click="showMessage=true" class="btn-mid"> <img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/red-consultation.png')">留言咨询</div>
+      <button v-if="systype == 'mp' && !commitInfo.phone" open-type="getPhoneNumber" @getphonenumber="getPhoneNum" class="btn-mid"> <img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/red-consultation.png')">留言咨询</button>
+      <button v-if="systype == 'mp' && commitInfo.phone" @click="showMessage=true" class="btn-mid"> <img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/red-consultation.png')">留言咨询</button>
+      <button @click="showCall=true" class="btn-mid"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/red-phone.png')">电话咨询</button>
     </div>
 
     <div v-if="showMessage" class="message">
