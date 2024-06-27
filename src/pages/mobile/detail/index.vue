@@ -1,6 +1,6 @@
 <template>
   <view class="content">
-    <div  style="height: 90vh;overflow-y: scroll" >
+    <div  style="overflow-y: scroll;padding-bottom: 80px" >
       <swiper class="swiper-box" autoplay="true" interval="5000" @change="change" :indicator-dots="true" indicator-color="#fff" indicator-active-color="red">
         <swiper-item v-for="(item,index) in detailInfo.files">
           <view class="swiper-item">
@@ -10,7 +10,7 @@
       </swiper>
 
       <div class="detail-info">
-        <div>
+        <div class="div">
           <h2 class="h2" v-if="detailInfo.doemProduct">{{detailInfo.doemProduct.name}} ( {{detailInfo.ratedPower}}kw/{{detailInfo.ratedHorsepower}}hp )</h2>
           <h3  class="h3">
             <span>规格</span>
