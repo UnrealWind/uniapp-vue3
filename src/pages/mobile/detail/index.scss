@@ -8,7 +8,6 @@ ul {
   border-radius: 3px;
 }
 .content {
-  padding: 0 5px;
   margin: 0 auto;
   background: linear-gradient(rgba(239, 239, 239, 0.52), #ccc);
 
@@ -42,19 +41,16 @@ ul {
 
   .detail-info {
     background: #ffffff;
+    border-radius: 5px;
     width: 95%;
     margin: 0 auto;
-    border-radius: 5px;
     overflow: hidden;
-    margin-bottom: 10px;
     >.div{
-      width: 95%;
       margin: 0 auto;
       border-radius: 6px;
-      margin-bottom: 10px;
       background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),url("https://uat.cs.cummins.com.cn/doem-h5/static/img/detail-background.png") no-repeat;
       background-size: 120% 120%;
-      padding-top: 15px;
+      padding: 15px;
     }
     .h2 {
       font-size: 16px;
@@ -421,7 +417,7 @@ ul {
   .footer-btn.fixed {
     position: fixed;
     bottom: 0px;
-    width: 90%;
+    width: 100%;
     left: 0;
     background: #ffffff;
     button {

@@ -142,12 +142,15 @@ ul {
       justify-content: left;
       flex-wrap: wrap;
       >div {
-        width: 33%;
+        width: 25%;
         padding-top: 15px;
+        img {
+          width: 40px;
+        }
       }
       >div:last-child {
         width: 63%;
-        padding-top: 15px;
+        padding-top: 8px;
       }
     }
     >div:first-child {
