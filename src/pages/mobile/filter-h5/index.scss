@@ -86,7 +86,6 @@
       padding: 10px 0 0px 0;
       margin-top: 10px;
       margin-left: 5%;
-      overflow: hidden;
       >div {
         text-align: center;
         font-size: 11px;
@@ -98,6 +97,7 @@
         margin: 0 auto;
         height: 50px;
         object-fit: contain;
+        max-width: 90%;
       }
     }
     .active {
@@ -107,11 +107,9 @@
       .active-corner {
         position: absolute;
         right: -1px;
-        bottom: -3px;
-        img {
-          width: 20px;
-          height: 20px;
-        }
+        bottom: -1px;
+        width: 20px;
+        height: 20px;
       }
     }
   }

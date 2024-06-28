@@ -86,9 +86,7 @@
               <div class="specs-line1"><img class="img" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/rotate.png')">额定转速</div>
               <div class="specs-line2">{{item.ratedSpeed}}<span>rpm</span></div>
             </div>
-            <span v-if="item.prodSpecId == prodSpecId" class="active-corner">
-              <img class="img" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/active-corner.png')">
-            </span>
+            <img v-if="item.prodSpecId == prodSpecId" class="active-corner img" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/active-corner.png')">
           </div>
           <div style="height: 90px"></div>
           <div class="footer-btn fixed">

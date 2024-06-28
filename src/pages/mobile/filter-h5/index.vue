@@ -24,9 +24,7 @@
         <template v-if="item.active">
           <img :src="getImg(`https://uat.cs.cummins.com.cn/doem-h5/static/img/device/${item.sceneCode}A.png`)">
           <div>{{item.sceneName}}
-            <span class="active-corner">
-              <img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/active-corner.png')">
-            </span>
+              <img class="active-corner" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/active-corner.png')">
           </div>
         </template>
       </div>
@@ -38,9 +36,7 @@
         <template v-if="item.active">
           <img :src="getImg(`https://uat.cs.cummins.com.cn/doem-h5/static/img/device/${item.sceneCode}A.png`)">
           <div>{{item.sceneName}}
-            <span class="active-corner">
-              <img :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/active-corner.png')">
-            </span>
+            <img  class="active-corner" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/active-corner.png')">
           </div>
         </template>
       </div>
