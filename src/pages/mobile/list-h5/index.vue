@@ -33,9 +33,9 @@
               <div class="device-type">
                 <span v-for="(opt,i) in item.sceneList">{{opt.sceneName}}</span>
               </div>
-              <div class="produce">
-                <span>{{item.manuName}}生产</span>
-              </div>
+<!--              <div class="produce">-->
+<!--                <span>{{item.manuName}}生产</span>-->
+<!--              </div>-->
               <!--            <div class="right-top"> &nbsp;&nbsp;&nbsp;EPA 2024</div>-->
               <div @click="goDetail(item)" class="detail-btn"></div>
             </div>

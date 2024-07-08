@@ -4,7 +4,7 @@
       <div class="header">
         <img @click="goHome" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/cummins.png')">
         <span>
-        <span style="cursor: pointer" @click="goProtal">经销商服务网</span>
+<!--        <span style="cursor: pointer" @click="goProtal">经销商服务网</span>-->
         <span @click="showMessage = true" style="cursor: pointer">联系我们</span>
       </span>
       </div>
@@ -78,7 +78,7 @@
             <div class="prod-info">
               <div class="info">
                 <div>{{ item.productName }}
-                  <span class="prod-info-mid">{{item.manuName}}</span>
+<!--                  <span class="prod-info-mid">{{item.manuName}}</span>-->
 <!--                  <span class="prod-info-last">EPA 2024</span>-->
                 </div>
               </div>
