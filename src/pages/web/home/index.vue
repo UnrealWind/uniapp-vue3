@@ -128,7 +128,7 @@
                 </div>
                 <div class="contact-info">
                   <p>张延昭 （15810139248）</p>
-                  <p>AE（北区）</p>
+                  <p>AE（北京、天津、山东、黑龙江、吉林、辽宁、河北、河南、内蒙古东部）</p>
                 </div>
                 <div class="contact-btn">
                   <img @click="showMessage = true,showCall=false" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/consultation-red.png')">
@@ -140,7 +140,7 @@
                 </div>
                 <div class="contact-info">
                   <p>王建平 （13671669950）</p>
-                  <p>AE（南区）</p>
+                  <p>AE（上海、江苏、浙江、安徽、湖北、湖南、广西、广东、福建、江西、海南）</p>
                 </div>
                 <div class="contact-btn">
                   <img @click="showMessage = true,showCall=false" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/consultation-red.png')">
@@ -152,7 +152,7 @@
                 </div>
                 <div class="contact-info">
                   <p>杨懿 （18615711430）</p>
-                  <p>AE（西区）</p>
+                  <p>AE（四川、重庆、山西、陕西、甘肃、新疆、云南、青海、西藏、宁夏、内蒙古西部）</p>
                 </div>
                 <div class="contact-btn">
                   <img @click="showMessage = true,showCall=false" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img-web/consultation-red.png')">

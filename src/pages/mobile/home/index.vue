@@ -103,11 +103,11 @@
               </div>
               <div class="contact-info">
                 <p class="p">张延昭</p>
-                <p class="p">AE（北区）</p>
+                <p class="p" >AE（北京、天津、山东、黑龙江、吉林、辽宁、河北、河南、内蒙古东部）</p>
               </div>
               <div class="contact-btn">
                 <img class="img" @click="showMessage = true,showCall=false" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/consultation-red.png')">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(15810139248)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/phone-red.png')">
+                <img class="img" @click="makePhoneCall(15810139248)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/phone-red.png')">
               </div>
             </div>
             <div class="contact">
@@ -116,11 +116,11 @@
               </div>
               <div class="contact-info">
                 <p class="p">王建平</p>
-                <p class="p">AE（南区）</p>
+                <p class="p">AE（上海、江苏、浙江、安徽、湖北、湖南、广西、广东、福建、江西、海南）</p>
               </div>
               <div class="contact-btn">
                 <img class="img" @click="showMessage = true,showCall=false" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/consultation-red.png')">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(13671669950)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/phone-red.png')">
+                <img class="img" @click="makePhoneCall(13671669950)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/phone-red.png')">
               </div>
             </div>
             <div class="contact">
@@ -129,11 +129,11 @@
               </div>
               <div class="contact-info">
                 <p class="p">杨懿</p>
-                <p class="p">AE（西区）</p>
+                <p class="p" >AE（四川、重庆、山西、陕西、甘肃、新疆、云南、青海、西藏、宁夏、内蒙古西部）</p>
               </div>
               <div class="contact-btn">
                 <img class="img" @click="showMessage = true,showCall=false" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/consultation-red.png')">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(18615711430)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/phone-red.png')">
+                <img class="img" @click="makePhoneCall(18615711430)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/phone-red.png')">
               </div>
             </div>
           </div>

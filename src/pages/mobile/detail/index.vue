@@ -38,7 +38,7 @@
               尺寸（长*宽*高 mm）<span class="span">{{detailInfo.doemProduct['length']}}*{{detailInfo.doemProduct.width}}*{{detailInfo.doemProduct.height}}</span></div>
             <div class="div"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/weight.png')">重量<span class="span">{{detailInfo.doemProduct.weight}}kg</span></div>
             <div class="div"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/way.png')">技术路线<span class="span">{{detailInfo.emissionControlRoutes}}</span></div>
-            <div class="div">排放标准<span class="span">{{detailInfo.doemProduct.emissionStandard}}</span></div>
+            <div class="div"><img class="img" mode="widthFix" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/emission.png')">排放标准<span class="span">{{detailInfo.doemProduct.emissionStandard}}</span></div>
           </div>
           <div class="scenario">
             <h3  class="h3">适用应用场景</h3>
@@ -151,11 +151,11 @@
               </div>
               <div class="contact-info">
                 <p class="p">张延昭</p>
-                <p class="p">AE（北区）</p>
+                <p class="p" >AE（北京、天津、山东、黑龙江、吉林、辽宁、河北、河南、内蒙古东部）</p>
               </div>
               <div class="contact-btn">
                 <img class="img" @click="showMessage = true,showCall=false" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/consultation-red.png')">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(15810139248)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/phone-red.png')">
+                <img class="img" @click="makePhoneCall(15810139248)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/phone-red.png')">
               </div>
             </div>
             <div class="contact">
@@ -164,11 +164,11 @@
               </div>
               <div class="contact-info">
                 <p class="p">王建平</p>
-                <p class="p">AE（南区）</p>
+                <p class="p">AE（上海、江苏、浙江、安徽、湖北、湖南、广西、广东、福建、江西、海南）</p>
               </div>
               <div class="contact-btn">
                 <img class="img" @click="showMessage = true,showCall=false" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/consultation-red.png')">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(13671669950)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/phone-red.png')">
+                <img class="img" @click="makePhoneCall(13671669950)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/phone-red.png')">
               </div>
             </div>
             <div class="contact">
@@ -177,11 +177,11 @@
               </div>
               <div class="contact-info">
                 <p class="p">杨懿</p>
-                <p class="p">AE（西区）</p>
+                <p class="p" >AE（四川、重庆、山西、陕西、甘肃、新疆、云南、青海、西藏、宁夏、内蒙古西部）</p>
               </div>
               <div class="contact-btn">
                 <img class="img" @click="showMessage = true,showCall=false" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/consultation-red.png')">
-                <img class="img" style="margin-right: 0" @click="makePhoneCall(18615711430)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/phone-red.png')">
+                <img class="img" @click="makePhoneCall(18615711430)" :src="getImg('https://uat.cs.cummins.com.cn/doem-h5/static/img/phone-red.png')">
               </div>
             </div>
           </div>
